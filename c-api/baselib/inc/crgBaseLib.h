@@ -456,6 +456,13 @@ extern "C"
     */
     extern int crgContactPointSetHistory( int cpId, int histSize );
 
+    /**
+    * set the size of the history for all contact points
+    * needed for thread safety
+    * @param histSize  the desired size of the history
+    */
+    extern void crgContactPointSetHistoryForAllPoints( int histSize );
+
 /* ====== METHODS in crgEvalxy2uv.c ====== */
     /**
     * convert a given (x,y) position into the corresponding (u,v) position
