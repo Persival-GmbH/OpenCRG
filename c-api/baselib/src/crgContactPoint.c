@@ -455,7 +455,7 @@ crgContactPointPreloadHistoryU( CrgContactPointStruct *cp, double u )
 
     /* --- shift previous values --- */
     if ( cp->history.totalSize > 1 )
-        memmove( &( cp->history.entry[1] ), cp->history.entry, ( cp->history.totalSize - 1 ) * cp->history.entrySize );
+        memmove( &( cp->history.entry[1] ), cp->history.entry, (size_t)( cp->history.totalSize - 1 ) * cp->history.entrySize );
 
     /* --- compute x and y for u on reference line --- */
     frac = ( u - cp->crgData->channelU.info.first ) / cp->crgData->channelU.info.inc;
@@ -619,5 +619,4 @@ crgContactPointPrintHistory( CrgContactPointStruct *cp, double x, double y )
     }
 
 }
-
 
