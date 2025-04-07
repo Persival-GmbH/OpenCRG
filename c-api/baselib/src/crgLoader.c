@@ -375,8 +375,8 @@ static int isLittleEndian( void );
 * check whether the first string begins with the characters of the second, ignoring case;
 * this method was introduced due to incompatibility of strncasecmp with
 * standard c compilers
-* @param str1	string whose begin should is tested for occurrence of str2
-* @param str2   string to be searched for at the begin of str1
+* @param str1 string whose begin should be tested for occurrence of str2
+* @param str2 string to be searched for at the begin of str1
 * @return 1 if strings match, otherwise 0
 */
 static int crgStrBeginsWithStrNoCase( const char* str1, const char* str2 );
@@ -405,7 +405,7 @@ static int crgLoaderAddFile( const char* filename, CrgDataStruct** crgData );
 
 /* ====== LOCAL VARIABLES ====== */
 
-static CrgReaderCallbackStruct	sLoaderCallbacksCommon[] =
+static CrgReaderCallbackStruct sLoaderCallbacksCommon[] =
 {
    { "$ROAD_CRG_MODS",             setSection,         dFileSectionModifiers        },
    { "$ROAD_CRG_OPTS",             setSection,         dFileSectionOptions          },
@@ -419,7 +419,7 @@ static CrgReaderCallbackStruct	sLoaderCallbacksCommon[] =
    { "",                           NULL,               -1                           }
 };
 
-static CrgReaderCallbackStruct	sLoaderCallbacksRoad[] =
+static CrgReaderCallbackStruct sLoaderCallbacksRoad[] =
 {
    { "reference_line_start_u",     decodeHdrDouble,    dOpcodeRefLineStartU         },
    { "reference_line_start_x",     decodeHdrDouble,    dOpcodeRefLineStartX         },
@@ -453,7 +453,7 @@ static CrgReaderCallbackStruct	sLoaderCallbacksRoad[] =
    { "",                           NULL,               -1                           }
 };
 
-static CrgReaderCallbackStruct	sLoaderCallbacksOpts[] =
+static CrgReaderCallbackStruct sLoaderCallbacksOpts[] =
 {
    { "border_mode_u",        decodeHdrOpMod, dCrgCpOptionBorderModeU        },
    { "border_offset_u",      decodeHdrOpMod, dCrgCpOptionBorderOffsetU      },
@@ -483,7 +483,7 @@ static CrgReaderCallbackStruct	sLoaderCallbacksOpts[] =
    { "",                     NULL,           -1                             }
 };
 
-static CrgReaderCallbackStruct	sLoaderCallbacksMods[] =
+static CrgReaderCallbackStruct sLoaderCallbacksMods[] =
 {
    { "scale_z_grid",         decodeHdrOpMod, dCrgModScaleZ                  },
    { "scale_slope",          decodeHdrOpMod, dCrgModScaleSlope              },
@@ -513,14 +513,14 @@ static CrgReaderCallbackStruct	sLoaderCallbacksMods[] =
    { "",                     NULL,           -1                             }
 };
 
-static CrgReaderCallbackStruct	sLoaderCallbacksMpro[] =
+static CrgReaderCallbackStruct sLoaderCallbacksMpro[] =
 {
    { "proj_nm", decodeHdrOpMod, dOpcodeNone                  },
    { "$" ,      setSection,     dFileSectionNone             },
    { "",        NULL,           -1                           }
 };
 
-static CrgReaderCallbackStruct	sLoaderCallbacksDataDef[] =
+static CrgReaderCallbackStruct sLoaderCallbacksDataDef[] =
 {
    { "U:", decodeIndependent,  dOpcodeNone                  },
    { "D:", decodeDefined,      dOpcodeNone                  },
@@ -529,7 +529,7 @@ static CrgReaderCallbackStruct	sLoaderCallbacksDataDef[] =
    { "",   NULL,               -1                           }
 };
 
-static CrgReaderCallbackStruct	sLoaderCallbacksFile[] =
+static CrgReaderCallbackStruct sLoaderCallbacksFile[] =
 {
    { "$",  decodeIncludeFile,  dOpcodeIncludeDone },
    { "",   NULL,               -1                 }
@@ -859,32 +859,32 @@ decodeHdrOpMod( CrgDataStruct* crgData, const char* buffer, int opcode )
 
 
         case dCrgCpOptionWarnCurvGlobal:
-        	if ( !optionEnabled )
-        		break;
-        	{
-        		int iValue = atoi( ++bufPtr );
-        		switch ( iValue )
-        		{
-        		case 1:
-        			crgOptionSetInt( &(crgData->options ), opcode, dCrgCpOptionWarnCurvGlobal);
-        			break;
-        		}
-        	}
-        	break;
+            if ( !optionEnabled )
+                break;
+            {
+                int iValue = atoi( ++bufPtr );
+                switch ( iValue )
+                {
+                    case 1:
+                        crgOptionSetInt( &(crgData->options ), opcode, dCrgCpOptionWarnCurvGlobal);
+                        break;
+                }
+            }
+            break;
 
         case dCrgCpOptionWarnCurvLocal:
-        	if ( !optionEnabled )
-        		break;
-        	{
-        		int iValue = atoi( ++bufPtr );
-        		switch ( iValue )
-        		{
-        		case 1:
-        			crgOptionSetInt( &(crgData->options ), opcode, dCrgCpOptionWarnCurvLocal);
-        			break;
-        		}
-        	}
-        	break;
+            if ( !optionEnabled )
+                break;
+            {
+                int iValue = atoi( ++bufPtr );
+                switch ( iValue )
+                {
+                    case 1:
+                        crgOptionSetInt( &(crgData->options ), opcode, dCrgCpOptionWarnCurvLocal);
+                        break;
+                }
+            }
+            break;
 
         case dCrgCpOptionBorderOffsetU:
         case dCrgCpOptionBorderOffsetV:
@@ -983,7 +983,11 @@ decodeHdrOpMod( CrgDataStruct* crgData, const char* buffer, int opcode )
 static int
 setSection( CrgDataStruct* crgData, const char* buffer, int newSection )
 {
-   /* --- changing from none or to none? --- */
+    // setSection is a callback, therefore the parameter list is fixed; buffer
+    // is not used here
+    (void)buffer;
+
+    /* --- changing from none or to none? --- */
     if ( ( crgData->admin.sectionType == dFileSectionNone ) || ( newSection == dFileSectionNone ) )
     {
         crgData->admin.sectionType = newSection;
@@ -1029,12 +1033,22 @@ setSection( CrgDataStruct* crgData, const char* buffer, int newSection )
 static int
 decodeIndependent( CrgDataStruct* crgData, const char* buffer, int code )
 {
+    // decodeIndependent is a callback, therefore the parameter list is fixed;
+    // the parameters are not used here
+    (void)crgData;
+    (void)buffer;
+    (void)code;
+
     return 1;
 }
 
 static int
 decodeDefined( CrgDataStruct* crgData, const char* buffer, int code )
 {
+    // decodeDefined is a callback, therefore the parameter list is fixed;
+    // the parameter code is not used here
+    (void)code;
+
     const char* bufPtr = buffer;
     const char* tmpPtr = NULL;
     size_t i;
@@ -1192,6 +1206,10 @@ decodeDefined( CrgDataStruct* crgData, const char* buffer, int code )
 static int
 decodeDataFormat( CrgDataStruct* crgData, const char* buffer, int code )
 {
+    // decodeDataFormat is a callback, therefore the parameter list is fixed;
+    // the parameter code is not used here
+    (void)code;
+
     const char* bufPtr = buffer;
     char dataFormat[] = "0000";
 
@@ -1765,9 +1783,9 @@ parseCenterLine( CrgDataStruct* crgData, char *dataPtr, size_t nBytesLeft )
             crgMsgPrint( dCrgMsgLevelNotice, "MMM: parseCenterLine: read %.3f %% of data\n", ( 100.0f * ( nBytesLeft - srcBytesLeft ) ) / nBytesLeft );
         */
     }
-    
+
     /* --- At least one record required to continue --- */
-  	if (nRec < 1)
+    if (nRec < 1)
     {
         crgMsgPrint(dCrgMsgLevelFatal, "parseCenterLine: zero records could be decoded.\n");
         return 0;
@@ -2511,62 +2529,63 @@ crgLoaderPrepareData( CrgDataStruct* crgData )
     crgMsgPrint( dCrgMsgLevelDebug, "crgLoaderPrepareData: crgCalcUtilityData() done.\n" );
 }
 
-		int crgLocalCurvature(CrgDataStruct *crgData) {
+static int
+crgLocalCurvature(CrgDataStruct *crgData)
+{
+    int optAsInt;
+    double dx0;
+    double dy0;
+    double dx1;
+    double dy1;
+    double val;
+    double curv = 0.0;
+    int cpId;
+    double z;
+    size_t i;
+    double uStart = crgData->channelU.info.first;
 
-			int optAsInt;
-			int inter;
-			double dx0;
-			double dy0;
-			double dx1;
-			double dy1;
-			double val;
-			double curv = 0.0;
-			int cpId;
-			double z;
-			size_t i;
-			double uStart = crgData->channelU.info.first;
+    /* remember border mode */
+    crgOptionGetInt(&crgData->options, dCrgCpOptionBorderModeV,
+                    &optAsInt);
 
-			/* remember border mode */
-			crgOptionGetInt(&crgData->options, dCrgCpOptionBorderModeV,
-					&optAsInt);
+    crgOptionSetInt(&crgData->options, dCrgCpOptionBorderModeV, 0);
 
-			crgOptionSetInt(&crgData->options, dCrgCpOptionBorderModeV, 0);
+    val = 1.0 / pow(crgData->channelU.info.inc, 3.0);
 
-			val = 1.0 / pow(crgData->channelU.info.inc, 3.0);
+    if ((cpId = crgContactPointCreate(crgData->admin.id)) < 0) {
+        crgMsgPrint( dCrgMsgLevelFatal,
+                    "main: could not create contact point.\n");
+        return 0;
+    }
 
-			if ((cpId = crgContactPointCreate(crgData->admin.id)) < 0) {
-				crgMsgPrint( dCrgMsgLevelFatal,
-						"main: could not create contact point.\n");
-				return 0;
-			}
+    for (i = 1; i < crgData->channelX.info.size - 1; i++) {
+        dx0 = crgData->channelX.data[i] - crgData->channelX.data[i - 1];
+        dx1 = crgData->channelX.data[i + 1] - crgData->channelX.data[i];
+        dy0 = crgData->channelY.data[i] - crgData->channelY.data[i - 1];
+        dy1 = crgData->channelY.data[i + 1] - crgData->channelY.data[i];
+        curv = (dx0 * dy1 - dy0 * dx1) * val;
+        if (crgEvaluv2z(cpId, uStart + i * crgData->channelU.info.inc,
+                        1 / curv, &z)) {
+            if (!isnan(z)) {
 
-			for (i = 1; i < crgData->channelX.info.size - 1; i++) {
-				dx0 = crgData->channelX.data[i] - crgData->channelX.data[i - 1];
-				dx1 = crgData->channelX.data[i + 1] - crgData->channelX.data[i];
-				dy0 = crgData->channelY.data[i] - crgData->channelY.data[i - 1];
-				dy1 = crgData->channelY.data[i + 1] - crgData->channelY.data[i];
-				curv = (dx0 * dy1 - dy0 * dx1) * val;
-				if (crgEvaluv2z(cpId, uStart + i * crgData->channelU.info.inc,
-						1 / curv, &z)) {
-					if (!isnan(z)) {
+                crgOptionSetInt(&crgData->options,
+                                dCrgCpOptionBorderModeV, optAsInt);
 
-						crgOptionSetInt(&crgData->options,
-						dCrgCpOptionBorderModeV, optAsInt);
+                return 0;
+            }
+        }
+    }
 
-						return 0;
-					}
-				}
-			}
+    crgOptionSetInt(&crgData->options, dCrgCpOptionBorderModeV, optAsInt);
 
-			crgOptionSetInt(&crgData->options, dCrgCpOptionBorderModeV, optAsInt);
+    return 1;
+}
 
-			return 1;
-		}
-
-int
-crgGlobalCurvature(CrgDataStruct* crgData){
-	double vMin = crgData->channelV.info.first;
-	double vMax = crgData->channelV.info.last;
+static int
+crgGlobalCurvature(CrgDataStruct* crgData)
+{
+    double vMin = crgData->channelV.info.first;
+    double vMax = crgData->channelV.info.last;
     double dx0;
     double dy0;
     double dx1;
@@ -2577,55 +2596,55 @@ crgGlobalCurvature(CrgDataStruct* crgData){
     double curv = 0.0;
     double rMin = 0.0;
     double rMax = 0.0;
-	size_t i;
+    size_t i;
 
-	val = 1.0 / pow( crgData->channelU.info.inc, 3.0 );
+    val = 1.0 / pow( crgData->channelU.info.inc, 3.0 );
 
-	  for ( i = 1; i < crgData->channelX.info.size - 1; i++ )
-	  {
-	        dx0  = crgData->channelX.data[i]   - crgData->channelX.data[i-1];
-	        dx1  = crgData->channelX.data[i+1] - crgData->channelX.data[i];
-	        dy0  = crgData->channelY.data[i]   - crgData->channelY.data[i-1];
-	        dy1  = crgData->channelY.data[i+1] - crgData->channelY.data[i];
-	        curv = ( dx0 * dy1 - dy0 * dx1 ) * val;
+    for ( i = 1; i < crgData->channelX.info.size - 1; i++ )
+    {
+        dx0  = crgData->channelX.data[i]   - crgData->channelX.data[i-1];
+        dx1  = crgData->channelX.data[i+1] - crgData->channelX.data[i];
+        dy0  = crgData->channelY.data[i]   - crgData->channelY.data[i-1];
+        dy1  = crgData->channelY.data[i+1] - crgData->channelY.data[i];
+        curv = ( dx0 * dy1 - dy0 * dx1 ) * val;
 
-	        if ( curv < cMin )
-	            cMin = curv;
+        if ( curv < cMin )
+            cMin = curv;
 
-	        if ( curv > cMax )
-	            cMax = curv;
-	  }
+        if ( curv > cMax )
+            cMax = curv;
+    }
 
-	  if(cMin==0.0){
-		  rMin = 0.0;
-	  } else{
-		  rMin = 1/cMin;
-	  }
+    if(cMin==0.0){
+        rMin = 0.0;
+    } else{
+        rMin = 1/cMin;
+    }
 
-	  if(cMax==0.0){
-		  rMax = 0.0;
-	  } else{
-		  rMax = 1/cMax;
-	  }
+    if(cMax==0.0){
+        rMax = 0.0;
+    } else{
+        rMax = 1/cMax;
+    }
 
-	if(rMax!=0.0){
-		if(vMax >= rMax){
-			return 0;
-		}
-	}
+    if(rMax!=0.0){
+        if(vMax >= rMax){
+            return 0;
+        }
+    }
 
-	if(rMin != 0.0){
-		if(rMin >= vMin){
-			return 0;
-		}
-	}
-	return 1;
+    if(rMin != 0.0){
+        if(rMin >= vMin){
+            return 0;
+        }
+    }
+    return 1;
 }
 
 int
 crgCheck( int dataSetId )
 {
-	int optAsInt;
+    int optAsInt;
 
     CrgDataStruct *crgData = crgDataSetAccess( dataSetId );
 
@@ -2658,37 +2677,33 @@ crgCheck( int dataSetId )
 
     /* global curvature check */
     if ( crgOptionGetInt( &crgData->options, dCrgCpOptionWarnCurvGlobal, &optAsInt )
-    		&& !( crgOptionGetInt( &crgData->options, dCrgCpOptionWarnCurvLocal, &optAsInt ) ) )
+        && !( crgOptionGetInt( &crgData->options, dCrgCpOptionWarnCurvLocal, &optAsInt ) ) )
     {
-    		if(!crgGlobalCurvature(crgData))
-    		{
-        		crgMsgPrint( dCrgMsgLevelWarn, "crgGlobalCurvature: Global curvature test failed.\n" );
-        		return 0;
-    		} else {
-    			crgMsgPrint( dCrgMsgLevelNotice, "crgGlobalCurvature: Global curvature test succeeded.\n" );
-    		}
-
-
+        if(!crgGlobalCurvature(crgData))
+        {
+            crgMsgPrint( dCrgMsgLevelWarn, "crgGlobalCurvature: Global curvature test failed.\n" );
+            return 0;
+        } else {
+            crgMsgPrint( dCrgMsgLevelNotice, "crgGlobalCurvature: Global curvature test succeeded.\n" );
+        }
     }
 
     /* local curvature check */
     if ( crgOptionGetInt( &crgData->options, dCrgCpOptionWarnCurvLocal, &optAsInt ) )
     {
-
-
-    		if( !crgGlobalCurvature( crgData ) )
-    		{
-    		    if(!crgLocalCurvature(crgData)){
-    		    	crgMsgPrint( dCrgMsgLevelWarn, "crgGlobalCurvature: Global curvature test failed.\n" );
-    		    	crgMsgPrint( dCrgMsgLevelWarn, "crgLocaCurvature: Local curvature test failed.\n" );
-    		    	return 0;
-    		    } else{
-    		    	crgMsgPrint( dCrgMsgLevelWarn, "crgGlobalCurvature: Global curvature test failed.\n" );
-    		    	return 0;
-    		    }
-    		} else{
-    			crgMsgPrint( dCrgMsgLevelNotice, "Global and local curvature test succeeded.\n" );
-    		}
+        if( !crgGlobalCurvature( crgData ) )
+        {
+            if(!crgLocalCurvature(crgData)){
+                crgMsgPrint( dCrgMsgLevelWarn, "crgGlobalCurvature: Global curvature test failed.\n" );
+                crgMsgPrint( dCrgMsgLevelWarn, "crgLocaCurvature: Local curvature test failed.\n" );
+                return 0;
+            } else{
+                crgMsgPrint( dCrgMsgLevelWarn, "crgGlobalCurvature: Global curvature test failed.\n" );
+                return 0;
+            }
+        } else{
+            crgMsgPrint( dCrgMsgLevelNotice, "Global and local curvature test succeeded.\n" );
+        }
 
     }
 
@@ -3073,7 +3088,7 @@ crgLoaderAddFile( const char* filename, CrgDataStruct** crgRetData )
     struct stat fileStat;
     char*         bufPtr;
     size_t        nBytesLeft;
-	FILE*         fPtr = NULL;
+    FILE*         fPtr = NULL;
     CrgDataStruct *crgData = *crgRetData;
 
     /* --- open the file --- */
@@ -3108,7 +3123,7 @@ crgLoaderAddFile( const char* filename, CrgDataStruct** crgRetData )
 
     /* --- memory map the file for faster access --- */
     stat( filename, &fileStat );
-	crgData->admin.fileBuffer = ( char * ) crgCalloc( 1, fileStat.st_size + 1 );
+    crgData->admin.fileBuffer = ( char * ) crgCalloc( 1, fileStat.st_size + 1 );
 
     if ( !crgData->admin.fileBuffer )
     {
@@ -3117,8 +3132,8 @@ crgLoaderAddFile( const char* filename, CrgDataStruct** crgRetData )
         return 0;
     }
 
-	noBytesRead = fread( crgData->admin.fileBuffer, 1, fileStat.st_size, fPtr );
- 	fclose( fPtr );
+    noBytesRead = fread( crgData->admin.fileBuffer, 1, fileStat.st_size, fPtr );
+    fclose( fPtr );
 
     if ( noBytesRead < ( size_t ) fileStat.st_size )
     {
@@ -3141,8 +3156,8 @@ crgLoaderAddFile( const char* filename, CrgDataStruct** crgRetData )
     /* --- check the data consistency (i.e. header information) --- */
     if ( !checkHeaderConsistency( crgData ) )
         return 0;
-    
-	  /* --- check if file contains enough data records --- */
+
+    /* --- check if file contains enough data records --- */
     if (noBytesRead < (nBytesLeft + (bufPtr - crgData->admin.fileBuffer)))
     {
         crgMsgPrint(dCrgMsgLevelFatal, "crgLoaderAddFile: this file's data section does not contain enough records.\n");
@@ -3153,7 +3168,7 @@ crgLoaderAddFile( const char* filename, CrgDataStruct** crgRetData )
     if ( ( crgData->admin.defMask & dCrgDataDefVPos ) )
     {
         if ( !prepareFromPosDef( crgData ) )
-        return 0;
+            return 0;
     }
 
     if ( ( crgData->admin.defMask & dCrgDataDefVIndex ) )
