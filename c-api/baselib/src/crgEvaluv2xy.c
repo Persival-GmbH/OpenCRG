@@ -2,10 +2,7 @@
  *  convert a u/v position into an x/y position     
  * ---------------------------------------------------
  * 
- * ASAM OpenCRG C API
- * 
- * Copyright 2025 ASAM e.V.
- * See the NOTICE file distributed with this work for additional information regarding copyright ownership.
+ * See the NOTICE file distributed with this work regarding copyright ownership.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
