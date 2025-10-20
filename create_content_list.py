@@ -3,7 +3,7 @@ import os
 if __name__ == "__main__":
     path = os.getcwd()
     print("create file")
-    readme = open(os.getcwd()+"\\README.txt", "w+")
+    readme = open(os.getcwd()+"\\content_list.txt", "w+")
     header = ["/**********************************************************************************",
               " ***  ASAM OpenCRG                                                            ***",
               " ***  Version : 1.2.0                                                           ***",
