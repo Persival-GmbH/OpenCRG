@@ -27,22 +27,22 @@ to work on 220MB CRG files, with e.g. 1cm x 1cm resolution, 4m width and
 all 64bit installations, there is virtually no limitation in CRG size.
 
 
-%   Copyright 2005-2011 OpenCRG - Daimler AG - Jochen Rauh
+% *****************************************************************
+% See the NOTICE file distributed with this work regarding copyright ownership.
+% 
+% Licensed under the Apache License, Version 2.0 (the "License");
+% you may not use this file except in compliance with the License.
+% You may obtain a copy of the License at
 %
-%   Licensed under the Apache License, Version 2.0 (the "License");
-%   you may not use this file except in compliance with the License.
-%   You may obtain a copy of the License at
+%    https://www.apache.org/licenses/LICENSE-2.0
 %
-%       http://www.apache.org/licenses/LICENSE-2.0
+% Unless required by applicable law or agreed to in writing, software
+% distributed under the License is distributed on an "AS IS" BASIS,
+% WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+% See the License for the specific language governing permissions and
+% limitations under the License.
+% 
+% More Information on ASAM OpenCRG can be found here:
+% https://www.asam.net/standards/detail/opencrg/
 %
-%   Unless required by applicable law or agreed to in writing, software
-%   distributed under the License is distributed on an "AS IS" BASIS,
-%   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-%   See the License for the specific language governing permissions and
-%   limitations under the License.
-%
-%   More Information on OpenCRG open file formats and tools can be found at
-%
-%       http://www.opencrg.org
-%
-%   $Id: readme.txt 294 2011-12-20 11:40:59Z jorauh $
+% *****************************************************************
