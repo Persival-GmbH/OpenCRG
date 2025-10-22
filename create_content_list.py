@@ -6,11 +6,11 @@ if __name__ == "__main__":
     readme = open(os.getcwd()+"\\content_list.txt", "w+")
     header = ["/**********************************************************************************",
               " ***  ASAM OpenCRG                                                            ***",
-              " ***  Version : 1.2.0                                                           ***",
-              " ***  Date:  November 18, 2020                                                     ***",
+              " ***  Version : 1.2.1                                                           ***",
+              " ***  Date:  October 21, 2025                                                      ***",
               " **********************************************************************************/"
               "\n",
-              "the deliverables of ASAM OpenCRG 1.2 include:\n"]
+              "the deliverables of ASAM OpenCRG 1.2.1 include:\n"]
     
     for line in header:
         readme.write(line + "\n")
