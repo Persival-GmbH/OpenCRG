@@ -140,6 +140,14 @@ C) If you don't like makefiles and our scripts, you may just write your own
 Release Notes:
 --------------------------------------------------------------
 
+
+November 18, 2020 Release 1.2
+-----------------------------
+Adaption to ASAM Standard
+- C-API:
+  global and local curvature check implementation
+
+
 March 30, 2018 Release 1.1.2
 -----------------------------
 - C-API:
