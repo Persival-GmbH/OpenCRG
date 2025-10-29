@@ -1,11 +1,10 @@
 function [data, ierr, idxArr] = crg_check_curvature(data, ierr)
 % CRG_CHECK_CURVATURE Check OpenCRG curvature data.
-%   [DATA] = CRG_CHECK_CURVATURE(DATA) checks reference line curvature in `data`
+%   [DATA, IERR, IDXARR] = CRG_CHECK_CURVATURE(DATA) checks reference line curvature in `data`
 %   globally and locally. The global curvature check fails if two or more
 %   lateral cuts intersect inside the road limits. In this case, the local
 %   curvature check still succeeds, if such an intersection falls into a region
 %   of NaN values.
-
 %
 %   Inputs:
 %   DATA    struct array as defined in CRG_INTRO.
@@ -58,78 +57,69 @@ if ~isfield(data, 'rc')
 end
 
 %% global curvature check
-
-
-cmin = min(data.rc);
-cmax = max(data.rc);
-if abs(cmax) > crgeps
-    if 1/cmax <= data.head.vmax && 1/cmax >= data.head.vmin
-        warning('CRG:checkWarning', 'global curvature check failed - center of max. reference line curvature=%d inside road limits', cmax)
-        icerr = icerr + 1;
-    end
+wcvg = 1;
+if isfield(data.opts, 'wcvg')
+    wcvg = data.opts.wcvg;
 end
-if abs(cmin) > crgeps
-    if 1/cmin <= data.head.vmax && 1/cmin >= data.head.vmin
-        warning('CRG:checkWarning', 'global curvature check failed - center of min. reference line curvature=%d inside road limits', cmin)
-        icerr = icerr + 1;
+
+if wcvg ~= 0
+    cmin = min(data.rc);
+    cmax = max(data.rc);
+    if abs(cmax) > crgeps
+        if 1/cmax <= data.head.vmax && 1/cmax >= data.head.vmin
+            warning('CRG:checkWarning', 'global curvature check failed - center of max. reference line curvature=%d inside road limits', cmax)
+            icerr = icerr + 1;
+        end
+    end
+    if abs(cmin) > crgeps
+        if 1/cmin <= data.head.vmax && 1/cmin >= data.head.vmin
+            warning('CRG:checkWarning', 'global curvature check failed - center of min. reference line curvature=%d inside road limits', cmin)
+            icerr = icerr + 1;
+        end
     end
 end
 
 ierr = ierr + icerr;
 
 %% local curvature check
+wcvl = 0;
+if isfield(data.opts, 'wcvl')
+    wcvl = data.opts.wcvl;
+end
 
-if isfield(data.opts, 'wcvl') && data.opts.wcvl > 0 && icerr > 0
-    % set temp ok
+if wcvl > 0 && icerr > 0
+    % set temp ok for evaluation
     data.ok = 0;
     
-    % reference line points
-    uges=data.head.ubeg:data.head.uinc:data.head.uend;
-    uinc=data.head.uinc;
-    %%
+    % reference line u-values
+    uges = data.head.ubeg:data.head.uinc:data.head.uend;
+    uinc = data.head.uinc;
+    
+    % reference line radius of curvature
+    % no check for rc equals zero before division because IEEE 754 defines 1.0/0.0 = Inf
+    vec_r = 1./[data.rc(1),data.rc,data.rc(end)];
 
-    % indices l/r curvature
-    vek_rc=[data.rc(1),data.rc,data.rc(end)];
-    idx_right=vek_rc< 0;
-    idx_left =vek_rc>=0;
-
-    % min max v values from curvature radius
-    min_max_v = NaN(size(vek_rc));
-    min_max_v(idx_right)=ceil(1./vek_rc(idx_right)./data.head.uinc).*data.head.uinc; 
-    min_max_v(idx_left) =floor(1./vek_rc(idx_left)./data.head.uinc).*data.head.uinc;
-
-    % max grid cells array
-    rightNaNBorder=data.head.vmin.*(ones(size(vek_rc)));
-    leftNaNBorder =data.head.vmax.*(ones(size(vek_rc)));
-
-    % check, where curvature radius > grid
-    idx_CurvAreaRight=min_max_v > data.head.vmin  & idx_right;
-    idx_CurvAreaLeft =min_max_v < data.head.vmax  & idx_left;
-
-    % create curvature radius border array
-    rightNaNBorder(idx_CurvAreaRight) = min_max_v(idx_CurvAreaRight);
-    leftNaNBorder(idx_CurvAreaLeft)   = min_max_v(idx_CurvAreaLeft);
-
-    % get z at border
-    zleft  = crg_eval_uv2z(data,[uges',(leftNaNBorder +uinc)']);
-    zright = crg_eval_uv2z(data,[uges',(rightNaNBorder-uinc)']);
-
-    % check if z isnan
-    if sum(isnan(zleft))==size(data.z,1) && sum(isnan(zright))==size(data.z,1) 
+    % find radius of curvature in road limits
+    r_in_limits = vec_r >= data.head.vmin & vec_r <= data.head.vmax;
+    u_in_limits = uges(r_in_limits)';
+    v_in_limits = vec_r(r_in_limits)';
+    clear vec_r r_in_limits
+    
+    % check if any z are non nan where radius of curvature is in limits
+    z_in_limits = crg_eval_uv2z(data,[u_in_limits, v_in_limits]);
+    z_is_valid  = ~isnan(z_in_limits);
+    
+    % if all z are nan then check succeeded
+    if ~any(z_is_valid)
         warning('local curvature check succeeded - critical curvature areas in NaN regions')
         ierr = ierr - icerr;
     else
         warning('local curvature check failed - critical curvature areas in z-value regions')
         ierr = ierr + 1;
-        % find indices
-        iLeft = find(~isnan(zleft));
-        iRight = find(~isnan(zright));
-        if ~isempty(iLeft)
-            idxArr = [iLeft(1) iLeft(end)];
-        end
-        if ~isempty(iRight)
-            idxArr = [iRight(1) iRight(end)];
-        end
+        
+        % find iu where check fails and store first and last
+        u_check_fail = u_in_limits(z_is_valid);
+        idxArr = 1 + (u_check_fail([1, end])' - data.head.ubeg)./uinc;
     end
     
     % remove temp ok
