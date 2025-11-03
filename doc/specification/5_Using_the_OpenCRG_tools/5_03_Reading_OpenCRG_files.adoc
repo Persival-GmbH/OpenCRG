@@ -1,6 +1,6 @@
 === Reading OpenCRG files
 
-Reading an OpenCRG files loads its content into memory.
+Reading an OpenCRG file loads its content into memory.
 
 ==== Related C functions
 
