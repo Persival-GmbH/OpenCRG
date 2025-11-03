@@ -127,6 +127,7 @@ typedef struct
     double  last;        /* last (maximum) value in this channel              [m] */
     double  inc;         /* increment between two values in this channel      [m] */
     double  mean;        /* mean value used for normalizing a channel         [m] */
+    double  offset;      /* offset value for this channel                     [m] */
 } CrgChannelInfoStruct;
 
 typedef struct  /* channel for double precision data */
