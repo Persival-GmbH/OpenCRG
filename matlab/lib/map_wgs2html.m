@@ -331,7 +331,7 @@ fprintf(fid, '<html>\n');
 fprintf(fid, '  <head>\n');
 fprintf(fid, '    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />\n');
 fprintf(fid, '    <meta charset="ISO8859-1" />\n');
-fprintf(fid, '    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.3.1/css/ol.css" type="text/css">\n');
+fprintf(fid, '    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@main/dist/en/v7.0.0/legacy/ol.css" type="text/css">\n');
 fprintf(fid, '    <style type="text/css">\n');
 fprintf(fid, '      html, body { height: 100%%; margin: 0; padding: 0; font-family:"AzoSans-Bold",Helvetica,Arial,sans-serif; overflow: auto; } \n');
 fprintf(fid, '      h1 { font-size: 2rem; margin: 0.5rem; }\n');
@@ -352,7 +352,7 @@ fprintf(fid, '  <body>\n');
 fprintf(fid, '    %s\n', header);
 fprintf(fid, '    <div id="crg-map" class="map">\n<div id="popup" class="popup"><div id="popup-content"></div><a href="#" id="popup-closer" class="popup-closer"></a></div>\n<div id="featuretip" class="featuretip"></div>\n</div>\n');
 fprintf(fid, '    %s\n', footer);
-fprintf(fid, '    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.3.1/build/ol.js"></script>\n');
+fprintf(fid, '    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@main/dist/en/v7.0.0/legacy/ol.js"></script>\n');
 fprintf(fid, '    <script type="text/javascript">\n');
 fprintf(fid, '      let popup = new ol.Overlay({\n');
 fprintf(fid, '        element: document.getElementById("popup"),\n');
@@ -470,3 +470,4 @@ fprintf(fid, '</html>\n');
 fclose(fid);
 
 end
+
