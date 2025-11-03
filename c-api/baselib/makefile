@@ -63,6 +63,7 @@ lib : all archive
 all : $(OBJECTS)
 
 archive :
+	mkdir -p $(LIB_DIR)
 	rm -f $(LIB_DIR)/libOpenCRG*.a
 	ar -r $(LIB_DIR)/libOpenCRG.$(REVISION).a obj/*.o
 	cd $(LIB_DIR); ln -s libOpenCRG.$(REVISION).a libOpenCRG.a
@@ -71,8 +72,11 @@ clean :
 	rm -f $(OBJ_DIR)/*.o
 	rm -f $(LIB_DIR)/libOpenCRG*.a
 
-%.o:	$(SRC_DIR)/%.c
+%.o:	$(SRC_DIR)/%.c $(OBJ_DIR)
 	$(CC) -c $? -o $(OBJ_DIR)/$@
+
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
 
 #*** FILE DEPENCIES : WHERE TO FIND FILES
 .PATH: $(SRC_DIR) $(INC_DIR)
