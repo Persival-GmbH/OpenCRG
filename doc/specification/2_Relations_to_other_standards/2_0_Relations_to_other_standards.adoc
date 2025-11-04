@@ -15,7 +15,7 @@ image::odr_rel_open_x.png[img1, 900, title = "Relation between OpenDRIVE, OpenCR
 === Backward compatibility to earlier releases
 
 ASAM OpenCRG 1.2.1 is backward compatible to OpenCRG 1.0.0. 
-To assure full backward and foreward compatibility do not use the features for geographical positions, which are introduced in <<Mapping OpenCRG data to geographical positions>>. A OpenCRG file created with the mpro field is only valid within version 1.2.0 or higher.
+To assure full backward and forward compatibility do not use the features for geographical positions, which are introduced in <<Mapping OpenCRG data to geographical positions>>. An OpenCRG file created with the mpro field is only valid within version 1.2.0 or higher.
 
 === References to other standards
 
