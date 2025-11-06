@@ -24,7 +24,7 @@
 :source-highlighter: rouge
 :rouge-style: base16.solarized.light
 // 
-// :nofooter:
+:nofooter:
 :last-update-label!:
 //embed images into html
 :data-uri: 
