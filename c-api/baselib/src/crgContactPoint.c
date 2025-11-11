@@ -427,7 +427,7 @@ crgContactPointSetHistoryForDataSet( CrgDataStruct *crgData, int histSize )
         if ( cpTable[i] )
         {
             if ( cpTable[i]->crgData == crgData )
-                result = result && crgContactPointSetHistoryForDataSet( crgData, histSize );
+                result = result && crgContactPointPtrSetHistory( cpTable[i], histSize );
         }
     }
     
