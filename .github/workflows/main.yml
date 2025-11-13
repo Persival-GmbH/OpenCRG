@@ -34,9 +34,14 @@ jobs:
 
       - name: Build HTML
         run: |
-          VERSION=${{ github.event.release.tag_name || 'latest' }}
-          mkdir -p site/$VERSION
-          asciidoctor -r asciidoctor-diagram doc/specification/OpenCRG_specification_1_2.adoc -o site/$VERSION/index.html
+          if [ "${{ github.event_name }}" = "release" ]; then
+            VERSION="versions/${{ github.event.release.tag_name }}"
+          else
+            VERSION="latest"
+          fi
+
+          mkdir -p "site/$VERSION"
+          asciidoctor -r asciidoctor-diagram doc/specification/OpenCRG_specification_1_2.adoc -o "site/$VERSION/index.html"
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
@@ -52,6 +57,7 @@ jobs:
     steps:
       - name: Configure Pages
         uses: actions/configure-pages@v5
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
