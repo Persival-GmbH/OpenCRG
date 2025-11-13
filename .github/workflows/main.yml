@@ -7,7 +7,7 @@ on:
     types: [published]
 
 permissions:
-  contents: write
+  contents: read
   pages: write
   id-token: write
 
@@ -34,73 +34,24 @@ jobs:
 
       - name: Build HTML
         run: |
-          mkdir -p site
-          asciidoctor -r asciidoctor-diagram doc/specification/OpenCRG_specification_1_2.adoc -o site/index.html
+          VERSION=${{ github.event.release.tag_name || 'latest' }}
+          mkdir -p site/$VERSION
+          asciidoctor -r asciidoctor-diagram doc/specification/OpenCRG_specification_1_2.adoc -o site/$VERSION/index.html
 
       - name: Upload Pages artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-pages-artifact@v3
         with:
-          name: site
           path: site
 
-  deploy-latest:
-    if: github.ref == 'refs/heads/master'
+  deploy:
     needs: build
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Checkout gh-pages branch
-        uses: actions/checkout@v4
-        with:
-          ref: gh-pages
-
-      - name: Download site artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: site
-          path: ./latest-site
-
-      - name: Copy latest content
-        run: |
-          mkdir -p ./latest
-          cp -r latest-site/* ./latest/
-          cp -r latest-site/* ./   # root = always latest
-
-      - name: Commit and push latest
-        run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          git add .
-          git commit -m "Update latest site from master" || echo "No changes to commit"
-          git push origin gh-pages
-
-  deploy-release:
-    if: startsWith(github.ref, 'refs/tags/')
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout gh-pages branch
-        uses: actions/checkout@v4
-        with:
-          ref: gh-pages
-
-      - name: Download site artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: site
-          path: ./release-site
-
-      - name: Copy to versioned folder and latest
-        run: |
-          TAG="${GITHUB_REF##*/}"
-          mkdir -p "./${TAG}"
-          mkdir -p "./latest"
-          cp -r release-site/* "./${TAG}/"
-          cp -r release-site/* "./latest/"
-
-      - name: Commit and push versioned site
-        run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          git add .
-          git commit -m "Add release ${GITHUB_REF##*/}" || echo "No changes to commit"
-          git push origin gh-pages
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
