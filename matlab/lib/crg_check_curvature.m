@@ -89,6 +89,10 @@ end
 
 if wcvl > 0 && icerr > 0
     % set temp ok for evaluation
+    was_not_ok = 1;
+    if isfield(data, 'ok')
+        was_not_ok = data.ok;
+    end
     data.ok = 0;
     
     % reference line u-values
@@ -122,8 +126,10 @@ if wcvl > 0 && icerr > 0
         idxArr = 1 + (u_check_fail([1, end])' - data.head.ubeg)./uinc;
     end
     
-    % remove temp ok
-    data = rmfield(data, 'ok');
+    if was_not_ok || ierr > 0
+        % remove ok
+        data = rmfield(data, 'ok');
+    end
 end
 
 end
