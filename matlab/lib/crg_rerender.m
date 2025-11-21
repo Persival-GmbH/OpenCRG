@@ -66,24 +66,20 @@ uinc = inc(1);
 u = ubeg:uinc:uend;
 du = ubeg:crg.head.uinc:uend;
 
-vmin = crg.head.vmin;
-vmax = crg.head.vmax;
-
 if length(inc) == 2
     vinc = inc(2);
-    vi = vmin:vinc:vmax;
-%     v = [vi(1) vi(end)];
 else
     if isfield(crg.head, 'vinc'), vinc = crg.head.vinc;
-    else vinc = dvinc; end
-    switch length(v)
-        case 1
-            vi = -v:vinc:v;
-        case 2
-            vi = v(1):vinc:v(2);
-        otherwise
-            vi = v;
-    end
+    else; vinc = dvinc; end
+end
+
+switch length(v)
+    case 1
+        vi = -abs(v):vinc:abs(v);
+    case 2
+        vi = min(v):vinc:max(v);
+    otherwise
+        vi = v;
 end
 
 %% interpolate reference line ( set u-grid )
