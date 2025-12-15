@@ -57,8 +57,13 @@ penh = zeros(np, 3);
 xbeg = data.head.xbeg;
 ybeg = data.head.ybeg;
 
-ps = sin(data.head.poff);
-pc = cos(data.head.poff);
+poff = 0;
+if isfield(data.head, 'poff')
+    poff = data.head.poff;
+end
+
+ps = sin(poff);
+pc = cos(poff);
 
 %% perform transformation local -> global
 

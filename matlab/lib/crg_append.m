@@ -177,12 +177,15 @@ end
 
 data.head.pbeg = data1.head.pbeg;
 data.head.pend = data2.head.pend;
+if isfield(data1.head, 'poff'), data.head.poff = data1.head.poff; end
 
 data.head.xbeg = data1.head.xbeg;
 data.head.xend = data2.head.xend;
+data.head.xoff = data1.head.xoff;
 
 data.head.ybeg = data1.head.ybeg;
 data.head.yend = data2.head.yend;
+data.head.yoff = data1.head.yoff;
 
 %% build slope information
 
@@ -200,6 +203,7 @@ data.head.send = data2.head.send;
 
 data.head.zbeg = data1.head.zbeg;
 data.head.zend = data2.head.zend;
+data.head.zoff = data1.head.zoff;
 
 %% build banking information
 
@@ -258,8 +262,14 @@ end
 % drop last lateral cut of first CRG and first lateral cut of second CRG
 data.z = [data1.z(1:end-1,:); data2.z(2:end,:)];
 
-%% force check
+%% Copy comment text
+if isfield(data1, 'ct')
+    data.ct = data1.ct;
+else
+    data.ct = {};
+end
 
+%% force check
 data = crg_check(data);
 
 end

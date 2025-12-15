@@ -45,10 +45,10 @@ if ~isfield(data, 'ok')
     end
 end
 
-if nargin == 2
-    if pp < 0 || pp > 1
-        error('CRG:checkError', 'smoothness parameter not in intervall [0,1]')
-    end
+if nargin < 2, pp = 0.01; end    % default smoothing parameter
+
+if pp < 0 || pp > 1
+    error('CRG:checkError', 'smoothness parameter not in intervall [0,1]')
 end
 
 %% banking already exists
@@ -65,6 +65,16 @@ if isfield(data, 's')
     data = rmfield(data, 's');
     data.head.sbeg = 0;
     data.head.send = 0;
+end
+
+%% backup head and remove zbeg and zend
+zbeg = 0;
+if isfield(data.head, 'zbeg')
+    zbeg = data.head.zbeg;
+    data.head = rmfield(data.head, 'zbeg');
+end
+if isfield(data.head, 'zend')
+    data.head = rmfield(data.head, 'zend');
 end
 
 %% build uv
@@ -95,7 +105,7 @@ for i = 1:nu
     p(i,:) = polyfit( v(~idx) , tempz(~idx) , 1);    % evaluate partial regression line
 end
 
-if exist('pp', 'var')
+if abs(pp-1.0) > eps
     ppxy = spl_smooth(1:nu, p(:,1)', pp, 1:nu);
 else
     ppxy = p(:,1)';
@@ -136,6 +146,16 @@ if exist('sb', 'var')
 end
 
 clear ppxy;
+
+%% Restore zbeg and zend
+if ~isfield(data.head, 'zbeg')
+    data.head.zbeg = 0.0;
+end
+if ~isfield(data.head, 'zend')
+    data.head.zend = 0.0;
+end
+data.head.zbeg = data.head.zbeg + zbeg;
+data.head.zend = data.head.zend + zbeg;
 
 %% check
 
