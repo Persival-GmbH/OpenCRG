@@ -34,6 +34,8 @@ None.
 * The _road data_ section shall be the last section of an OpenCRG file.
 * Data formatting shall match the definitions in the _data definition_ section.
 * The _road data_ section may contain other data than elevation.
+* The _road data_ may contain NaN values, but there must be at least one valid (non-NaN) value per cross section (lateral profile at a given u-position).
+* NaN values must not occur between non-NaN values within a cross section (lateral profile at a given u-position). This means NaN values can only appear from the left and/or the right border of the actual road data.
 
 ===== Examples
 
