@@ -22,7 +22,7 @@
 # 
 
 # set your compiler here
-set COMP = 'gcc -O3'
+COMP='gcc -O3'
 
 # compile all demos
 
@@ -66,6 +66,6 @@ echo -n compiling crgVerify...
 $COMP -o test/bin/crgVerify -I baselib/inc test/Verify/src/main.c baselib/src/*.c -lm 
 echo done
 
-echo -n compiling crScan...
+echo -n compiling crgScan...
 $COMP -o test/bin/crgScan -I baselib/inc test/Scan/src/main.c baselib/src/*.c -lm 
 echo done
