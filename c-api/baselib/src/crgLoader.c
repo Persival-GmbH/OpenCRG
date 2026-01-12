@@ -1726,6 +1726,13 @@ parseCenterLine( CrgDataStruct* crgData, char *dataPtr, size_t nBytesLeft )
         */
     }
     
+    /* --- At least one record required to continue --- */
+	if (nRec < 1)
+    {
+        crgMsgPrint(dCrgMsgLevelFatal, "parseCenterLine: zero records could be decoded.\n");
+        return 0;
+    }
+    
     /* --- check (x, y) channel consistency --- */
     if ( crgData->channelX.info.defined )
     {
