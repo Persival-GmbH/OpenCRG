@@ -1,0 +1,63 @@
+name: Build Specification
+
+on:
+  workflow_call:
+    outputs:
+      spec-path:
+        description: "Path to the built HTML specification"
+        value: ${{ jobs.build.outputs.spec-path }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      spec-path: ${{ steps.build-spec.outputs.spec-path }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+
+      - name: Install Asciidoctor
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y graphviz
+          gem install asciidoctor asciidoctor-diagram
+
+      - name: Build specification
+        id: build-spec
+        run: |
+          SPEC_SRC_DIR="doc/specification"
+          SPEC_SRC_NAME="OpenCRG_specification_1_2"
+          SPEC_DEST_DIR="doc"
+          SPEC_DEST_PATH="$SPEC_DEST_DIR/$SPEC_SRC_NAME.html"
+          
+          mkdir -p "$SPEC_DEST_DIR"
+          asciidoctor -r asciidoctor-diagram "$SPEC_SRC_DIR/$SPEC_SRC_NAME".adoc -o "$SPEC_DEST_PATH"
+          
+          INDEX_DIR="site"
+          INDEX_PATH="$INDEX_DIR/index.html"
+          mkdir -p "$INDEX_DIR"
+          cp "$SPEC_DEST_PATH" "$INDEX_PATH"
+          
+          echo "INDEX_DIR=$INDEX_DIR" >> "$GITHUB_ENV"
+          echo "spec-path=$SPEC_DEST_PATH" >> "$GITHUB_OUTPUT"
+
+      - name: Upload specification artifact
+        uses: actions/upload-artifact@v4
+        env:
+          SPEC_PATH: ${{ steps.build-spec.outputs.spec-path }}
+        with:
+          name: specification-artifact
+          path: ${{ env.SPEC_PATH }}
+
+
+      - name: Upload pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          name: specification-pages-artifact
+          path: ${{ env.INDEX_DIR }}
