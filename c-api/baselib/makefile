@@ -73,7 +73,7 @@ clean :
 	rm -f $(LIB_DIR)/libOpenCRG*.a
 
 %.o:	$(SRC_DIR)/%.c $(OBJ_DIR)
-	$(CC) -c $? -o $(OBJ_DIR)/$@
+	$(CC) -c $< -o $(OBJ_DIR)/$@
 
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)

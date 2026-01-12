@@ -56,8 +56,11 @@ clean :
 	rm -f $(OBJ_DIR)/*.o
 	rm -f $(BIN_TGT)
 
-%.o:	$(SRC_DIR)/%.c
-	$(CC) $(CFLGS) -c $? -o $(OBJ_DIR)/$@
+%.o:	$(SRC_DIR)/%.c $(OBJ_DIR)
+	$(CC) $(CFLGS) -c $< -o $(OBJ_DIR)/$@
+
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
 
 #*** FILE DEPENCIES : WHERE TO FIND FILES
 .PATH: $(SRC_DIR)
