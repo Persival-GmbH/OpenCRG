@@ -3,15 +3,15 @@ name: Build Specification
 on:
   workflow_call:
     outputs:
-      spec-path:
+      specification-html-filepath:
         description: "Path to the built HTML specification"
-        value: ${{ jobs.build.outputs.spec-path }}
+        value: ${{ jobs.build.outputs.specification-html-filepath }}
 
 jobs:
   build:
     runs-on: ubuntu-latest
     outputs:
-      spec-path: ${{ steps.build-spec.outputs.spec-path }}
+      specification-html-filepath: ${{ steps.build-spec.outputs.specification-html-filepath }}
 
     steps:
       - name: Checkout repository
@@ -30,34 +30,37 @@ jobs:
 
       - name: Build specification
         id: build-spec
+        env:
+          SPECIFICATION_DOC_FILEPATH: "${{vars.SPECIFICATION_DOC_FILEPATH}}"
+          SPECIFICATION_RELEASE_DIR: "${{vars.SPECIFICATION_RELEASE_DIR}}"
         run: |
-          SPEC_SRC_DIR="doc/specification"
-          SPEC_SRC_NAME="OpenCRG_specification_1_2"
-          SPEC_DEST_DIR="doc"
-          SPEC_DEST_PATH="$SPEC_DEST_DIR/$SPEC_SRC_NAME.html"
+          # Derive path to specification html file
+          SPECIFICATION_BASENAME="${SPECIFICATION_DOC_FILEPATH##*/}"
+          SPECIFICATION_BASENAME="${SPECIFICATION_BASENAME%.*}"
+          SPECIFICATION_HTML_FILEPATH=$SPECIFICATION_RELEASE_DIR/"$SPECIFICATION_BASENAME.html"
           
-          mkdir -p "$SPEC_DEST_DIR"
-          asciidoctor -r asciidoctor-diagram "$SPEC_SRC_DIR/$SPEC_SRC_NAME".adoc -o "$SPEC_DEST_PATH"
+          # Build specification
+          mkdir -p "$SPECIFICATION_RELEASE_DIR"
+          asciidoctor -r asciidoctor-diagram "$SPECIFICATION_DOC_FILEPATH" -o "$SPECIFICATION_HTML_FILEPATH"
           
-          INDEX_DIR="site"
-          INDEX_PATH="$INDEX_DIR/index.html"
-          mkdir -p "$INDEX_DIR"
-          cp "$SPEC_DEST_PATH" "$INDEX_PATH"
+          # Copy specification to subdirectory for pages upload
+          PAGES_DIR=$SPECIFICATION_RELEASE_DIR/"pages"
+          mkdir -p "$PAGES_DIR"
+          cp "$SPECIFICATION_HTML_FILEPATH" "$PAGES_DIR/index.html"
           
-          echo "INDEX_DIR=$INDEX_DIR" >> "$GITHUB_ENV"
-          echo "spec-path=$SPEC_DEST_PATH" >> "$GITHUB_OUTPUT"
+          echo "PAGES_DIR=$PAGES_DIR" >> "$GITHUB_ENV"
+          echo "specification-html-filepath=$SPECIFICATION_HTML_FILEPATH" >> "$GITHUB_OUTPUT"
+          
 
       - name: Upload specification artifact
-        uses: actions/upload-artifact@v4
-        env:
-          SPEC_PATH: ${{ steps.build-spec.outputs.spec-path }}
+        uses: actions/upload-artifact@v6
         with:
           name: specification-artifact
-          path: ${{ env.SPEC_PATH }}
+          path: ${{ steps.build-spec.outputs.specification-html-filepath }}
 
 
       - name: Upload pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
           name: specification-pages-artifact
-          path: ${{ env.INDEX_DIR }}
+          path: ${{ env.PAGES_DIR }}

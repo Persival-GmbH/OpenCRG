@@ -1,8 +1,12 @@
-name: Create Release ZIP
+name: Create Release ZIP Asset
 
 on:
   release:
-    types: [created]
+    types: [published]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build-spec:
@@ -13,27 +17,25 @@ jobs:
       contents: write
     needs: build-spec
     runs-on: ubuntu-latest
+    env:
+      SPECIFICATION_PATH: ${{ needs.build-spec.outputs.specification-html-filepath }}
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Get specification parent dir
-        env:
-          SPECIFICATION_PATH: ${{ needs.build-spec.outputs.spec-path }}
+      - name: Get specification parent directory
         run: |
           SPECIFICATION_DIR="$(dirname ${{ env.SPECIFICATION_PATH }})"
-          echo "SPEC_DIR=$SPECIFICATION_DIR" >> "$GITHUB_ENV"
+          echo "SPECIFICATION_DIR=$SPECIFICATION_DIR" >> "$GITHUB_ENV"
 
       - name: Download specification artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v7
         with:
           name: specification-artifact
-          path: ${{ env.SPEC_DIR }}
+          path: ${{ env.SPECIFICATION_DIR }}
 
       - name: Create zip archive
-        env:
-          SPECIFICATION_PATH: ${{ needs.build-spec.outputs.spec-path }}
         run: |
           REPO_NAME="${GITHUB_REPOSITORY##*/}"
           TAG_NAME="${GITHUB_REF_NAME}"
@@ -50,7 +52,7 @@ jobs:
             c-api crg-bin crg-txt matlab \
             "${{ env.SPECIFICATION_PATH }}" \
             LICENSE NOTICE README.md RELEASENOTES \
-            -x ".git/*" ".github/*" "*.gitignore" "*.gitattributes" "*.o"
+            -x ".git/*" ".github/*" "*.gitignore" "*.gitattributes" "*.o" "*.obj"
 
       - name: Upload release asset
         uses: softprops/action-gh-release@v2
