@@ -625,7 +625,7 @@ crgEvalxy2z( int cpId, double x, double y, double* z )
     CrgContactPointStruct* cp = NULL;
     
 #ifdef dCrgEnableDebug2
-    if ( crgIsNan( &x ) || crgIsNan( &y ) || x !=x || y !=y )
+    if ( isnan( x ) || isnan( y ) || x !=x || y !=y )
     {
         crgMsgPrint( dCrgMsgLevelWarn, "crgEvalxy2z: got NaN for x and/or y position. Refusing evaluation.\n" );
         return 0;
