@@ -2928,7 +2928,6 @@ static int
 readDouble( char* dataPtr, double* tgt )
 {
     int   j;
-    int   compValue[2];
     char* valPtr = ( char* )tgt;
     
     if ( !dataPtr || !tgt )
@@ -2941,14 +2940,7 @@ readDouble( char* dataPtr, double* tgt )
             memcpy( &valPtr[7-j], &dataPtr[j], sizeof( char ) );
     
     /* check for NaN and make sure it can be identified later-on */
-    memcpy( compValue, tgt, sizeof( double ) );
-    
-    if ( mCrgBigEndian )
-    {
-        if ( compValue[0] >= 0x7ff80000 )
-            return -1;
-    }
-    else if ( compValue[1] >= 0x7ff80000 )
+    if ( isnan(*tgt) )
         return -1;
     
     return 1;
@@ -2957,7 +2949,6 @@ readDouble( char* dataPtr, double* tgt )
 static int
 readFloat( char* dataPtr, float* tgt )
 {
-    int   compValue;
     int   j;
     char* valPtr = ( char* )tgt;
     
@@ -2969,11 +2960,9 @@ readFloat( char* dataPtr, float* tgt )
     else
         for ( j = 0; j < 4; j++ )
             memcpy( &valPtr[3-j], &dataPtr[j], sizeof( char ) );
-    
+
     /* check for NaN and make sure it can be identified later-on */
-    memcpy( &compValue, tgt, sizeof( float ) );
-    
-    if ( ( compValue & 0x7fc00000 ) >= 0x7fc00000 )
+    if ( isnan(*tgt) )
         return -1;
     
     return 1;
