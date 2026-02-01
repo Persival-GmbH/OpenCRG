@@ -3113,6 +3113,13 @@ crgLoaderAddFile( const char* filename, CrgDataStruct** crgRetData )
     if ( !checkHeaderConsistency( crgData ) )
         return 0;
     
+	/* --- check if file contains enough data records --- */
+    if (noBytesRead < (nBytesLeft + (bufPtr - crgData->admin.fileBuffer)))
+    {
+        crgMsgPrint(dCrgMsgLevelFatal, "crgLoaderAddFile: this file's data section does not contain enough records.\n");
+        return 0;
+    }
+	
     /* --- prepare some data according to the way v data is defined in the file --- */
     if ( ( crgData->admin.defMask & dCrgDataDefVPos ) )
     {
