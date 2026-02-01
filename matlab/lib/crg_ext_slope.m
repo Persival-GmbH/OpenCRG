@@ -16,7 +16,7 @@ function [ data ] = crg_ext_slope( data, p )
 %       Extracts slope.
 %   See also CRG_INTRO.
 
-% *****************************************************************wd
+% *****************************************************************
 % See the NOTICE file distributed with this work regarding copyright ownership.
 % 
 % Licensed under the Apache License, Version 2.0 (the "License");
@@ -51,17 +51,10 @@ if p < 0 || p > 1
     error('CRG:checkError', 'smoothness parameter not in intervall [0,1]')
 end
 
-%% Backup data.head and z at [ubeg, 0.0]
-head  = data.head;
-zubeg = crg_eval_uv2z(data, [head.ubeg, 0.0]);
-
 %% slope and banking exist
 
 if isfield(data, 's')
     data = crg_s2z(data);
-end
-if isfield(data, 'rz')
-    data = rmfield(data, 'rz');
 end
 
 if isfield(data, 'b')
@@ -113,12 +106,12 @@ data.head.send = nxui(end);
 
 if isfield(data,'rx'); data = rmfield(data, 'rx'); end
 if isfield(data,'ry'); data = rmfield(data, 'ry'); end
-if isfield(data.head,'xbeg'); data.head = rmfield(data.head, 'xbeg'); end
-if isfield(data.head,'ybeg'); data.head = rmfield(data.head, 'ybeg'); end
-if isfield(data.head,'xend'); data.head = rmfield(data.head, 'xend'); end
-if isfield(data.head,'yend'); data.head = rmfield(data.head, 'yend'); end
-if isfield(data.head,'zbeg'); data.head = rmfield(data.head, 'zbeg'); end
-if isfield(data.head,'zend'); data.head = rmfield(data.head, 'zend'); end
+data.head = rmfield(data.head, 'xbeg');
+data.head = rmfield(data.head, 'ybeg');
+data.head = rmfield(data.head, 'xend');
+data.head = rmfield(data.head, 'yend');
+data.head = rmfield(data.head, 'zbeg');
+data.head = rmfield(data.head, 'zend');
 if isfield(data.head, 'eend') && isfield(data.head, 'nend')
     data.head = rmfield(data.head, 'eend');
     data.head = rmfield(data.head, 'nend');
@@ -155,33 +148,7 @@ end
 clear xui;
 
 %% check
-data = crg_check(data);
-if ~isfield(data, 'ok')
-    error('CRG:checkError', 'check of DATA was not completely successful')
-end
 
-%% Restore header fields
-if isfield(data, 'rz')
-    data = rmfield(data, 'rz');
-end
-
-if isfield(data, 'rx')
-    data.rx = data.rx - data.head.xbeg;
-end
-data.head.xbeg = head.xbeg;
-data.head.xend = head.xend;
-
-if isfield(data, 'ry')
-    data.ry = data.ry - data.head.ybeg;
-end
-data.head.ybeg = head.ybeg;
-data.head.yend = head.yend;
-
-dzubeg = zubeg - crg_eval_uv2z(data, [head.ubeg, 0.0]);
-data.head.zbeg = data.head.zbeg + dzubeg;
-data.head.zend = data.head.zend + dzubeg;
-
-% check again to add consistent rz
 data = crg_check(data);
 if ~isfield(data, 'ok')
     error('CRG:checkError', 'check of DATA was not completely successful')

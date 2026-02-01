@@ -117,6 +117,10 @@ if isfield(data.head, 'yoff')
     dout.head.yoff = data.head.yoff;
 end
 
+% if isfield(data.head, 'poff')
+%     dout.head.poff = data.head.poff;
+% end
+
 %% build refline elevation
 
 if isfield(data, 'rz')

@@ -177,7 +177,7 @@ end
 
 data.head.pbeg = data1.head.pbeg;
 data.head.pend = data2.head.pend;
-if isfield(data1.head, 'poff'), data.head.poff = data1.head.poff; end
+data.head.poff = data1.head.poff;
 
 data.head.xbeg = data1.head.xbeg;
 data.head.xend = data2.head.xend;
@@ -262,12 +262,14 @@ end
 % drop last lateral cut of first CRG and first lateral cut of second CRG
 data.z = [data1.z(1:end-1,:); data2.z(2:end,:)];
 
-%% Copy comment text
+%% supplement comment text
 if isfield(data1, 'ct')
     data.ct = data1.ct;
 else
     data.ct = {};
 end
+
+data.ct{end+1} = sprintf('* modified by %s at %s', mfilename, datestr(now, 31));
 
 %% force check
 data = crg_check(data);

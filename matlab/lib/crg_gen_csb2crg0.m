@@ -11,9 +11,9 @@ function [data] = crg_gen_csb2crg0(inc, u, v, c, s, b)
 %           length(u) == 1: length of reference line
 %           length(u) == 2: start/end value of reference line
 %   V       vector of v values
-%           length(v) == 1: defines half width of road
-%           length(v) == 2: defines right/left edge of road
-%           length(v) == nv: defines length cut positions
+%           length(v) == 1: defines half width of road (positive value)
+%           length(v) == 2: defines right/left edge of road [vmin, vmax]
+%           length(v) == nv: defines length cut positions [vmin, ..., vmax]
 %   C       (nx2)-matrix of polynomial curvature values
 %           c(i,1): u-length
 %           c(i,2): polynomial
@@ -132,7 +132,7 @@ end
 
 switch length(v)
     case 1  % half width of road
-        v = abs(v);
+        if v < 0, error('CRG:checkError', 'half width of road v must be a positive value'); end
         vmax = double(v(1));
         vmin = -vmax;
         vinc = inc(2);
