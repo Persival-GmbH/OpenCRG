@@ -9,9 +9,9 @@ function [ data ] = crg_rerender( crg, inc, v )
 %           length(inc) == 1: uinc
 %           length(inc) == 2: vinc
 %   V       vector of v values (single)
-%           length(v) == 1: defines half width of road
-%           length(v) == 2: defines right/left edge of road
-%           length(v) == nv: defines length cut positions
+%           length(v) == 1: defines half width of road (positive value)
+%           length(v) == 2: defines right/left edge of road [vmin, vmax]
+%           length(v) == nv: defines length cut positions [vmin, ..., vmax]
 %
 %   Output:
 %   DATA    struct array as defined in CRG_INTRO
@@ -73,11 +73,16 @@ else
     else; vinc = dvinc; end
 end
 
+if ~issorted(v)
+    error('CRG:checkError', 'vector DATA.v must be sorted')
+end
+
 switch length(v)
     case 1
-        vi = -abs(v):vinc:abs(v);
+        if v < 0, error('CRG:checkError', 'half width of road v must be a positive value'); end
+        vi = -v:vinc:v;
     case 2
-        vi = min(v):vinc:max(v);
+        vi = v(1):vinc:v(2);
     otherwise
         vi = v;
 end
