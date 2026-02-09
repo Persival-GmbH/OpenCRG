@@ -92,11 +92,11 @@ function [] = map_intro()
 %       .e0 false easting (default: 0)
 %       .n0 false northing (default: 0)
 %
-%           If the zone substring is defined, 
+%           If the zone substring is defined,
 %           - the numeric PROJ parameter l0 is overwritten by the center
 %             meridian defined by the zone substring (TM),
 %           - all numeric PROJ parameters are overwritten (otherwise)
-% 
+%
 %   Units   all data is defined in SI units (m, rad)
 %
 %   See also MAP_CHECK_ELLI, MAP_CHECK_PROJ, MAP_CHECK_TRAN,
@@ -105,7 +105,7 @@ function [] = map_intro()
 
 % *****************************************************************
 % See the NOTICE file distributed with this work regarding copyright ownership.
-% 
+%
 % Licensed under the Apache License, Version 2.0 (the "License");
 % you may not use this file except in compliance with the License.
 % You may obtain a copy of the License at
@@ -117,7 +117,7 @@ function [] = map_intro()
 % WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 % See the License for the specific language governing permissions and
 % limitations under the License.
-% 
+%
 % More Information on ASAM OpenCRG can be found here:
 % https://www.asam.net/standards/detail/opencrg/
 %

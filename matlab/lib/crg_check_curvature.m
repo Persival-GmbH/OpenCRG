@@ -26,7 +26,7 @@ function [data, ierr, idxArr] = crg_check_curvature(data, ierr)
 
 % *****************************************************************
 % See the NOTICE file distributed with this work regarding copyright ownership.
-% 
+%
 % Licensed under the Apache License, Version 2.0 (the "License");
 % you may not use this file except in compliance with the License.
 % You may obtain a copy of the License at
@@ -38,7 +38,7 @@ function [data, ierr, idxArr] = crg_check_curvature(data, ierr)
 % WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 % See the License for the specific language governing permissions and
 % limitations under the License.
-% 
+%
 % More Information on ASAM OpenCRG can be found here:
 % https://www.asam.net/standards/detail/opencrg/
 %
@@ -82,7 +82,7 @@ ierr = ierr + icerr;
 if isfield(data.opts, 'wcvl') && data.opts.wcvl > 0 && icerr > 0
     % set temp ok
     data.ok = 0;
-    
+
     % reference line points
     uges=data.head.ubeg:data.head.uinc:data.head.uend;
     uinc=data.head.uinc;
@@ -95,7 +95,7 @@ if isfield(data.opts, 'wcvl') && data.opts.wcvl > 0 && icerr > 0
 
     % min max v values from curvature radius
     min_max_v = NaN(size(vek_rc));
-    min_max_v(idx_right)=ceil(1./vek_rc(idx_right)./data.head.uinc).*data.head.uinc; 
+    min_max_v(idx_right)=ceil(1./vek_rc(idx_right)./data.head.uinc).*data.head.uinc;
     min_max_v(idx_left) =floor(1./vek_rc(idx_left)./data.head.uinc).*data.head.uinc;
 
     % max grid cells array
@@ -115,7 +115,7 @@ if isfield(data.opts, 'wcvl') && data.opts.wcvl > 0 && icerr > 0
     zright = crg_eval_uv2z(data,[uges',(rightNaNBorder-uinc)']);
 
     % check if z isnan
-    if sum(isnan(zleft))==size(data.z,1) && sum(isnan(zright))==size(data.z,1) 
+    if sum(isnan(zleft))==size(data.z,1) && sum(isnan(zright))==size(data.z,1)
         warning('local curvature check succeeded - critical curvature areas in NaN regions')
         ierr = ierr - icerr;
     else
@@ -131,7 +131,7 @@ if isfield(data.opts, 'wcvl') && data.opts.wcvl > 0 && icerr > 0
             idxArr = [iRight(1) iRight(end)];
         end
     end
-    
+
     % remove temp ok
     data = rmfield(data, 'ok');
 end

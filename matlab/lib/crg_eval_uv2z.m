@@ -12,14 +12,14 @@ function [pz, data] = crg_eval_uv2z(data, puv)
 %       DATA    struct array as defined in CRG_INTRO.
 %
 %   Examples:
-%   pz = crg_eval_uv2z(data, puv) 
+%   pz = crg_eval_uv2z(data, puv)
 %       Evaluates the z-values at the given u/v-positions.
 %
 %   See also CRG_INTRO.
 
 % *****************************************************************
 % See the NOTICE file distributed with this work regarding copyright ownership.
-% 
+%
 % Licensed under the Apache License, Version 2.0 (the "License");
 % you may not use this file except in compliance with the License.
 % You may obtain a copy of the License at
@@ -31,7 +31,7 @@ function [pz, data] = crg_eval_uv2z(data, puv)
 % WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 % See the License for the specific language governing permissions and
 % limitations under the License.
-% 
+%
 % More Information on ASAM OpenCRG can be found here:
 % https://www.asam.net/standards/detail/opencrg/
 %

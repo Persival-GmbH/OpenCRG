@@ -20,7 +20,7 @@ function [ier] = crg_write(data, file, type)
 
 % *****************************************************************
 % See the NOTICE file distributed with this work regarding copyright ownership.
-% 
+%
 % Licensed under the Apache License, Version 2.0 (the "License");
 % you may not use this file except in compliance with the License.
 % You may obtain a copy of the License at
@@ -32,7 +32,7 @@ function [ier] = crg_write(data, file, type)
 % WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 % See the License for the specific language governing permissions and
 % limitations under the License.
-% 
+%
 % More Information on ASAM OpenCRG can be found here:
 % https://www.asam.net/standards/detail/opencrg/
 %
@@ -219,15 +219,15 @@ clear c head
 %% generate struct data blocks $MPRO_* with map projection data
 
 if isfield(data, 'mpro') % mapping projection data is available
-    
+
     c = cell(1,0);
-    
+
     %% process GELL (global geodetic datum)
-    
+
     gell = data.mpro.gell;
 
     % generate struct data block lines
-    
+
     switch gell.nm
         case 'WGS84'
             %
@@ -239,15 +239,15 @@ if isfield(data, 'mpro') % mapping projection data is available
         otherwise
             c{end+1} = sprintf('%s = ''%s''' , 'gell_nm', gell.nm);
     end
-    
+
     clear gell
-   
+
     %% process TRAN (datum transformation)
-    
+
     tran = data.mpro.tran;
 
     % generate struct data block lines
-    
+
     switch tran.nm
         case {'HL7','HN7','HS7'}
             c{end+1} = sprintf('%s = ''%s''' , 'tran_nm', tran.nm);
@@ -259,15 +259,15 @@ if isfield(data, 'mpro') % mapping projection data is available
             if tran.ty ~= 0, c{end+1} = sprintf('%s = %24.16e', 'tran_ty', tran.ty); end
             if tran.tz ~= 0, c{end+1} = sprintf('%s = %24.16e', 'tran_tz', tran.tz); end
     end
-    
+
     clear tran
-   
+
     %% process LELL (local geodetic datum)
-    
+
     lell = data.mpro.lell;
 
     % generate struct data block lines
-    
+
     switch lell.nm
         case 'WGS84'
             %
@@ -279,17 +279,17 @@ if isfield(data, 'mpro') % mapping projection data is available
         otherwise
             c{end+1} = sprintf('%s = ''%s''' , 'lell_nm', lell.nm);
     end
-    
+
     clear lell
-   
+
     %% process PROJ (map projection)
-    
+
     proj = data.mpro.proj;
 
     % generate struct data block lines
-    
+
     c{end+1} = sprintf('%s = ''%s''' , 'proj_nm', proj.nm);
-    
+
     if length(proj.nm) < 3
         if proj.l0 ~= 0, c{end+1} = sprintf('%s = %24.16e', 'proj_l0', proj.l0); end
     elseif strcmp(proj.nm(1:3), 'TM_')
@@ -300,13 +300,13 @@ if isfield(data, 'mpro') % mapping projection data is available
     end
 
     clear proj
-    
+
     %% write struct data block
-    
+
     crgdat.struct = sdf_add(crgdat.struct, 'ROAD_CRG_MPRO', c);
-    
+
     clear c
-   
+
 end
 
 %% add further struct data if available

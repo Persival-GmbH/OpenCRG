@@ -22,7 +22,7 @@ function [llh ell pro] = map_pmap2geod_tm(enh, ell, pro)
 
 % *****************************************************************
 % See the NOTICE file distributed with this work regarding copyright ownership.
-% 
+%
 % Licensed under the Apache License, Version 2.0 (the "License");
 % you may not use this file except in compliance with the License.
 % You may obtain a copy of the License at
@@ -34,7 +34,7 @@ function [llh ell pro] = map_pmap2geod_tm(enh, ell, pro)
 % WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 % See the License for the specific language governing permissions and
 % limitations under the License.
-% 
+%
 % More Information on ASAM OpenCRG can be found here:
 % https://www.asam.net/standards/detail/opencrg/
 %
@@ -98,7 +98,7 @@ lam = angle(exp(1i*lam));
 %%
 
 llh = [phi' lam' enh(:,3)];
-    
+
 end
 % All above formulas are mainly based on the Ordnance Survey publication:
 % http://www.ordnancesurvey.co.uk/oswebsite/gps/ ...
@@ -115,38 +115,38 @@ end
 %  eastings (e0) and northings (n0) of false origin in meters; _
 %  central meridian scale factor (f0) and _
 %  latitude (PHI0) and longitude (LAM0) of false origin in decimal degrees.
-% 
+%
 % 'REQUIRES THE "Marc" AND "InitialLat" FUNCTIONS
-% 
+%
 % 'Convert angle measures to radians
 %     Pi = 3.14159265358979
 %     RadPHI0 = PHI0 * (Pi / 180)
 %     RadLAM0 = LAM0 * (Pi / 180)
-% 
+%
 % 'Compute af0, bf0, e squared (e2), n and Et
 %     af0 = a * f0
 %     bf0 = b * f0
 %     e2 = ((af0 ^ 2) - (bf0 ^ 2)) / (af0 ^ 2)
 %     n = (af0 - bf0) / (af0 + bf0)
 %     Et = East - e0
-% 
+%
 % 'Compute initial value for latitude (PHI) in radians
 %     PHId = InitialLat(North, n0, af0, RadPHI0, n, bf0)
-%     
+%
 % 'Compute nu, rho and eta2 using value for PHId
 %     nu = af0 / (Sqr(1 - (e2 * ((Sin(PHId)) ^ 2))))
 %     rho = (nu * (1 - e2)) / (1 - (e2 * (Sin(PHId)) ^ 2))
 %     eta2 = (nu / rho) - 1
-%     
+%
 % 'Compute Latitude
 %     VII = (Tan(PHId)) / (2 * rho * nu)
 %     VIII = ((Tan(PHId)) / (24 * rho * (nu ^ 3))) * (5 + (3 * ((Tan(PHId)) ^ 2)) + eta2 - (9 * eta2 * ((Tan(PHId)) ^ 2)))
 %     IX = ((Tan(PHId)) / (720 * rho * (nu ^ 5))) * (61 + (90 * ((Tan(PHId)) ^ 2)) + (45 * ((Tan(PHId)) ^ 4)))
-%     
+%
 %     E_N_to_Lat = (180 / Pi) * (PHId - ((Et ^ 2) * VII) + ((Et ^ 4) * VIII) - ((Et ^ 6) * IX))
-% 
+%
 % End Function
-% 
+%
 % Function E_N_to_Long(East, North, a, b, e0, n0, f0, PHI0, LAM0)
 % 'Un-project Transverse Mercator eastings and northings back to longitude.
 % 'Input: - _
@@ -155,35 +155,35 @@ end
 %  eastings (e0) and northings (n0) of false origin in meters; _
 %  central meridian scale factor (f0) and _
 %  latitude (PHI0) and longitude (LAM0) of false origin in decimal degrees.
-% 
+%
 % 'REQUIRES THE "Marc" AND "InitialLat" FUNCTIONS
-% 
+%
 % 'Convert angle measures to radians
 %     Pi = 3.14159265358979
 %     RadPHI0 = PHI0 * (Pi / 180)
 %     RadLAM0 = LAM0 * (Pi / 180)
-% 
+%
 % 'Compute af0, bf0, e squared (e2), n and Et
 %     af0 = a * f0
 %     bf0 = b * f0
 %     e2 = ((af0 ^ 2) - (bf0 ^ 2)) / (af0 ^ 2)
 %     n = (af0 - bf0) / (af0 + bf0)
 %     Et = East - e0
-% 
+%
 % 'Compute initial value for latitude (PHI) in radians
 %     PHId = InitialLat(North, n0, af0, RadPHI0, n, bf0)
-%     
+%
 % 'Compute nu, rho and eta2 using value for PHId
 %     nu = af0 / (Sqr(1 - (e2 * ((Sin(PHId)) ^ 2))))
 %     rho = (nu * (1 - e2)) / (1 - (e2 * (Sin(PHId)) ^ 2))
 %     eta2 = (nu / rho) - 1
-%     
+%
 % 'Compute Longitude
 %     X = ((Cos(PHId)) ^ -1) / nu
 %     XI = (((Cos(PHId)) ^ -1) / (6 * (nu ^ 3))) * ((nu / rho) + (2 * ((Tan(PHId)) ^ 2)))
 %     XII = (((Cos(PHId)) ^ -1) / (120 * (nu ^ 5))) * (5 + (28 * ((Tan(PHId)) ^ 2)) + (24 * ((Tan(PHId)) ^ 4)))
 %     XIIA = (((Cos(PHId)) ^ -1) / (5040 * (nu ^ 7))) * (61 + (662 * ((Tan(PHId)) ^ 2)) + (1320 * ((Tan(PHId)) ^ 4)) + (720 * ((Tan(PHId)) ^ 6)))
-% 
+%
 %     E_N_to_Long = (180 / Pi) * (RadLAM0 + (Et * X) - ((Et ^ 3) * XI) + ((Et ^ 5) * XII) - ((Et ^ 7) * XIIA))
-% 
+%
 % End Function
