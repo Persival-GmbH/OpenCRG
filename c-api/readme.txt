@@ -1,9 +1,9 @@
 # ===================================================
-#  readme for OpenCRG project   
+#  readme for OpenCRG project
 # ---------------------------------------------------
-# 
+#
 # See the NOTICE file distributed with this work regarding copyright ownership.
-# 
+#
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -15,7 +15,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-# 
+#
 # More Information on ASAM OpenCRG can be found here:
 # https://www.asam.net/standards/detail/opencrg/
 #
@@ -26,14 +26,14 @@ About this readme file
 --------------------------------------------------------------
 This readme file is a complementary file to the readme file
 provided in the OpenCRG root directory. Please read the root
-directory's file first. 
+directory's file first.
 
 
 Overview
 --------------------------------------------------------------
 The C-API provides a tool suite for reading, modifying and
 evaluating OpenCRG data files. It is based on plain ANSI-C code
-and should therefore allow for the compilation on all relevant 
+and should therefore allow for the compilation on all relevant
 platforms without modification of the source code.
 
 
@@ -41,11 +41,11 @@ Directory structure:
 --------------------------------------------------------------
 |----baselib................OpenCRG basic library - the core of the toolset
 |    |----lib...............location of the compiled OpenCRG library
-|    |----inc...............include files providing the interface to the library 
+|    |----inc...............include files providing the interface to the library
 |    |----makefile..........sample makefile for users preferring the make mechanism
 |    |----obj...............target directory for sources compiled with the make mechanism
 |    |----src...............the library's sources
-|----compileScript.sh.......script for the compilation of all demos and tools, 
+|----compileScript.sh.......script for the compilation of all demos and tools,
 |                           based on simple compiler calls; this is an alternative to
 |                           using the make mechanism; all files of the base library are
 |                           also compiled with this script, so there is no need for a
@@ -92,23 +92,23 @@ Compiling:
 --------------------------------------------------------------
 Three methods for compiling the tool-set are provided:
 
-A) On machines with gcc and standard make environment, just type 
+A) On machines with gcc and standard make environment, just type
 
       make
 
    in the root directory. This should result in a series of executable files
-   in the directories 
+   in the directories
 
       demo/bin/
       test/bin/
-      
+
    In addition, a library containing all object files of the baselib/ sources
    is created in
-   
+
       baselib/lib
 
 B) On machines having trouble with the provided makefiles, either adapt those
-   files or use the very basic fallback solution which is a compile script. 
+   files or use the very basic fallback solution which is a compile script.
    The script "compileScript.sh" is located in the root directory
 
       c-api/
@@ -118,25 +118,25 @@ B) On machines having trouble with the provided makefiles, either adapt those
 
       demo/bin/
       test/bin/
-      
-   In contrast to the makefile mechanism, no library is explicitly created 
+
+   In contrast to the makefile mechanism, no library is explicitly created
    from the baselib/ files.
 
 C) If you don't like makefiles and our scripts, you may just write your own
-   simple compile instruction at command line level. 
-   
+   simple compile instruction at command line level.
+
    For this purpose, please note the following hints:
-   
+
    1) In order to compile a demo, set your include file search path to
         baselib/inc
    2) Always compile in combination with all .c-files in
         baselib/src
-   
+
    Example: For the compilation of EvalXYnUV, use:
-   
+
             cc -lm -o EvalXYnUV -I baselib/inc demo/EvalXYnUV/src/main.c baselib/src/*.c
 
-        
+
 Release Notes:
 --------------------------------------------------------------
 
@@ -238,7 +238,7 @@ June 04, 2010, Release 1.0.1:
 April 14, 2010, Release 1.0.0:
 --------------------------------------
 - slightly modified printing of options in c-api
-- for complete documentation of differences between 0.8 and 1.0, 
+- for complete documentation of differences between 0.8 and 1.0,
   please review all release notes concerning the release candidates
   for release 1.0.0 (i.e. Feb 10 until April 12)
 
@@ -264,7 +264,7 @@ March 08, 2010, Release 1.0.0, rc4:
 --------------------------------------
 - debugged modifier "grid_nan_offset"
 - debugged calculation of centerline phi value
-- new (primitive) test tool "crgScan" which scans data in x/y direction and 
+- new (primitive) test tool "crgScan" which scans data in x/y direction and
   writes output file with x/y/z data (like crgDump)
 
 February 26, 2010, Release 1.0.0, rc3:
@@ -298,7 +298,7 @@ December 04, 2009, Release 0.7.2:
 
 November 19, 2009, Release 0.7.1:
 ---------------------------------
-- introduced new test routines 
+- introduced new test routines
     c-api/test/MultiRead
   here, a file is being read multiple times (once for each contact point)
 - debugged file loading via reference file
@@ -333,7 +333,7 @@ November 12, 2009, Release 0.7:
   x/y/z triplets have to be stored in an ASCII file (triplet per row, separated
   by whitespace character). The tool will read the ASCII file and another user-
   defined OpenCRG file, evaluate the OpenCRG file at the respective x/y positions
-  and compare the result to the z value given in the ASCII file. If the 
+  and compare the result to the z value given in the ASCII file. If the
   deviation is above a user-defined tolerance level, a warning will be printed.
   At the end, the tool will provide some statistics data about the test results.
     usage: crgVerify [options] <CRG file> <XYZ file>
@@ -341,7 +341,7 @@ November 12, 2009, Release 0.7:
                     -t <n>  tolerance value <n> for z comparison [m]
            <CRG file> CRG file from which to compute the z data
            <XYZ file> file containing the x/y/z positions for verification
-- users may replace the message printing mechanisms with their own methods; 
+- users may replace the message printing mechanisms with their own methods;
   a user-defined callback may be registered which is then called for each
   message instead of printing it to stderr; criticality levels are still
   checked before invoking the callback, so if a user wants to perform also
@@ -349,7 +349,7 @@ November 12, 2009, Release 0.7:
   an example of the callback definition and usages is given in the main.c of
   crgEvalOpts (source: demo/EvalOptions/src/main.c); the callback is registered
   with "crgMsgSetCallback( ... )"
-                                      
+
 October 01, 2009, Release 0.7-rc1:
 ----------------------------------
 - added memory allocation / release test
@@ -360,7 +360,7 @@ October 01, 2009, Release 0.7-rc1:
 - added API method for querying u and v increments of the data set:
     crgDataSetGetIncrements(...)
 - history is now (again) part of contactPoint management, not of crgDataSet; by this,
-  some methods concerning the history were shifted from crgData domain to 
+  some methods concerning the history were shifted from crgData domain to
   crgContactPoint domain (all of them were part of the private baselib and are,
   therefore, not described in detail)
 - fixed bug in preloading history with a uFrac value
@@ -408,7 +408,7 @@ May. 25, 2009, Release 0.4beta:
       crgContactPointSetDefaultOptions()
 - distinguishing levels during include operations, so that options and modifiers defined at
   top level will always be preferred to options and modifiers defined at lower levels
-- routines which might be subject to portability issues (e.g. for an integration into 
+- routines which might be subject to portability issues (e.g. for an integration into
   FORTRAN environments) are now located in crgPortability.c
 - first release of comprehensive documentation as .pdf file
 
@@ -424,7 +424,7 @@ Feb. 10, 2009, Release 0.3beta:
     crgSimple [-h] <filename>
 - improved handling of NaNs in ASCII files
 - introduced separate channels for v and z data
-- removed routine for setting endian format from public interface 
+- removed routine for setting endian format from public interface
   (endianness check is done automatically in the loader)
 - introduced routines for setting and printing evaluation options
   associated with a contact point. Options may be of integer or
@@ -451,7 +451,7 @@ Feb. 10, 2009, Release 0.3beta:
     dCrgCpOptionScaleZ                  /* [double],  scale factor for resulting z values */
         numeric value of applicable scale factor
 
-- added module for testing option settings; 
+- added module for testing option settings;
       new directory EvalOptions
       new binary    crgEvalOpts
 - adapted makefiles and scripts for additional module

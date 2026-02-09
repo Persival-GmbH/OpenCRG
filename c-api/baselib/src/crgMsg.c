@@ -1,9 +1,9 @@
 /* ===================================================
- *  message handling routines for the OpenCRG project      
+ *  message handling routines for the OpenCRG project
  * ---------------------------------------------------
- * 
+ *
  * See the NOTICE file distributed with this work regarding copyright ownership.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -15,7 +15,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * 
+ *
  * More Information on ASAM OpenCRG can be found here:
  * https://www.asam.net/standards/detail/opencrg/
  *
@@ -36,38 +36,38 @@ crgMsgSetLevel( int level )
 {
     if ( level >= dCrgMsgLevelNone && level <= dCrgMsgLevelDebug )
         mLevel = level;
-    
+
     /* --- update the setting in the portability libraries --- */
     crgPortSetMsgLevel( mLevel );
 }
-   
-int 
+
+int
 crgMsgGetLevel( void )
 {
     return mLevel;
 }
-   
-const char* 
+
+const char*
 crgMsgGetLevelName( int level )
 {
     if ( level == dCrgMsgLevelNone )
         return "NONE";
-    
+
     if ( level == dCrgMsgLevelFatal )
         return "FATAL";
 
     if ( level == dCrgMsgLevelWarn )
         return "WARNING";
-   
+
     if ( level == dCrgMsgLevelNotice )
         return "NOTICE";
-    
+
     if ( level == dCrgMsgLevelInfo )
         return "INFO";
-    
+
     if ( level == dCrgMsgLevelDebug )
         return "DEBUG";
-    
+
     return "unknown level";
 }
 
@@ -88,7 +88,7 @@ crgMsgIsPrintable( int level )
 {
     if ( mLevel < level )
         return 0;
-    
+
     return crgPortMsgIsPrintable( level );
 }
 
