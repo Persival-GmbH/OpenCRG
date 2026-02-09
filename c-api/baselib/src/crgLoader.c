@@ -56,6 +56,10 @@
 #define dOpcodeRefLineEndZ             18
 #define dOpcodeIncludeItem             19
 #define dOpcodeIncludeDone             20
+#define dOpcodeRefLineOffsetX          21
+#define dOpcodeRefLineOffsetY          22
+#define dOpcodeRefLineOffsetZ          23
+#define dOpcodeRefLineOffsetPhi        24
 
 #define dFileSectionNone                0
 #define dFileSectionRoadCrg             1
@@ -431,10 +435,10 @@ static CrgReaderCallbackStruct	sLoaderCallbacksRoad[] =
    { "long_section_v_right",       decodeHdrDouble,    dOpcodeLongSectionVRight     },
    { "long_section_v_left",        decodeHdrDouble,    dOpcodeLongSectionVLeft      },
    { "long_section_v_increment",   decodeHdrDouble,    dOpcodeLongSectionVIncrement },
-   { "reference_line_offset_x",    decodeHdrDouble,    dOpcodeNone                  },
-   { "reference_line_offset_y",    decodeHdrDouble,    dOpcodeNone                  },
-   { "reference_line_offset_z",    decodeHdrDouble,    dOpcodeNone                  },
-   { "reference_line_offset_phi",  decodeHdrDouble,    dOpcodeNone                  },
+   { "reference_line_offset_x",    decodeHdrDouble,    dOpcodeRefLineOffsetX        },
+   { "reference_line_offset_y",    decodeHdrDouble,    dOpcodeRefLineOffsetY        },
+   { "reference_line_offset_z",    decodeHdrDouble,    dOpcodeRefLineOffsetZ        },
+   { "reference_line_offset_phi",  decodeHdrDouble,    dOpcodeRefLineOffsetPhi      },
    { "$" ,                         setSection,         dFileSectionNone             },
    { "",                NULL,                 -1 }
 };
@@ -743,6 +747,18 @@ decodeHdrDouble( CrgDataStruct* crgData, const char* buffer, int opcode )
         case dOpcodeRefLineEndZ:
             crgData->channelRefZ.info.last = value;
             crgData->admin.defMask |= dCrgDataDefZEnd;
+            break;
+        case dOpcodeRefLineOffsetX:
+            crgData->channelX.info.offset = value;
+            break;
+        case dOpcodeRefLineOffsetY:
+            crgData->channelY.info.offset = value;
+            break;
+        case dOpcodeRefLineOffsetZ:
+            crgData->channelRefZ.info.offset = value;
+            break;
+        case dOpcodeRefLineOffsetPhi:
+            crgData->channelPhi.info.offset = value;
             break;
         case dOpcodeNone:
             break;
