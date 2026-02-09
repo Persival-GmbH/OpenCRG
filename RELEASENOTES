@@ -1,9 +1,14 @@
 Release Notes:
 --------------------------------------------------------------
 
-November 18, 2025, Release 1.2.1
+February 02, 2026, Release 2.0.0
 -----------------------------
-- Change License to Apache 2.0
+- Common:
+  change license to Apache 2.0
+- CRG-BIN:
+  restore corrupted belgian_block.crg file
+- MATLAB-API:
+  update link to open layers for html representation
 
 November 18, 2020 Release 1.2
 -----------------------------
