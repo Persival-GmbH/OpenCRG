@@ -33,7 +33,7 @@ BIN_TGT     =../bin/crgEvalOpts
 COMP = gcc
 
 #Compiler options
-CFLGS = -Wall -ggdb -ansi -I$(LIB_INC_DIR) -I$(INC_DIR)	#all Warnings with debugging
+CFLGS = -Wall -ggdb -std=c11 -I$(LIB_INC_DIR) -I$(INC_DIR)	#all Warnings with debugging
 
 #linker options
 LFLGS = -L$(LIB_DIR) -lOpenCRG -lm
