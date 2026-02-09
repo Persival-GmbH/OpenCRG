@@ -1,10 +1,10 @@
 /* ===================================================
- *  collections of methods which may be subject to 
- *  portability issues     
+ *  collections of methods which may be subject to
+ *  portability issues
  * ---------------------------------------------------
- * 
+ *
  * See the NOTICE file distributed with this work regarding copyright ownership.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -16,7 +16,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * 
+ *
  * More Information on ASAM OpenCRG can be found here:
  * https://www.asam.net/standards/detail/opencrg/
  *
@@ -43,22 +43,22 @@ static void* ( *mReallocCallback ) ( void* ptr, size_t size ) = NULL;
 static void ( *mFreeCallback ) ( void* ptr ) = NULL;
 static int ( *mMsgCallback ) ( int level, char* message ) = NULL;
 
-void 
+void
 crgMsgPrint( int level, const char *format, ...)
 {
     va_list ap;
     int     ret;
-    
+
     if ( mMsgLevel < level )
         return;
-    
+
     /* --- is re-direction activated? --- */
     if ( mMsgCallback )
     {
         char buffer[1024];  /* limit message text to 1024 characters */
-        
+
         buffer[0] = '\0';
-        
+
         va_start ( ap, format );
         ret = vsnprintf( buffer, 1023, format, ap );
         /* NOTE: on some compilers, vsnprintf() may be called _vsnprintf() */
@@ -68,19 +68,19 @@ crgMsgPrint( int level, const char *format, ...)
             fprintf( stderr, "crgMsgPrint: Cannot create message.\n" );
         else
             mMsgCallback( level, buffer );
-        
+
         return;
     }
 
     /** @todo: this is just a temporary solution and should be completed until 1.0 */
     if ( !mMaxWarnMsgs )
         return;
-    
+
     if ( mMaxWarnMsgs > 0 )
         mMaxWarnMsgs--;
 
     fprintf( stderr, "%7s: ", crgMsgGetLevelName( level ) );
-    
+
     va_start ( ap, format );
     ret = vfprintf( stderr, format, ap );
     va_end( ap );
@@ -88,19 +88,19 @@ crgMsgPrint( int level, const char *format, ...)
     if ( ret <= 0 )
         fprintf( stderr, "crgMsgPrint: Cannot create message.\n" );
 }
-    
+
 void
 crgPortSetMsgLevel( int level )
 {
     if ( level >= dCrgMsgLevelNone && level <= dCrgMsgLevelDebug )
         mMsgLevel = level;
 }
-    
+
 void*
 crgCalloc( size_t nmemb, size_t size )
 {
     if ( mCallocCallback )
-     return mCallocCallback( nmemb , size );   
+     return mCallocCallback( nmemb , size );
     return calloc( nmemb, size );
 }
 

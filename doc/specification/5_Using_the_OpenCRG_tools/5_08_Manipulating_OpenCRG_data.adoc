@@ -85,5 +85,5 @@ crg_show_road_surface(exdata);
 
 ==== Related topics
 
-* <<Reading an OpenCRG file>>
+* <<Reading OpenCRG files>>
 

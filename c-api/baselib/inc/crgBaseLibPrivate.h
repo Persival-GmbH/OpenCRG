@@ -1,11 +1,11 @@
 /* ===================================================
- *  interface definitions for the OpenCRG base library; 
- *  this is the part with the more or less private 
- *  definitions used internally by the CRG routines    
+ *  interface definitions for the OpenCRG base library;
+ *  this is the part with the more or less private
+ *  definitions used internally by the CRG routines
  * ---------------------------------------------------
- * 
+ *
  * See the NOTICE file distributed with this work regarding copyright ownership.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -17,7 +17,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * 
+ *
  * More Information on ASAM OpenCRG can be found here:
  * https://www.asam.net/standards/detail/opencrg/
  *
@@ -77,7 +77,7 @@
 #define dCrgDataDefZStart             0x0080
 
 /* ====== TYPE DEFINITIONS ====== */
-/** 
+/**
 * this structure stores administrative information about a single CRG file
 */
 typedef struct
@@ -93,7 +93,7 @@ typedef struct
     int     sectionType;  /* temporarily used while reading file            [-] */
 } CrgAdminStruct;
 
-/** 
+/**
 * this structure stores statistical information about a single CRG file
 */
 typedef struct
@@ -112,7 +112,7 @@ typedef struct
     double  phiLastCos;   /* cosine of last phi value                         [-] */
 } CrgUtilityStruct;
 
-/** 
+/**
 * this structure stores the information about a single CRG channel
 */
 typedef struct
@@ -147,7 +147,7 @@ typedef struct  /* channel for single precision data */
     void*               data;      /* the data of the channel, dynamically allocated        */
 } CrgChannelBaseStruct;
 
-/** 
+/**
 * structure of a single entry in the history
 */
 typedef struct
@@ -157,7 +157,7 @@ typedef struct
     size_t index;   /* index of the inertial position in x/y data channels    [-] */
 } CrgHistoryEntryStruct;
 
-/** 
+/**
 * structure for statistics about history use etc.
 */
 typedef struct
@@ -172,7 +172,7 @@ typedef struct
     unsigned int noCallsLoop2;      /* total number of calls to loop 2          [-] */
 } CrgHistoryStatStruct;
 
-/** 
+/**
 * structure for information about query history for faster access
 */
 typedef struct
@@ -186,7 +186,7 @@ typedef struct
     CrgHistoryStatStruct   stat;    /* statistics information about history use                       [-] */
 } CrgHistoryStruct;
 
-/** 
+/**
 * structure for performance measurement data
 */
 typedef struct
@@ -268,7 +268,7 @@ typedef struct
     double v;                          /* local v position                                                [m] */
     double z;                          /* data value (typically: elevation) at the given position         [m] */
     double phi;                        /* heading at the given position                                 [rad] */
-    double curv;                       /* curvature at the given position                               [1/m] */  
+    double curv;                       /* curvature at the given position                               [1/m] */
     CrgDataStruct*        crgData;     /* pointer to the CRG data on which contact point is working           */
     int useLocalHistory;               /* use local history of contact point instead of global one      [0/1] */
     CrgHistoryEntryStruct histEntry;   /* information about the previous query                                */
@@ -279,7 +279,7 @@ typedef struct
 } CrgContactPointStruct;
 
 /**
-* unions for retrieving the nice NaNs 
+* unions for retrieving the nice NaNs
 */
 typedef union
 {
@@ -335,34 +335,34 @@ extern int mCrgBigEndian;             /* endian-ness of machine */
     * @param crgData    pointer to data set which is to be analyzed
     */
     extern void crgCalcStatistics( CrgDataStruct *crgData );
-    
+
     /**
     * calculate some utility data for a given CRG data set; by this, the
     * performance of evaluations shall be increased
     * @param crgData    pointer to data set which is to be analyzed
     */
     extern void crgCalcUtilityData( CrgDataStruct *crgData );
-    
+
     /**
     * print the elevation data contained in a CRG file to shell
     * @param crgData    pointer to data set which is to be printed
     */
     extern void crgPrintElevData( CrgDataStruct *crgData );
 
-    
+
 /* ====== METHODS in crgMgr.c ====== */
     /**
     * create a new data set for storing CRG data in it
     * @return pointer to a new data set
     */
     extern CrgDataStruct* crgDataSetCreate( void );
-    
+
     /**
     * get access to a data set with a certain ID
     * @return pointer to the data set or NULL if ID wasn't found
     */
     extern CrgDataStruct* crgDataSetAccess( int id );
-    
+
     /**
     * set the size of a data-set specific history
     * @param dataSetId    ID of the applicable data set
@@ -370,40 +370,40 @@ extern int mCrgBigEndian;             /* endian-ness of machine */
     * @return 1 if successful, otherwise 0
     */
     extern int crgDataSetHistory( int dataSetId, int histSize );
-    
+
     /**
     * set a given double variable to NaN
     * @param dValue pointer to the variable that is to be set
     */
     void crgSetNan( double* dValue );
-    
+
     /**
     * set a given float variable to NaN
     * @param fValue pointer to the variable that is to be set
     */
     void crgSetNanf( float* fValue );
-    
+
     /**
     * build the v index table of a data set
     * @param dataSetId    ID of the applicable data set
     */
     void crgDataSetBuildVTable( int dataSetId );
 
-    
+
 /* ====== METHODS in crgMsg.c ====== */
     /**
     * get the currently set maximum level of messages
     * @return current criticality level
     */
     extern int crgMsgGetLevel( void );
-   
+
     /**
     * get the name of a criticality level
     * @param level  level whose name is requested
     * @return corresponding name as a character string
     */
     extern const char* crgMsgGetLevelName( int level );
-    
+
 /* ====== METHODS in crgContactPoint.c ====== */
     /**
     * get the pointer to a contact point from a given contact point ID
@@ -411,13 +411,13 @@ extern int mCrgBigEndian;             /* endian-ness of machine */
     * @return pointer to contact point or NULL if wrong index was defined
     */
     extern CrgContactPointStruct* crgContactPointGetFromId( int cpId );
-    
+
     /**
     * reset memory and temporary variables within a contact point structure
     * @param  cp  pointer to the contact point which is to be modified
     */
     extern void crgContactPointReset( CrgContactPointStruct *cp );
-    
+
     /**
     * change the data set on which a contact point is supposed to work
     * @param  cp  pointer to the contact point which is to be modified
@@ -442,7 +442,7 @@ extern int mCrgBigEndian;             /* endian-ness of machine */
     * @return 1 if option is available and valid and has the given value, otherwise 0
     */
     extern int crgContactPointOptionHasValueInt( CrgContactPointStruct *cp, unsigned int optionId, int optionValue );
-    
+
     /**
     * set the size and basic parameters of a contact point's history
     * @param  cp          pointer to the contact point which is to be modified
@@ -450,7 +450,7 @@ extern int mCrgBigEndian;             /* endian-ness of machine */
     * @return 1 if successful, otherwise 0
     */
     extern int crgContactPointPtrSetHistory( CrgContactPointStruct *cp, int histSize );
-    
+
     /**
     * set the size and basic parameters of all contact points referring to a
     * given CRG data set
@@ -466,38 +466,38 @@ extern int mCrgBigEndian;             /* endian-ness of machine */
     * @param u          absolute u value to be used for pre-loading
     */
     extern void crgContactPointPreloadHistoryU( CrgContactPointStruct *cp, double u );
-    
+
     /**
     * pre-load reference line history with data at given relative u value
     * @paramcp          pointer to the contact point which is to be modified
     * @param uFrac      relative u value to be used for pre-loading
     */
     extern void crgContactPointPreloadHistoryUFrac( CrgContactPointStruct *cp, double uFrac );
-    
+
     /**
     * activate the performance statistics
     * @param  cpId  id of the contact point whose statistics is to be activated
     */
     extern void crgContactPointActivatePerfStat( int cpId );
-    
+
     /**
     * deactivate the performance statistics
     * @param  cpId  id of the contact point whose statistics is to be deactivated
     */
     extern void crgContactPointDeActivatePerfStat( int cpId );
-    
+
     /**
     * reset the performance statistics
     * @param  cp  pointer to the contact point which is to be modified
     */
     extern void crgContactPointResetPerfStat( CrgContactPointStruct *cp );
-    
+
     /**
     * print the performance statistics
     * @param  cpId  id of the contact point whose information is to be printed
     */
     extern void crgContactPointPrintPerfStat( int cpId );
-    
+
     /**
     * print the history of a contact oint
     * @param  cp  pointer to the contact point whose history is to be shown
@@ -509,18 +509,18 @@ extern int mCrgBigEndian;             /* endian-ness of machine */
 /* ====== METHODS in crgOptionMgmt.c ====== */
     /**
     * returns the name of an option as a string
-    * @param id         numeric identifier of the option
+    * @param optionId   numeric identifier of the option
     * @return name of the option or "unknown"
     */
     extern const char* crgOptionGetName( unsigned int optionId );
-    
+
     /**
     * returns the type of an option as integer value (see symbolic constants)
-    * @param id         numeric identifier of the option
+    * @param optionId   numeric identifier of the option
     * @return type of the option (fallback: integer option)
     */
     extern int crgOptionGetType( unsigned int optionId );
-    
+
     /**
     * set/add an integer value option
     * @param  optionList   pointer to a list holding all applicable options
@@ -530,7 +530,7 @@ extern int mCrgBigEndian;             /* endian-ness of machine */
     *                      depending on the option type)
     * @return 1 if successful, otherwise 0
     */
-    extern int crgOptionSetInt( CrgOptionsStruct* optionList, unsigned int optionId, int optionValue );    
+    extern int crgOptionSetInt( CrgOptionsStruct* optionList, unsigned int optionId, int optionValue );
 
     /**
     * set/add a double value option
@@ -540,8 +540,8 @@ extern int mCrgBigEndian;             /* endian-ness of machine */
     * @param  optionValue  (new) value of the indicated option
     * @return 1 if successful, otherwise 0
     */
-    extern int crgOptionSetDouble( CrgOptionsStruct* optionList, unsigned int optionId, double optionValue );    
- 
+    extern int crgOptionSetDouble( CrgOptionsStruct* optionList, unsigned int optionId, double optionValue );
+
     /**
     * get the value of an integer option
     * @param  optionList   pointer to a list holding all applicable options
@@ -550,7 +550,7 @@ extern int mCrgBigEndian;             /* endian-ness of machine */
     * @param  optionValue  pointer to memory location for return value
     * @return 1 if option is set, otherwise 0
     */
-    extern int crgOptionGetInt( CrgOptionsStruct* optionList, unsigned int optionId, int* optionValue );    
+    extern int crgOptionGetInt( CrgOptionsStruct* optionList, unsigned int optionId, int* optionValue );
 
     /**
     * get the value of a double option
@@ -560,8 +560,8 @@ extern int mCrgBigEndian;             /* endian-ness of machine */
     * @param  optionValue  pointer to memory location for return value
     * @return 1 if option is set, otherwise 0
     */
-    extern int crgOptionGetDouble( CrgOptionsStruct* optionList, unsigned int optionId, double* optionValue ); 
-    
+    extern int crgOptionGetDouble( CrgOptionsStruct* optionList, unsigned int optionId, double* optionValue );
+
     /**
     * remove an option from the respective option list
     * @param  optionList   pointer to a list holding all applicable options
@@ -569,15 +569,15 @@ extern int mCrgBigEndian;             /* endian-ness of machine */
     *                      (see defines above: dCrgCpOptionXXXX)
     * @return 1 if successful, otherwise 0
     */
-    extern int crgOptionRemove( CrgOptionsStruct* optionList, unsigned int optionId );    
+    extern int crgOptionRemove( CrgOptionsStruct* optionList, unsigned int optionId );
 
     /**
     * remove all options from the respective option list
     * @param  optionList   pointer to a list holding all applicable options
     * @return 1 if successful, otherwise 0
     */
-    extern int crgOptionRemoveAll( CrgOptionsStruct* optionList );    
-    
+    extern int crgOptionRemoveAll( CrgOptionsStruct* optionList );
+
     /**
     * print the option list's current set of options
     * @param  optionList  pointer to a list holding all applicable options
@@ -601,27 +601,27 @@ extern int mCrgBigEndian;             /* endian-ness of machine */
     * @return 1 if option is available and valid and has the given value, otherwise 0
     */
     extern int crgOptionHasValueInt( CrgOptionsStruct* optionList, unsigned int optionId, int optionValue );
-    
+
     /**
     * set the default options to be applied when using a contact point for data
     * evaluation etc.
     * @param  optionList   pointer to a list holding all applicable options
     */
     extern void crgOptionSetDefaultOptions( CrgOptionsStruct* optionList );
-    
+
     /**
     * set the default modifiers to be applied when using crg data
     * @param  optionList   pointer to a list holding all applicable modifiers
     */
     extern void crgOptionSetDefaultModifiers( CrgOptionsStruct* optionList );
-    
+
     /**
     * copy options from one list to another
     * @param  dst   destination of options
     * @param  src   source of options
     */
     extern void crgOptionCopyAll( CrgOptionsStruct* dst, CrgOptionsStruct* src );
-    
+
     /**
     * create an option list; this will delete an existing list and
     * re-allocate the required space
@@ -629,7 +629,7 @@ extern int mCrgBigEndian;             /* endian-ness of machine */
     * @return 1 if successful, otherwise 0
     */
     extern int crgOptionCreateList( CrgOptionsStruct* optionList );
-    
+
 /* ====== METHODS in crgEvalxy2uv.c ====== */
     /**
     * convert a given (x,y) position into the corresponding (u,v) position
@@ -641,7 +641,7 @@ extern int mCrgBigEndian;             /* endian-ness of machine */
     * @return 1 if successful, otherwise 0
     */
     extern int crgEvalxy2uvPtr( CrgContactPointStruct *cp, double x, double y, double* u, double* v );
-    
+
     /**
     * depending on reference line settings (i.e. closing of reference line),
     * this routine will clip an incoming u value to the valid range or leave
@@ -652,7 +652,7 @@ extern int mCrgBigEndian;             /* endian-ness of machine */
     * @return 1 if u-value has been modified, otherwise 0; error = -1
     */
     extern int crgEvalu2uvalid( CrgDataStruct *crgData, CrgOptionsStruct* optionList, double* u );
-    
+
 /* ====== METHODS in crgEvaluv2xy.c ====== */
     /**
     * convert a given (u,v) position into the corresponding (x,y) position
@@ -665,7 +665,7 @@ extern int mCrgBigEndian;             /* endian-ness of machine */
     * @return 1 if successful, otherwise 0
     */
     extern int crgDataEvaluv2xy( CrgDataStruct *crgData, CrgOptionsStruct* optionList, double u, double v, double* x, double* y );
-    
+
 /* ====== METHODS in crgEvalz.c ====== */
     /**
     * compute the z value at a given (u,v) position using bilinear interpolation
@@ -696,7 +696,7 @@ extern int mCrgBigEndian;             /* endian-ness of machine */
     * @return 1 if successful, otherwise 0
     */
     extern int crgDataEvalu2Refz( CrgDataStruct *crgData, double u, double* z );
-    
+
 /* ====== METHODS in crgEvalpk.c ====== */
     /**
     * compute the heading and curvature value at a given (u,v) position
@@ -718,19 +718,19 @@ extern int mCrgBigEndian;             /* endian-ness of machine */
     * @param level  new value for maximum handled criticality
     */
     extern void crgPortSetMsgLevel( int level );
-    
-    /** 
+
+    /**
     * set the maximum number of warning / debug messages to be handled
     * @param maxNo  maximum number of messages to be handled (-1 for unlimited)
     */
     extern void crgPortSetMaxWarnMsgs( int maxNo );
-    
-    /** 
+
+    /**
     * set the maximum number of log messages to be handled
     * @param maxNo  maximum number of messages to be handled (-1 for unlimited)
     */
     extern void crgPortSetMaxLogMsgs( int maxNo );
-    
+
     /**
     * query whether messages of a certain level are to be printed (this may
     * change during runtime due to a restriction in the number of messages

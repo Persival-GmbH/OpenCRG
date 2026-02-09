@@ -1,6 +1,6 @@
-:revnumber: 1.2.1 
+:revnumber: 2.0.0 
 = OpenCRG Version {revnumber}
-:revdate: 18.11.2025
+:revdate: 02.02.2026
 :toc: left 
 :toclevels: 2
 :sectnums:
@@ -24,7 +24,7 @@
 :source-highlighter: rouge
 :rouge-style: base16.solarized.light
 // 
-// :nofooter:
+:nofooter:
 :last-update-label!:
 //embed images into html
 :data-uri: 
