@@ -22,7 +22,7 @@
 #
 
 # set your compiler here
-set COMP = 'gcc -O3'
+COMP='gcc -O3'
 
 # compile all demos
 
