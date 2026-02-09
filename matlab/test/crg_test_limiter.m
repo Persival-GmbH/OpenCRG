@@ -1,7 +1,7 @@
 %% Usage of CRG_LIMITER
 % Introducing the usage of crg_limiter.
 % Examples are included.
-% The file comments are optimized for the matlab publishing makro.
+% The file comments are optimized for the matlab publishing macro.
 %
 % NOTE
 % One u-increment is used to adjust both crg-files into the right
@@ -43,7 +43,7 @@
 %
 
 % DEFAULT SETTINGS
-% clear enviroment
+% clear environment
 clear all;
 close all;
 

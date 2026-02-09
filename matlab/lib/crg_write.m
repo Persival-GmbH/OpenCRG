@@ -328,31 +328,31 @@ crgdat.struct{end+1} = ...
 crgdat.kd_ind = cell(1,0);
 crgdat.kd_ind{end+1} = sprintf('reference line u,m,%.3f,%.3f', data.head.ubeg, data.head.uinc);
 
-%  generate dependant channel definitions and data array
+%  generate dependent channel definitions and data array
 crgdat.kd_def = cell(1,0);
 crgdat.kd_dat = [];
 
-%  generate dependant channel definitions: heading
+%  generate dependent channel definitions: heading
 if isfield(data, 'p') && length(data.p) > 1
     crgdat.kd_def{end+1} = 'reference line phi,rad';
     % first value will be ignored on reading
     crgdat.kd_dat = [crgdat.kd_dat [NaN('single') single(data.p)]'];
 end
 
-%  generate dependant channel definitions: slope
+%  generate dependent channel definitions: slope
 if isfield(data, 's') && length(data.s) > 1
     crgdat.kd_def{end+1} = 'reference line slope,m/m';
     % first value will be ignored on reading
     crgdat.kd_dat = [crgdat.kd_dat [NaN('single') single(data.s)]'];
 end
 
-%  generate dependant channel definitions: banking
+%  generate dependent channel definitions: banking
 if isfield(data, 'b') && length(data.b) > 1
     crgdat.kd_def{end+1} = 'reference line banking,m/m';
     crgdat.kd_dat = [crgdat.kd_dat single(data.b)'];
 end
 
-%  generate dependant channel definitions: long section position/number
+%  generate dependent channel definitions: long section position/number
 nv = size(data.z, 2);
 if isfield(data, 'v') && length(data.v) == nv
     for i = 1:nv

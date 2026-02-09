@@ -21,7 +21,7 @@
 %
 % *****************************************************************
 
-%% clear enviroment
+%% clear environment
 
 clear all
 close all
@@ -30,7 +30,7 @@ close all
 
 ipl = ipl_read('../crg-bin/belgian_block.crg');
 
-%% write it as clear text verison (single precision)
+%% write it as clear text version (single precision)
 
 ipl_write(ipl, 'belgian_block-txt-single.crg', 'LRFI');
 
@@ -39,7 +39,7 @@ ipl_write(ipl, 'belgian_block-txt-single.crg', 'LRFI');
 crg = crg_read('belgian_block-txt-single.crg');
 crg_show(crg);
 
-%% write it as clear text verison (double precision)
+%% write it as clear text version (double precision)
 
 ipl_write(ipl, 'belgian_block-txt-double.crg', 'LDFI');
 

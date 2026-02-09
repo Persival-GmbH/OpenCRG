@@ -35,7 +35,7 @@
 %
 
 % DEFAULT SETTINGS
-% clear enviroment
+% clear environment
 clear all;
 close all;
 clc;

@@ -38,7 +38,7 @@ function [pxyz, data] = crg_eval_llh2xyz(data, pllh)
 %
 % *****************************************************************
 
-%% check if already succesfully checked
+%% check if already successfully checked
 
 if ~isfield(data, 'ok')
     data = crg_check(data);

@@ -48,7 +48,7 @@ if ~isfield(data, 'ok')
 end
 
 if p < 0 || p > 1
-    error('CRG:checkError', 'smoothness parameter not in intervall [0,1]')
+    error('CRG:checkError', 'smoothness parameter not in interval [0,1]')
 end
 
 %% slope and banking exist
@@ -165,12 +165,12 @@ end % function crg_ext_slope( data, n )
 
 function [yy] = spl_smooth(x, y, p, xx, ext, v)
 % SPL_SMOOTH Cubic smoothing spline.
-%   YY = SPL_SMOOTH(X, Y, P, XX, EXT, V) calculates cubic smooting spline
+%   YY = SPL_SMOOTH(X, Y, P, XX, EXT, V) calculates cubic smoothing spline
 %
-%   X is the vector of independant data values
-%   Y is the vector of dependant data values
+%   X is the vector of independent data values
+%   Y is the vector of dependent data values
 %
-%   P is the smooting parameter [0...1]
+%   P is the smoothing parameter [0...1]
 %       0: LS-straight line
 %       1: cubic spline interpolant
 %
@@ -284,7 +284,7 @@ else
   if ext && p~=0 && n>3, %Forcing linear extrapolation in the ends
     ci([2,  end]) = 0;
   % New call
-  % fixing the coefficients so that we have continous
+  % fixing the coefficients so that we have continuous
   % derivatives everywhere
     ai(1) = -(ai(3)-ai(2))*dx(1)/dx(2) +ai(2)+ ci(3)*dx(1)*dx(2)/3;
     ai(n) = (ai(n-1)-ai(n-2))*dx(n-1)/dx(n-2) +ai(n-1)+ ci(n-2)*dx(n-2)*dx(n-1)/3;

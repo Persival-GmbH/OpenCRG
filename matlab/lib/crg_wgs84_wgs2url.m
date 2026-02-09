@@ -6,7 +6,7 @@ function [url] = crg_wgs84_wgs2url(wgs, opts)
 %   Inputs:
 %   WGS     (np, 2) arrays of latitude/longitude (north/east) WGS-84
 %           coordinate pairs (in degrees)
-%   OPTS    stuct for method options (optional, no default)
+%   OPTS    struct for method options (optional, no default)
 %   .label  sets label comment text (default: 'OpenCRG road mark')
 %
 %   Outputs:
@@ -15,7 +15,7 @@ function [url] = crg_wgs84_wgs2url(wgs, opts)
 %   Examples:
 %   wgs = [51.477811,-0.001475]  % Greenwich Prime Meridian
 %                                % (Airy's Transit Circle)
-%   url = crg_wgs84_wgs2url(wgs) % generate url sting
+%   url = crg_wgs84_wgs2url(wgs) % generate url string
 %   web(url, '-browser')         % show URL in default browser
 %   Generate URL to show WGS-84 info using Google Maps
 %

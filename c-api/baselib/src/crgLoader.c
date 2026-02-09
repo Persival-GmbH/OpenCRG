@@ -211,7 +211,7 @@ static int decodeDefined( CrgDataStruct* crgData, const char* buffer, int code )
 static int decodeDataFormat( CrgDataStruct* crgData, const char* buffer, int code );
 
 /**
-* find first occurence  of a token in the given character string and return
+* find first occurrence  of a token in the given character string and return
 * the pointer to the character AFTER the end of the token
 * leading spaces will be omitted
 * @param haystack   the haystack which will be searched
@@ -350,7 +350,7 @@ static void smoothenRefLine( CrgDataStruct* crgData );
 * read a double value from the data set and perform any necessary endian conversion
 * @param dataPtr pointer where to start reading the number from
 * @param tgt     pointer to the location where to store the value
-* @return        1 if successful, 0 if error occured, -1 if value is NaN
+* @return        1 if successful, 0 if error occurred, -1 if value is NaN
 */
 static int readDouble( char* dataPtr, double* tgt );
 
@@ -358,7 +358,7 @@ static int readDouble( char* dataPtr, double* tgt );
 * read a float value from the data set and perform any necessary endian conversion
 * @param dataPtr pointer where to start reading the number from
 * @param tgt     pointer to the location where to store the value
-* @return        1 if successful, 0 if error occured, -1 if value is NaN
+* @return        1 if successful, 0 if error occurred, -1 if value is NaN
 */
 static int readFloat( char* dataPtr, float* tgt );
 
@@ -988,13 +988,13 @@ setSection( CrgDataStruct* crgData, const char* buffer, int newSection )
                 break;
 
             case dFileSectionModifiers:
-                /* remove previously defined modifiers and replase with default modifiers */
+                /* remove previously defined modifiers and replace with default modifiers */
                 crgMsgPrint( dCrgMsgLevelDebug, "setSection: restoring default modifiers\n" );
                 /* modifiers may always be defined by the top level file; they may be defined by lower
                    level files only if no modifiers have yet been defined by top level file            */
                 if ( mFileLevel == 0 || mModLevel < 0 )
                 {
-                    /* new policy: clear all options upon first occurence of option block and don't define any default options */
+                    /* new policy: clear all options upon first occurrence of option block and don't define any default options */
                     /* crgOptionSetDefaultModifiers( &( crgData->modifiers ) ); */
                     crgOptionRemoveAll( &( crgData->modifiers ) );
                     mModLevel = mFileLevel;

@@ -1,7 +1,7 @@
 function [data] = crg_check_wgs84(data)
 % CRG_CHECK_WGS84 Check OpenCRG WGS-84 data.
 %   [DATA] = CRG_CHECK_WGS84(DATA) checks whether the start position and the end
-%   position are consistenly defined in both x/y/z-coordinates and
+%   position are consistently defined in both x/y/z-coordinates and
 %   WGS-84 coordinates.
 %
 %   Inputs:

@@ -192,7 +192,7 @@ for ii = 1:size(c,1);
     end
     if csum + len > uran
         err_cnt = err_cnt + 1;
-        warning('CRG:checkWarning', [ num2str(ii) '. curvature length = ' num2str(len) ' exeeds range of u - coordinate. => fatal']);
+        warning('CRG:checkWarning', [ num2str(ii) '. curvature length = ' num2str(len) ' exceeds range of u - coordinate. => fatal']);
     end
     csum = csum + len;
 end
@@ -213,7 +213,7 @@ for ii = 1:size(s,1)
     end
     if ssum + len > uran
         err_cnt = err_cnt + 1;
-        warning('CRG:checkWarning', [ num2str(ii) '. slope length = ' num2str(len) ' exeeds range of u - coordinate. => fatal']);
+        warning('CRG:checkWarning', [ num2str(ii) '. slope length = ' num2str(len) ' exceeds range of u - coordinate. => fatal']);
     end
     ssum = ssum + len;
 end
@@ -233,7 +233,7 @@ for ii = 1:size(b,1)
     end
     if bsum + len > uran
         err_cnt = err_cnt + 1;
-        warning('CRG:checkWarning', [ num2str(ii) '. banking length = ' num2str(len) ' exeeds range of u - coordinate. => fatal']);
+        warning('CRG:checkWarning', [ num2str(ii) '. banking length = ' num2str(len) ' exceeds range of u - coordinate. => fatal']);
     end
     bsum = bsum + len;
 end

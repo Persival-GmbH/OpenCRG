@@ -1,6 +1,6 @@
 function [] = crg_init()
 % CRG_INIT Initialize CRG environment.
-%   CRG_INIT initalizes the CRG MATLAB environment by adding the
+%   CRG_INIT initializes the CRG MATLAB environment by adding the
 %   application directory and required subdirectories to the search path
 %
 %   Examples:

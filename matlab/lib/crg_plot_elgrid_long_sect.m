@@ -93,7 +93,7 @@ jv = [iv(1):ceil(nviv/5):iv(2)-1 iv(2)];
 
 %% plot elevation grid long sections
 
-% MATLAB bug in verison 7.13 (R2011b):
+% MATLAB bug in version 7.13 (R2011b):
 % Using a matrix of singles as input to PLOT causes MATLAB to crash or hang.
 % Workaround: Cast matrix to double data type.
 % (see MATLAB service request 1-GAYXED of 2012-01-09)

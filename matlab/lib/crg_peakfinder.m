@@ -1,7 +1,7 @@
 function [ pindex, pij] = crg_peakfinder( data, iu, iv, th, ra )
 % CRG_PEAKFINDER Detect peaks in a OpenCRG data.
 %   [PINDEX, PIJ] = CRG_PEAKFINDER(DATA, IU, IV, TH, RA) returns
-%   positons of peaks.
+%   positions of peaks.
 %
 %   Inputs:
 %   DATA    struct array as defined in CRG_INTRO

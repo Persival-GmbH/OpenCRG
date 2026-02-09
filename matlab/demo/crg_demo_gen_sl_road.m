@@ -1,6 +1,6 @@
 function [ier] = crg_demo_gen_sl_road(filename)
 % CRG_DEMO_GEN_SL_ROAD CRG demo to generate a synthetic crg-file.
-%   CRG_DEMO_GEN_SL_ROAD(FILENAME) demonstrates how a road inluding
+%   CRG_DEMO_GEN_SL_ROAD(FILENAME) demonstrates how a road including
 %   walkline etc. can be generated.
 %
 %  Inputs:

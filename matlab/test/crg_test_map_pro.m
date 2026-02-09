@@ -1,7 +1,7 @@
 %% Usage of CRG_TEST_MAP_PRO
 % Introducing the usage of crg_map_uv2uv and crg_map_xy2xy.
 % Examples are included.
-% The file comments are optimized for the matlab publishing makro.
+% The file comments are optimized for the matlab publishing macro.
 
 % *****************************************************************
 % See the NOTICE file distributed with this work regarding copyright ownership.
@@ -38,7 +38,7 @@
 % * plotting deviation
 
 % DEFAULT SETTINGS
-% clear enviroment
+% clear environment
 close all;
 clear all;
 clc;
@@ -80,7 +80,7 @@ mpro.proj.nm='UTM_32U';
 % perform check to validate and complete mpro entry
 crg_mpro.mpro=map_check(mpro);
 
-% check data consistency (adds new caluclated wgs84 coordinates using mpro)
+% check data consistency (adds new calculated wgs84 coordinates using mpro)
 crg_mpro=crg_check_wgs84(crg_mpro);
 
 % create html

@@ -1,7 +1,7 @@
 %% Usage of CRG_APPEND
 % Introducing the usage of crg_append.
 % Examples are included for a set of common CRG-file formats.
-% The file comments are optimized for the matlab publishing makro.
+% The file comments are optimized for the matlab publishing macro.
 
 % NOTE
 % One u-increment is used to adjust both crg-files into the right
@@ -45,7 +45,7 @@
 %
 
 % DEFAULT SETTINGS
-% clear enviroment
+% clear environment
 clear all;
 close all;
 

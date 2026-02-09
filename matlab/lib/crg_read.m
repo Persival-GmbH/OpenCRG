@@ -431,7 +431,7 @@ else
     data.u = [ubeg uend];
 end
 
-%% evaluate dependant D channel definitions in ipl.kd_def
+%% evaluate dependent D channel definitions in ipl.kd_def
 
 ichanp = 0;
 ichans = 0;

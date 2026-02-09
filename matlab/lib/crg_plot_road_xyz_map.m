@@ -42,7 +42,7 @@ function [data] = crg_plot_road_xyz_map(data, iu, iv)
 %
 % *****************************************************************
 
-%% check if already succesfully checked
+%% check if already successfully checked
 
 if ~isfield(data, 'ok')
     data = crg_check(data);

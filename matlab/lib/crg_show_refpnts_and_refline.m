@@ -35,7 +35,7 @@ function [data] = crg_show_refpnts_and_refline(data, pxy)
 %
 % *****************************************************************
 
-%% check if already succesfully checked
+%% check if already successfully checked
 
 if ~isfield(data, 'ok')
     data = crg_check(data);

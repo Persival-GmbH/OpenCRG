@@ -169,7 +169,7 @@ if byref~=0
     if ~isfield(data.mods, 'rptp'), data.mods.rptp = 0; end % default
 end
 
-%% set ok-flag if no errors/warnings occured
+%% set ok-flag if no errors/warnings occurred
 
 if ierr == 0
     data.ok = 0;
