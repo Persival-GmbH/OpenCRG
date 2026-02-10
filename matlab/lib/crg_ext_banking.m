@@ -113,7 +113,7 @@ dout = crg_check(data);
 
 [XI, YI] = meshgrid(u, v);
 
-z = crg_eval_uv2z(dout, [XI(:), YI(:)]);    % z-values with negative slope
+z = crg_eval_uv2z(dout, [XI(:), YI(:)]) - data.head.zbeg;
 
 z = reshape(z, size(XI,1), size(XI,2));
 
