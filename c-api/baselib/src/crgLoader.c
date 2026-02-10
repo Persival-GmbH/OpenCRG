@@ -439,6 +439,13 @@ static CrgReaderCallbackStruct	sLoaderCallbacksRoad[] =
    { "reference_line_offset_y",    decodeHdrDouble,    dOpcodeRefLineOffsetY        },
    { "reference_line_offset_z",    decodeHdrDouble,    dOpcodeRefLineOffsetZ        },
    { "reference_line_offset_phi",  decodeHdrDouble,    dOpcodeRefLineOffsetPhi      },
+   { "reference_line_start_lon",   decodeHdrDouble,    dOpcodeNone                  },
+   { "reference_line_start_lat",   decodeHdrDouble,    dOpcodeNone                  },
+   { "reference_line_start_alt",   decodeHdrDouble,    dOpcodeNone                  },
+   { "reference_line_end_lon",     decodeHdrDouble,    dOpcodeNone                  },
+   { "reference_line_end_lat",     decodeHdrDouble,    dOpcodeNone                  },
+   { "reference_line_end_alt",     decodeHdrDouble,    dOpcodeNone                  },
+   { "proj_nm",                    decodeHdrDouble,    dOpcodeNone                  },
    { "$" ,                         setSection,         dFileSectionNone             },
    { "",                NULL,                 -1 }
 };
