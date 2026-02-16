@@ -35,11 +35,15 @@ jobs:
           mkdir -p site
           asciidoctor -r asciidoctor-diagram doc/specification/OpenCRG_specification.adoc -o site/index.html
 
+      - name: delete old artifacts
+        uses: geekyeggo/delete-artifact@v5
+        with:
+          name: github-pages
+          
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: site
-          overwrite: true
 
   deploy:
     needs: build
