@@ -2,7 +2,7 @@ name: Build and Deploy HTML
 
 on:
   push:
-    branches: master
+    branches: v2.0.0-release
 
 permissions:
   contents: read
