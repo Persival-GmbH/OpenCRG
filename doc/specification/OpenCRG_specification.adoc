@@ -1,6 +1,6 @@
 :revnumber: 2.0.0 
 = OpenCRG Version {revnumber}
-:revdate: 02.02.2026
+:revdate: 26.01.2026
 :toc: left 
 :toclevels: 2
 :sectnums:
