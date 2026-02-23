@@ -250,7 +250,7 @@ int main( int argc, char** argv )
     if ( idxTestPt < noTestPts )
         noTestPts = idxTestPt;
 
-    crgMsgPrint( dCrgMsgLevelNotice, "main: generated %d test points. Now running actual test....\n", idxTestPt );
+    crgMsgPrint( dCrgMsgLevelNotice, "main: generated %zu test points. Now running actual test....\n", idxTestPt );
 
     crgContactPointActivatePerfStat( cpId );
 
@@ -277,7 +277,7 @@ int main( int argc, char** argv )
     gettimeofday(&tme, 0);
     endTime = tme.tv_sec + 1.0e-6 * tme.tv_usec;
 
-    crgMsgPrint( dCrgMsgLevelWarn, "main: total time for %d queries: %.3lf seconds (i.e. %.3lfus per query)\n",  noTestPts, endTime - startTime, ( endTime - startTime ) / noTestPts * 1.0e6 );
+    crgMsgPrint( dCrgMsgLevelWarn, "main: total time for %zu queries: %.3lf seconds (i.e. %.3lfus per query)\n",  noTestPts, endTime - startTime, ( endTime - startTime ) / noTestPts * 1.0e6 );
 
     crgContactPointPrintPerfStat( cpId );
 
