@@ -82,7 +82,7 @@ function [] = crg_intro()
 %
 %   - Map projection data, which is read from or written to OpenCRG file headers.
 %     This data is checked, expanded or overwritten where appropriate.
-%     Defaults are used where explicit settings are missing, see map_intro
+%     Defaults are used where explicit settings are missing, see MAP_INTRO
 %     for details.
 %       DATA.mpro   (optional) struct array
 %                   with these sub-structs:
@@ -104,7 +104,7 @@ function [] = crg_intro()
 %     as they appear below, and are cleared after they are applied.
 %     An empty mods array inhibits any default settings.
 %       DATA.mods   struct array of data scalars
-%                   (and equivalent OpenCRG file opts keywords)
+%                   (and equivalent OpenCRG file mods keywords)
 %                   with these struct elements:
 %         CRG scaling (default: no scaling)
 %           - scale elevation data
