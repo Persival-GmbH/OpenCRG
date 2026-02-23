@@ -1619,7 +1619,7 @@ decodeRecord( CrgDataStruct* crgData, char* dataPtr, size_t nBytes )
                 if ( !strcmp( tmpStr, "**unused**" ) )
                     value = 0.0;
                 else
-                    crgSetNan( &value );
+                    value = nan("");
             }
             else
                 value = atof( tmpStr );
@@ -1627,12 +1627,12 @@ decodeRecord( CrgDataStruct* crgData, char* dataPtr, size_t nBytes )
         else if ( crgData->admin.dataFormat & dDataFormatPrecisionDouble )
         {
             if ( readDouble( dataPtr, &value ) < 0 )
-                crgSetNan( &value );
+                value = nan("");
         }
         else
         {
             if ( readFloat( dataPtr, &fValue ) < 0 )
-                crgSetNan( &value );
+                value = nan("");
             else
                 value = fValue;
         }
@@ -1899,7 +1899,7 @@ readData( CrgDataStruct* crgData )
         for ( i = 0; i < crgData->channelV.info.size; i++ )
         {
             if ( isnan( crgData->admin.recordBuffer[crgData->channelZ[i].info.index] ) )
-                crgSetNanf( &( crgData->channelZ[i].data[nRec] ) );
+                crgData->channelZ[i].data[nRec] = nanf("");
             else
                 crgData->channelZ[i].data[nRec] = ( float ) crgData->admin.recordBuffer[crgData->channelZ[i].info.index];
         }

@@ -394,8 +394,8 @@ crgDataSetGetUtilityDataClosedTrack( const int dataSetId, int *uIsClosed, double
     }
     else
     {
-        crgSetNan( uCloseMax );
-        crgSetNan( uCloseMin );
+        *uCloseMax = nan("");
+        *uCloseMin = nan("");
     }
 
     return 1;
@@ -722,43 +722,6 @@ const char*
 crgGetReleaseInfo( void )
 {
     return "ASAM OpenCRG C-API release 2.0.0, February 02, 2026";
-}
-
-void
-crgSetNan( double* dValue )
-{
-    CrgNanUnionDouble checkVal;
-
-    if ( !dValue )
-        return;
-
-    if ( mCrgBigEndian )
-    {
-        int myNan[2] = { 0x7ff80000, 0x00000000 };
-        memcpy( dValue, myNan, sizeof( double ) );
-    }
-    else
-    {
-        int myNan[2] = { 0x00000000, 0x7ff80000 };
-        memcpy( dValue, myNan, sizeof( double ) );
-    }
-
-    /* --- assign the value that is to be checked --- */
-    memcpy( &checkVal.dVal, dValue, sizeof( double ) );
-
-    crgMsgPrint( dCrgMsgLevelDebug, "crgSetNan: checkVal = 0x%x / 0x%x, isNan = %d\n",
-                                     checkVal.iVal[0], checkVal.iVal[1], isnan( *dValue ) );
-}
-
-void
-crgSetNanf( float* fValue )
-{
-    int myNan = 0x7fc00000;
-
-    if ( !fValue )
-        return;
-
-    memcpy( fValue, &myNan, sizeof( float ) );
 }
 
 void

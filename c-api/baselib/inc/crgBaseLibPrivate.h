@@ -373,18 +373,6 @@ extern int mCrgBigEndian;             /* endian-ness of machine */
     extern int crgDataSetHistory( int dataSetId, int histSize );
 
     /**
-    * set a given double variable to NaN
-    * @param dValue pointer to the variable that is to be set
-    */
-    void crgSetNan( double* dValue );
-
-    /**
-    * set a given float variable to NaN
-    * @param fValue pointer to the variable that is to be set
-    */
-    void crgSetNanf( float* fValue );
-
-    /**
     * build the v index table of a data set
     * @param dataSetId    ID of the applicable data set
     */
