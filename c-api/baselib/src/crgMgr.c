@@ -229,7 +229,7 @@ crgDataPrintChannelInfo( int dataSetId )
         return;
 
     crgMsgPrint( dCrgMsgLevelNotice, "crgDataPrintChannelInfo: overview of channel information\n"    );
-    crgMsgPrint( dCrgMsgLevelNotice, "    total number of channels  = %4d\n", crgData->noChannels    );
+    crgMsgPrint( dCrgMsgLevelNotice, "    total number of channels  = %4zu\n", crgData->noChannels    );
     crgMsgPrint( dCrgMsgLevelNotice, "    number of v channels      = %4ld\n", crgData->channelV.info.size );
 
     for ( i = 0; i < crgData->channelV.info.size; ++i )
@@ -239,39 +239,39 @@ crgDataPrintChannelInfo( int dataSetId )
 
     for ( i = 0; i < crgData->channelV.info.size; ++i )
     {
-        crgMsgPrint( dCrgMsgLevelNotice, "    z channel[%4ld].info.index = %4d\n",  i, crgData->channelZ[i].info.index );
+        crgMsgPrint( dCrgMsgLevelNotice, "    z channel[%4ld].info.index = %4zu\n",  i, crgData->channelZ[i].info.index );
         crgMsgPrint( dCrgMsgLevelDebug,  "    z channel[%4ld].info.size  = %4ld\n",  i, crgData->channelZ[i].info.size );
     }
 
     crgMsgPrint( dCrgMsgLevelNotice, "additional channels:\n" );
 
     if ( crgData->channelX.info.defined )
-        crgMsgPrint( dCrgMsgLevelNotice, "    channelX.info.index   = %d\n", crgData->channelX.info.index );
+        crgMsgPrint( dCrgMsgLevelNotice, "    channelX.info.index   = %zu\n", crgData->channelX.info.index );
     if ( crgData->channelX.info.valid )
         crgMsgPrint( dCrgMsgLevelDebug,  "    channelX.info.size    = %ld\n", crgData->channelX.info.size  );
 
     if ( crgData->channelY.info.defined )
-        crgMsgPrint( dCrgMsgLevelNotice, "    channelY.info.index   = %d\n", crgData->channelY.info.index );
+        crgMsgPrint( dCrgMsgLevelNotice, "    channelY.info.index   = %zu\n", crgData->channelY.info.index );
     if ( crgData->channelY.info.valid )
         crgMsgPrint( dCrgMsgLevelDebug,  "    channelY.info.size    = %ld\n", crgData->channelY.info.size  );
 
     if ( crgData->channelU.info.defined )
-        crgMsgPrint( dCrgMsgLevelNotice, "    channelU.info.index   = %d\n", crgData->channelU.info.index );
+        crgMsgPrint( dCrgMsgLevelNotice, "    channelU.info.index   = %zu\n", crgData->channelU.info.index );
     if ( crgData->channelU.info.valid )
         crgMsgPrint( dCrgMsgLevelDebug,  "    channelU.info.size    = %ld\n", crgData->channelU.info.size  );
 
     if ( crgData->channelPhi.info.defined )
-        crgMsgPrint( dCrgMsgLevelNotice, "    channelPhi.info.index = %d\n", crgData->channelPhi.info.index );
+        crgMsgPrint( dCrgMsgLevelNotice, "    channelPhi.info.index = %zu\n", crgData->channelPhi.info.index );
     if ( crgData->channelPhi.info.valid )
         crgMsgPrint( dCrgMsgLevelDebug,  "    channelPhi.info.size  = %ld\n", crgData->channelPhi.info.size  );
 
     if ( crgData->channelSlope.info.defined )
-        crgMsgPrint( dCrgMsgLevelNotice, "    channelSlope.info.index = %d\n", crgData->channelSlope.info.index );
+        crgMsgPrint( dCrgMsgLevelNotice, "    channelSlope.info.index = %zu\n", crgData->channelSlope.info.index );
     if ( crgData->channelSlope.info.valid )
         crgMsgPrint( dCrgMsgLevelDebug,  "    channelSlope.info.size  = %ld\n", crgData->channelSlope.info.size  );
 
     if ( crgData->channelBank.info.defined )
-        crgMsgPrint( dCrgMsgLevelNotice, "    channelBank.info.index = %d\n", crgData->channelBank.info.index );
+        crgMsgPrint( dCrgMsgLevelNotice, "    channelBank.info.index = %zu\n", crgData->channelBank.info.index );
     if ( crgData->channelBank.info.valid )
         crgMsgPrint( dCrgMsgLevelDebug,  "    channelBank.info.size  = %ld\n", crgData->channelBank.info.size  );
 
