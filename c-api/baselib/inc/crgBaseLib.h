@@ -137,6 +137,12 @@
 #define dCrgOrientFwd               0   /* forward orientation                */
 #define dCrgOrientRev               1   /* reverse orientation                */
 
+
+#ifdef __GNUC__
+#define CRG_CHECK_FORMAT_STRING( FORMAT_IDX, VARARG_IDX) __attribute__((format(printf,FORMAT_IDX,VARARG_IDX)))
+#else 
+#define CRG_CHECK_FORMAT_STRING( FORMAT_IDX, VARARG_IDX)
+#endif 
 /* ====== TYPE DEFINITIONS ====== */
 
 /* ====== METHODS in crgMgr.c ====== */
@@ -522,8 +528,8 @@
     * @param level  criticality of the message
     * @param format variable argument list as for standard printf
     */
-    extern void crgMsgPrint( int level, const char *format, ...);
-
+    extern void crgMsgPrint( int level, const char *format, ...) CRG_CHECK_FORMAT_STRING( 2, 3);
+    
     /**
     * allocate some space from memory, usually equal to calloc()
     * @param nmemb  number of members to allocate
