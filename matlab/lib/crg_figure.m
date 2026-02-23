@@ -33,7 +33,7 @@ function [data] = crg_figure(data)
 %
 % *****************************************************************
 
-%% check if already succesfully checked
+%% check if already successfully checked
 
 if ~isfield(data, 'ok')
     data = crg_check(data);
@@ -74,23 +74,23 @@ scrpos = get(0,'ScreenSize');
 
 switch fopt.ori
     case 'landscape'
-        figpos(4) = min(scrpos(3)/sqrt(2), scrpos(4)) * 0.8;    % heigth
+        figpos(4) = min(scrpos(3)/sqrt(2), scrpos(4)) * 0.8;    % height
         figpos(3) = figpos(4)*sqrt(2);                          % width
         figpos(1) = scrpos(1) + scrpos(3)*0.9 - figpos(3);      % left
         figpos(2) = scrpos(2) + scrpos(4)*0.9 - figpos(4);      % bottom
 
         pappos(1) = 0.05; % left
-        pappos(2) = 0.05; % botton
+        pappos(2) = 0.05; % bottom
         pappos(3) = 0.90; % width
         pappos(4) = 0.90; % height
     case 'portrait'
         figpos(3) = min(scrpos(3), scrpos(4)/sqrt(2)) * 0.8;    % width
-        figpos(4) = figpos(3)*sqrt(2);                          % heigth
+        figpos(4) = figpos(3)*sqrt(2);                          % height
         figpos(1) = scrpos(1) + scrpos(3)*0.9 - figpos(3);      % left
         figpos(2) = scrpos(2) + scrpos(4)*0.9 - figpos(4);      % bottom
 
         pappos(1) = 0.10; % left
-        pappos(2) = 0.10; % botton
+        pappos(2) = 0.10; % bottom
         pappos(3) = 0.80; % width
         pappos(4) = 0.80; % height
     otherwise

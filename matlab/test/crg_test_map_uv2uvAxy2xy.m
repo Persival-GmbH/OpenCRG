@@ -1,7 +1,7 @@
 %% Usage of CRG_MAP_UV2UVV AND CRG_MAP_XY2XY
 % Introducing the usage of crg_map_uv2uv and crg_map_xy2xy.
 % Examples are included.
-% The file comments are optimized for the matlab publishing makro.
+% The file comments are optimized for the matlab publishing macro.
 
 % *****************************************************************
 % See the NOTICE file distributed with this work regarding copyright ownership.
@@ -27,13 +27,13 @@
 %
 % * generate 0-z-crg file
 % * load test/real files
-% * FIRST: u,v maping ( za(u,v) -> zb(u,v) )
+% * FIRST: u,v mapping ( za(u,v) -> zb(u,v) )
 % * SECOND: inertial x,y mapping ( za(x,y) -> zb(x,y) )
 % * display result
 %
 
 % DEFAULT SETTINGS
-% clear enviroment
+% clear environment
 clear all;
 close all;
 

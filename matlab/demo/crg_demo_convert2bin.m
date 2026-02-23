@@ -21,7 +21,7 @@
 %
 % *****************************************************************
 
-%% clear enviroment
+%% clear environment
 
 clear all
 close all
@@ -30,7 +30,7 @@ close all
 
 ipl = ipl_read('../crg-txt/handmade_curved.crg');
 
-%% write it as binary verison (single precision)
+%% write it as binary version (single precision)
 
 ipl_write(ipl, 'handmade_curved-bin-single.crg', 'KRBI');
 

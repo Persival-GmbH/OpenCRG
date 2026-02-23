@@ -2,7 +2,7 @@
 % Building a set of demo files with different specifications.
 % Do not alter this CRG-file. If necessary, add new demo files. Several test
 % proceedings require these data-structures.
-% The file comments are optimized for the matlab publishing makro.
+% The file comments are optimized for the matlab publishing macro.
 
 % *****************************************************************
 % See the NOTICE file distributed with this work regarding copyright ownership.
@@ -36,7 +36,7 @@
 %
 
 % DEFAULT SETTINGS
-% clear enviroment
+% clear environment
 clear all;
 close all
 % display results

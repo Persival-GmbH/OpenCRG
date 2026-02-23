@@ -1,7 +1,7 @@
 %% Usage of continuesTrack
 % Test scripts to display results of continues track (option) settings.
 % Examples are included.
-% The file comments are optimized for the matlab publishing makro.
+% The file comments are optimized for the matlab publishing macro.
 
 % *****************************************************************
 % See the NOTICE file distributed with this work regarding copyright ownership.

@@ -243,7 +243,7 @@ switch type
                 ipldtype = 'float64';
                 mcount = 10;
         end
-        % workaround for MATLAB bug in verison 7.5 (R2007b) which occurs if
+        % workaround for MATLAB bug in version 7.5 (R2007b) which occurs if
         % first binary number is NaN, where the last fgetl call eats one
         % byte too much (see MATLAB service request 1-988VA1 of 2009-03-15,
         % resulting in bug report 535858 of 2009-04-01)
@@ -309,7 +309,7 @@ switch type
             data.kd_dat = data.kd_dat(1:nr,:);
         end
     case {'LRFI','LDFI'}
-        % read formated data
+        % read formatted data
         switch type
             case 'LDFI'
                 nchar = 20;     % number of characters

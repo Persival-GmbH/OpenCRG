@@ -58,7 +58,7 @@ function [] = map_intro()
 %            - similar to 'HL7'
 %            - as found in most literature sources
 %            - scaling only on diagonal elements
-%            - reverse transformaton by simple parameter sign change
+%            - reverse transformation by simple parameter sign change
 %
 %           parameters for all 7 parameter Helmert transformations:
 %

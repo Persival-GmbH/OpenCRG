@@ -7,7 +7,7 @@ function [y] = smooth_firfilt(x, w, opts)
 %   X       Data to be filtered. If X is a matrix, SMOOTH_FILTER operates
 %           on the columns of X.
 %   W       FIR filter window width on each side of the center value.
-%   OPTS    (optional) stuct array with
+%   OPTS    (optional) struct array with
 %       .reflect    reflection mode to extrapolate input data at begin and
 %                   end to have start-up and ending transients as desired.
 %                   'line' extrapolates by (line) reflection at begin and

@@ -1,7 +1,7 @@
 %% Usage of CRG_PEAKFINDER
 % Introducing the usage of crg_peakfinder.
 % Examples are included.
-% The file comments are optimized for the matlab publishing makro.
+% The file comments are optimized for the matlab publishing macro.
 
 % *****************************************************************
 % See the NOTICE file distributed with this work regarding copyright ownership.
@@ -32,7 +32,7 @@
 %
 
 % DEFAULT SETTINGS
-% clear enviroment
+% clear environment
 clear all;
 close all;
 

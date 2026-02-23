@@ -15,8 +15,8 @@ function [data, ierr, idxArr] = crg_check_curvature(data, ierr)
 %   DATA    is a checked, purified, and eventually completed version of
 %           the function input argument DATA
 %   IERR    summed up number of errors
-%   IDXARR  array containing start and end index, where local error occured
-%           if no local error occured an empty error is returned
+%   IDXARR  array containing start and end index, where local error occurred
+%           if no local error occurred an empty error is returned
 %
 %   Examples:
 %   data = crg_check_curvature(data)

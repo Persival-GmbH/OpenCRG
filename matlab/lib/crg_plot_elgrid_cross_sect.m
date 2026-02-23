@@ -41,7 +41,7 @@ function [data] = crg_plot_elgrid_cross_sect(data, iu, iv)
 %
 % *****************************************************************
 
-%% check if already succesfully checked
+%% check if already successfully checked
 
 if ~isfield(data, 'ok')
     data = crg_check(data);
@@ -93,7 +93,7 @@ ju = [iu(1):ceil(nuiu/9):iu(2)-1 iu(2)];
 
 %% plot elgrid cross sections
 
-% MATLAB bug in verison 7.13 (R2011b):
+% MATLAB bug in version 7.13 (R2011b):
 % Using a matrix of singles as input to PLOT causes MATLAB to crash or hang.
 % Workaround: Cast matrix to double data type.
 % (see MATLAB service request 1-GAYXED of 2012-01-09)

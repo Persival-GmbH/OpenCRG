@@ -112,7 +112,7 @@ while 1
     end
 
     if length(t) < n        % we should never end here
-        error('internal error during convert %.17g to %d chararcter field', x, n)
+        error('internal error during convert %.17g to %d character field', x, n)
     end
 
     % we achieved an extra leading 1 digit due to rounding, so loop again with

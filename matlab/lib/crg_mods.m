@@ -279,7 +279,7 @@ function [data] = crg_mods_byoff(data)
 %
 % *****************************************************************
 
-%% check if already succesfully checked
+%% check if already successfully checked
 
 if ~isfield(data, 'ok') || data.ok ~= 0
     data = crg_check_data(data);

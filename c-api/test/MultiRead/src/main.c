@@ -69,8 +69,8 @@ int main( int argc, char** argv )
 #ifdef FULL_TEST
     double wheelPatchWidth  = 0.1;   /* [m] width of the patch under a wheel                */
     double wheelPatchLength = 0.1;   /* [m] length of the patch under a wheel               */
-    int    noPtsPatchWidth  =  10;   /* [-] number of tesselation points along patch width  */
-    int    noPtsPatchLength =  10;   /* [-] number of tesselation points along patch length */
+    int    noPtsPatchWidth  =  10;   /* [-] number of tessellation points along patch width  */
+    int    noPtsPatchLength =  10;   /* [-] number of tessellation points along patch length */
     int    noWheels         =   4;   /* [-] number of wheels                                */
 
     double wheelBase = 2.50;     /* [m] distance from front to rear axle  */
@@ -79,8 +79,8 @@ int main( int argc, char** argv )
 #else
     double wheelPatchWidth  = 0.1;   /* [m] width of the patch under a wheel                */
     double wheelPatchLength = 0.1;   /* [m] length of the patch under a wheel               */
-    int    noPtsPatchWidth  =   1;   /* [-] number of tesselation points along patch width  */
-    int    noPtsPatchLength =   1;   /* [-] number of tesselation points along patch length */
+    int    noPtsPatchWidth  =   1;   /* [-] number of tessellation points along patch width  */
+    int    noPtsPatchLength =   1;   /* [-] number of tessellation points along patch length */
     int    noWheels         =   4;   /* [-] number of wheels                                */
 
     double wheelBase = 2.50;     /* [m] distance from front to rear axle  */

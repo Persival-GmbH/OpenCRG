@@ -31,7 +31,7 @@
 
 /* ====== LOCAL METHODS ====== */
 /**
-* normlize a 2d vector
+* normalize a 2d vector
 * @param vec    pointer to the co-ordinate array
 */
 static void normalizeVector2( double* vec );

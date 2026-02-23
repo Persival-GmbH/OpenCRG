@@ -9,7 +9,7 @@ function [] = crg_demo_gen_surface()
 %   measurement data at the given CRG elevation grid points. This step is
 %   segmented into pieces of 5000 cross cuts, which are written to files.
 %   Then, the CRG segments are loaded, concatenated, and written to the
-%   resulting suface.crg file in the current directory.
+%   resulting surface.crg file in the current directory.
 %   To keep maximum elevation grid accuracy, the mean elevation of
 %   all cross cuts is used to generate a first approach for the refline
 %   slope, resulting in "small" elevation values in the CRG elevation grid.
@@ -84,7 +84,7 @@ iend = find(valid, 1, 'last');
 
 fprintf(1, 'valid measurements at refline center available on cross cut [%d:%d]\n\n', ibeg, iend);
 
-%% second mesurement evaluation over all segments with full cross cuts
+%% second measurement evaluation over all segments with full cross cuts
 
 iu0=[ibeg 0];
 is0 = 0;
@@ -197,8 +197,8 @@ while iu0(2) < iend
         end
 
         % apply slope and banking
-        pz = pz - zref; % substract current refline elevation
-        pz = pz - crgsurf.v'*double(crgsurf.b(iu)); % substract banking
+        pz = pz - zref; % subtract current refline elevation
+        pz = pz - crgsurf.v'*double(crgsurf.b(iu)); % subtract banking
 
         crgsurf.z(iu, :) = single(pz');       % save to elevation grid
     end
@@ -232,7 +232,7 @@ end
 
 fprintf(1, 'all %d segments are written.\n', is0);
 if nlin > 0
-    fprintf(1, '%d full NaN cross cuts occured, please check\n', nlin);
+    fprintf(1, '%d full NaN cross cuts occurred, please check\n', nlin);
 end
 if npts > 0
     fprintf(1, '%d NaN points were replaced by linear interpolation inside the cross cut, please check\n', npts);

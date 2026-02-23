@@ -68,7 +68,7 @@ if sv > iv
     error('CRG:showError', 'index iv less than visualized area of peaks sv');
 end
 
-%% check if already succesfully checked
+%% check if already successfully checked
 
 if ~isfield(data, 'ok')
     data = crg_check(data);

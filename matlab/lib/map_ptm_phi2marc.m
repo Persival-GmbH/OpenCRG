@@ -15,7 +15,7 @@ function [marc ell pro] = map_ptm_phi2marc(phi, ell, pro)
 %
 %   Examples:
 %   marc = map_ptm_phi2marc(phi, ell, pro)
-%       Calulates meridional arc values.
+%       Calculates meridional arc values.
 %
 %   See also MAP_INTRO, MAP_GEOD2PMAP_TM, MAP_PTM_NORTH2INITIALLAT.
 

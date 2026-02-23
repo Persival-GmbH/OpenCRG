@@ -1,7 +1,7 @@
 %% Usage of OPTIONS
 % Test scripts to display results of option settings.
 % Examples are included.
-% The file comments are optimized for the matlab publishing makro.
+% The file comments are optimized for the matlab publishing macro.
 
 % *****************************************************************
 % See the NOTICE file distributed with this work regarding copyright ownership.
@@ -31,7 +31,7 @@
 %
 
 % DEFAULT SETTINGS
-% clear enviroment
+% clear environment
 clear all;
 close all;
 % range

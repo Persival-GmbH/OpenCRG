@@ -335,7 +335,7 @@ crgEvalxy2uvPtr( CrgContactPointStruct *cp, double x, double y, double* u, doubl
 
     /*
     * at this point we have got the right interval.
-    * evaluate v as distance between P and line trough P2-P1
+    * evaluate v as distance between P and line through P2-P1
     * by calculating the normalized cross product
     * (P2-P1)x(P-P1) / |P2-P1|
     */

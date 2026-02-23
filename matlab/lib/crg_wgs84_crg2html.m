@@ -6,7 +6,7 @@ function [data] = crg_wgs84_crg2html(data, file, opts)
 %   Inputs:
 %   DATA    struct array as defined in CRG_INTRO
 %   FILE    html file to write
-%   OPTS    stuct for method options (optional, no default)
+%   OPTS    struct for method options (optional, no default)
 %   .mpol   maximum number of map polyline points (default: 100)
 %   .minc   minimum increment of map polyline points (default: 1.0)
 %   .title  title on web page (default: 'OpenCRG road overview')

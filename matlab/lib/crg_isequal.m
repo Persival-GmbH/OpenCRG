@@ -10,7 +10,7 @@ function [ident, dd] = crg_isequal( bcrg, acrg )
 %
 %   Output:
 %       IDENT   [true, false] identical boolean variable
-%       DD      struct array with further comparison informations
+%       DD      struct array with further comparison information
 %               warn    warning messages
 %               err     error messages
 %               fn      compared field names
@@ -45,7 +45,7 @@ function [ident, dd] = crg_isequal( bcrg, acrg )
 %
 % *****************************************************************
 
-%% check if already succesfully checked
+%% check if already successfully checked
 
 if ~isfield( bcrg, 'ok' )
     bcrg = crg_check( bcrg );

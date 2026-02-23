@@ -21,7 +21,7 @@
 %
 % *****************************************************************
 
-%% clear enviroment
+%% clear environment
 
 clear all
 close all

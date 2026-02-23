@@ -39,7 +39,7 @@ function [data] = crg_demo_scale_data(data)
 
 error(nargchk(1,1,nargin));
 
-%% check if already succesfully checked
+%% check if already successfully checked
 
 if ~isfield(data, 'ok')
     data = crg_check(data);

@@ -192,7 +192,7 @@ July 26, 2013 Release 1.0.6 - RC1
 ---------------------------
 -  revert to c89/90 standard
 -  set optimization level 3 as default
--  bugfix: in some cases the history may be currupt
+-  bugfix: in some cases the history may be corrupt
 -  rename: mBigEndian -> mCrgBigEndian
 -  add crg check data routine for consistency and accuracy
    * validate option if track can be closed
@@ -256,7 +256,7 @@ March 26, 2010, Release 1.0.0, rc5:
 --------------------------------------
 - increased compatibility with older MS compilers (crgPortability.c)
 - loader recognizes <cr> in all areas of ASCII files
-- first occurence of modifier block in data file clears default modifiers
+- first occurrence of modifier block in data file clears default modifiers
 - option / modifier print improved to distinguish between the two types
 - harmonized closed-reference line algorithm with Matlab tool-set
 

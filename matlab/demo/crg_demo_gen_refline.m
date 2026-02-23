@@ -53,7 +53,7 @@ pxy(:,2) = pxy(:,2) + ynoise*randn(nu,1);   % add y noise
 lshow = 1;   % show results [0 1]
 uinc = 0.01; % longitudinal grid spacing
 
-% find the perfect spline - this is much dependant on the data
+% find the perfect spline - this is much dependent on the data
 %
 % splinefit increment: defines approximate length of spline segments used
 % to represent the (noisy) refline data

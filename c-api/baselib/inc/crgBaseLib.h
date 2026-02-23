@@ -287,7 +287,7 @@
     extern void crgDataSetModifierSetDefault( int dataSetId );
 
     /**
-    * set the default options for a data set; these will be transfered to
+    * set the default options for a data set; these will be transferred to
     * contact points which are derived from the data set
     * @param  dataSetId    identifier of the applicable dataset
     */

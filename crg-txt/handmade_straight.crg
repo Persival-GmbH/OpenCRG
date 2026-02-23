@@ -46,7 +46,7 @@ D:long section 5,m                        ! 0.5m left  of reference line
 D:long section 6,m                        ! 1.0m left  of reference line
 D:long section 7,m                        ! 1.5m left  of reference line
 $!**********************************************************************
-* Stuctured data above is organized in named blocks. Maximum record
+* Structured data above is organized in named blocks. Maximum record
 * length of structured data is 72 bytes, using ISO-8859-1 coding.
 * Comments are marked by "*" in column 1 or "!" in-line.
 *
@@ -63,7 +63,7 @@ $!**********************************************************************
 * - KRBI: kernel, real, binary, interchangeable (default)
 * - KDBI: kernel, double, binary, interchangeable
 * In long formats, each data row starts in a new record.
-* In kernel formats, records are sucessively filled until their 80 byte
+* In kernel formats, records are successively filled until their 80 byte
 * limit, the last record is filled by NaNs.
 * In formatted interchangeable representation, real/double numbers are
 * 10/20 characters long, fixpoint or scientific format, 8/4 numbers per

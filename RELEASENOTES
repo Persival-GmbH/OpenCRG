@@ -102,7 +102,7 @@ July 31, 2013 Release 1.0.6 - RC1
 - C-API:
   revert to c89/90 standard
   set optimization level 3 as default
-  bugfix: in some cases the history may be currupt
+  bugfix: in some cases the history may be corrupt
   rename: mBigEndian -> mCrgBigEndian
   add crg check data routine for consistency and accuracy
      * validate option if track can be closed
@@ -119,12 +119,12 @@ April 12. 2013, Release 1.0.5 - RC3
 - C-API:
     bug-fix: Contact point table will be delete only if all contact points are removed
 - Matlab:
-    reenable google map support
+    re-enable google map support
 
 October 31. 2012, Release 1.0.5 - RC2
 --------------------------------------
 - Matlab:
-    MATLAB bug in verison 7.13 (R2011b):
+    MATLAB bug in version 7.13 (R2011b):
       using a matrix of singles as input to PLOT causes MATLAB to crash or hang
       workaround: cast matrix to double data type
       (see MATLAB service request 1-GAYXED of 2012-01-09)
@@ -159,7 +159,7 @@ June 01, 2011
   border mode 'keep last' overwrites smoothing and banking (uv->z)
 - Matlab:
   adapt several crg_check_data checks
-  remove of FILEPARTS fourth output [crg_init.m] (depricated in R2011a)
+  remove of FILEPARTS fourth output [crg_init.m] (deprecated in R2011a)
   add    lib/crg_show_info.m          : road text info visualizer
   add    lib/crg_flip.m               : flips the crg contents
   add    lib/crg_generate_sb.m        : finds and generates slope and banking

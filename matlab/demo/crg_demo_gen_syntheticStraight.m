@@ -1,5 +1,5 @@
 function [] = crg_demo_gen_syntheticStraight()
-% CRG_DEMO_GEN_SYNTHETICSTRAIGHTREFLINE CRG demo to generate a synthetic straigth OpenCRG file.
+% CRG_DEMO_GEN_SYNTHETICSTRAIGHTREFLINE CRG demo to generate a synthetic straight OpenCRG file.
 %   CRG_DEMO_GEN_SYNTHETICSTRAIGHT() demonstrates how a simple straight OpenCRG file can be
 %   generated.
 %

@@ -42,7 +42,7 @@ function [data] = crg_show_elgrid_cuts_and_limits(data, iu, iv)
 %
 % *****************************************************************
 
-%% check if already succesfully checked
+%% check if already successfully checked
 
 if ~isfield(data, 'ok')
     data = crg_check(data);

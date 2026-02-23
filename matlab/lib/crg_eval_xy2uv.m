@@ -122,7 +122,7 @@ end
 iu = 0;
 if ohisto > 0
     if nhisto > 0
-        error('CRG:evalError', 'mixing of history seach and explicit history point no. not allowed')
+        error('CRG:evalError', 'mixing of history search and explicit history point no. not allowed')
     end
     if ohisto > mhisto
         error('CRG:evalError', 'history size of %d insufficient to store history point no.=%d', mhisto, ohisto)
@@ -334,7 +334,7 @@ for ip = 1:np
         continue
     end
 
-    % evaluate v as distance between P and line trough P2-P1
+    % evaluate v as distance between P and line through P2-P1
     % by calculating the normalized cross product
     % (P2-P1)x(P-P1) / |P2-P1|
     x2x1 = x2-x1;

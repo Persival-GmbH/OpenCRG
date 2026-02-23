@@ -37,7 +37,7 @@ function [data] = crg_show_road_uv2surface(data, u, v)
 
 %% first check, fix and complement DATA
 
-%% check if already succesfully checked
+%% check if already successfully checked
 
 if ~isfield(data, 'ok')
     data = crg_check(data);

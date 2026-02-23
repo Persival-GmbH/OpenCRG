@@ -116,7 +116,7 @@ z = reshape(z, size(ux,1), size(ux,2));
 
 clear ux vx;
 
-%% gernerate filter mask
+%% generate filter mask
 
 switch fm
     case 'mean'
