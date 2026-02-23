@@ -1,6 +1,6 @@
 function [marc ell pro] = map_ptm_phi2marc(phi, ell, pro)
 % MAP_PTM_ENH2LLH Transverse mercator utility function: meridional arc.
-%   [MARC ELL PRO] = MAP_PTM_PHI2MARC(PHI, ELL, PRO) computes the 
+%   [MARC ELL PRO] = MAP_PTM_PHI2MARC(PHI, ELL, PRO) computes the
 %   meridional arc needed for transverse mercator projections.
 %
 %   Inputs:
@@ -21,7 +21,7 @@ function [marc ell pro] = map_ptm_phi2marc(phi, ell, pro)
 
 % *****************************************************************
 % See the NOTICE file distributed with this work regarding copyright ownership.
-% 
+%
 % Licensed under the Apache License, Version 2.0 (the "License");
 % you may not use this file except in compliance with the License.
 % You may obtain a copy of the License at
@@ -33,7 +33,7 @@ function [marc ell pro] = map_ptm_phi2marc(phi, ell, pro)
 % WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 % See the License for the specific language governing permissions and
 % limitations under the License.
-% 
+%
 % More Information on ASAM OpenCRG can be found here:
 % https://www.asam.net/standards/detail/opencrg/
 %
@@ -88,14 +88,14 @@ end
 %  ellipsoid semi major axis multiplied by central meridian scale factor (bf0) in meters; _
 %  n (computed from a, b and f0); _
 %  lat of false origin (PHI0) and initial or final latitude of point (PHI) IN RADIANS.
-% 
+%
 % 'THIS FUNCTION IS CALLED BY THE - _
 %  "Lat_Long_to_North" and "InitialLat" FUNCTIONS
 % 'THIS FUNCTION IS ALSO USED ON IT'S OWN IN THE "Projection and Transformation Calculations.xls" SPREADSHEET
-% 
+%
 %     Marc = bf0 * (((1 + n + ((5 / 4) * (n ^ 2)) + ((5 / 4) * (n ^ 3))) * (PHI - PHI0)) _
 %     - (((3 * n) + (3 * (n ^ 2)) + ((21 / 8) * (n ^ 3))) * (Sin(PHI - PHI0)) * (Cos(PHI + PHI0))) _
 %     + ((((15 / 8) * (n ^ 2)) + ((15 / 8) * (n ^ 3))) * (Sin(2 * (PHI - PHI0))) * (Cos(2 * (PHI + PHI0)))) _
 %     - (((35 / 24) * (n ^ 3)) * (Sin(3 * (PHI - PHI0))) * (Cos(3 * (PHI + PHI0)))))
-% 
+%
 % End Function
