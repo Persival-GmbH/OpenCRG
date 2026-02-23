@@ -23,7 +23,7 @@ function [data] = crg_plot_elgrid_long_sect(data, iu, iv)
 
 % *****************************************************************
 % See the NOTICE file distributed with this work regarding copyright ownership.
-% 
+%
 % Licensed under the Apache License, Version 2.0 (the "License");
 % you may not use this file except in compliance with the License.
 % You may obtain a copy of the License at
@@ -35,7 +35,7 @@ function [data] = crg_plot_elgrid_long_sect(data, iu, iv)
 % WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 % See the License for the specific language governing permissions and
 % limitations under the License.
-% 
+%
 % More Information on ASAM OpenCRG can be found here:
 % https://www.asam.net/standards/detail/opencrg/
 %
@@ -93,7 +93,7 @@ jv = [iv(1):ceil(nviv/5):iv(2)-1 iv(2)];
 
 %% plot elevation grid long sections
 
-% MATLAB bug in verison 7.13 (R2011b):
+% MATLAB bug in version 7.13 (R2011b):
 % Using a matrix of singles as input to PLOT causes MATLAB to crash or hang.
 % Workaround: Cast matrix to double data type.
 % (see MATLAB service request 1-GAYXED of 2012-01-09)

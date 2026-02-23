@@ -1,9 +1,9 @@
 /* ===================================================
- *  main program for CRG reader   
+ *  main program for CRG reader
  * ---------------------------------------------------
- * 
+ *
  * See the NOTICE file distributed with this work regarding copyright ownership.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -15,7 +15,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * 
+ *
  * More Information on ASAM OpenCRG can be found here:
  * https://www.asam.net/standards/detail/opencrg/
  *
@@ -35,42 +35,42 @@ void usage()
     exit( -1 );
 }
 
-int main( int argc, char** argv ) 
+int main( int argc, char** argv )
 {
     char* filename = "";
     int dataSetId = 0;
-    
+
     /* --- decode the command line --- */
     if ( argc < 2 )
         usage();
-    
+
     argc--;
-    
+
     while( argc )
     {
         argc--;
         argv++;
-        
+
         if ( !strcmp( *argv, "-h" ) )
             usage();
-        
+
         if ( !argc ) /* last argument is the filename */
         {
             crgMsgPrint( dCrgMsgLevelInfo, "searching file\n" );
-            
+
             if ( argc < 0 )
             {
                 crgMsgPrint( dCrgMsgLevelFatal, "Name of input file is missing.\n" );
                 usage();
             }
-                
+
             filename = *argv;
         }
     }
-    
+
     /* --- now load the file --- */
     crgMsgSetLevel( dCrgMsgLevelDebug );
-    
+
     if ( ( dataSetId = crgLoaderReadFile( filename ) ) > 0 )
     {
         crgDataPrintHeader( dataSetId );
@@ -84,9 +84,9 @@ int main( int argc, char** argv )
         crgMsgPrint ( dCrgMsgLevelFatal, "main: could not validate crg data. \n" );
         return -1;
     }
-    
+
     crgMsgPrint( dCrgMsgLevelNotice, "main: normal termination\n" );
-    
+
     return 1;
 }
 

@@ -20,7 +20,7 @@ To get an overview on CRG data organization, run the crg_intro command.
 Hint on memory limitations: with 32bit MATLAB available memory is sometimes
 rather limited, especially on WIN32 systems, see MATLAB help on memory.
 
-On a typical WIN32 installation with 4GB, only 440MB of contingous memory
+On a typical WIN32 installation with 4GB, only 440MB of contiguous memory
 was available (use feature('memstats') to show on your system). This allows
 to work on 220MB CRG files, with e.g. 1cm x 1cm resolution, 4m width and
 1.4km length. On Linux32, at least double file sizes can be handled, on
@@ -29,7 +29,7 @@ all 64bit installations, there is virtually no limitation in CRG size.
 
 % *****************************************************************
 % See the NOTICE file distributed with this work regarding copyright ownership.
-% 
+%
 % Licensed under the Apache License, Version 2.0 (the "License");
 % you may not use this file except in compliance with the License.
 % You may obtain a copy of the License at
@@ -41,7 +41,7 @@ all 64bit installations, there is virtually no limitation in CRG size.
 % WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 % See the License for the specific language governing permissions and
 % limitations under the License.
-% 
+%
 % More Information on ASAM OpenCRG can be found here:
 % https://www.asam.net/standards/detail/opencrg/
 %

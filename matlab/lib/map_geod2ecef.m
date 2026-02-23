@@ -1,6 +1,6 @@
 function [xyz ell] = map_geod2ecef(llh, ell)
 % MAP_GEOD2ECEF Convert points from geodetic system to ECEF system.
-%   [XYZ ELL] = MAP_GEOD2ECEF(LLH, ELL) converts points from a geodetic system 
+%   [XYZ ELL] = MAP_GEOD2ECEF(LLH, ELL) converts points from a geodetic system
 %   to ECEF system.
 %
 %   Inputs:
@@ -19,7 +19,7 @@ function [xyz ell] = map_geod2ecef(llh, ell)
 
 % *****************************************************************
 % See the NOTICE file distributed with this work regarding copyright ownership.
-% 
+%
 % Licensed under the Apache License, Version 2.0 (the "License");
 % you may not use this file except in compliance with the License.
 % You may obtain a copy of the License at
@@ -31,7 +31,7 @@ function [xyz ell] = map_geod2ecef(llh, ell)
 % WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 % See the License for the specific language governing permissions and
 % limitations under the License.
-% 
+%
 % More Information on ASAM OpenCRG can be found here:
 % https://www.asam.net/standards/detail/opencrg/
 %
@@ -90,56 +90,56 @@ end
 % 'Input: - _
 %  Latitude (PHI)& Longitude (LAM) both in decimal degrees; _
 %  Ellipsoidal height (H) and ellipsoid axis dimensions (a & b) all in meters.
-% 
+%
 % 'Convert angle measures to radians
 %     Pi = 3.14159265358979
 %     RadPHI = PHI * (Pi / 180)
 %     RadLAM = LAM * (Pi / 180)
-% 
+%
 % 'Compute eccentricity squared and nu
 %     e2 = ((a ^ 2) - (b ^ 2)) / (a ^ 2)
 %     V = a / (Sqr(1 - (e2 * ((Sin(RadPHI)) ^ 2))))
-% 
+%
 % 'Compute X
 %     Lat_Long_H_to_X = (V + H) * (Cos(RadPHI)) * (Cos(RadLAM))
-% 
+%
 % End Function
-% 
+%
 % Function Lat_Long_H_to_Y(PHI, LAM, H, a, b)
 % 'Convert geodetic coords lat (PHI), long (LAM) and height (H) to cartesian Y coordinate.
 % 'Input: - _
 %  Latitude (PHI)& Longitude (LAM) both in decimal degrees; _
 %  Ellipsoidal height (H) and ellipsoid axis dimensions (a & b) all in meters.
-% 
+%
 % 'Convert angle measures to radians
 %     Pi = 3.14159265358979
 %     RadPHI = PHI * (Pi / 180)
 %     RadLAM = LAM * (Pi / 180)
-% 
+%
 % 'Compute eccentricity squared and nu
 %     e2 = ((a ^ 2) - (b ^ 2)) / (a ^ 2)
 %     V = a / (Sqr(1 - (e2 * ((Sin(RadPHI)) ^ 2))))
-% 
+%
 % 'Compute Y
 %     Lat_Long_H_to_Y = (V + H) * (Cos(RadPHI)) * (Sin(RadLAM))
-% 
+%
 % End Function
-% 
+%
 % Function Lat_H_to_Z(PHI, H, a, b)
 % 'Convert geodetic coord components latitude (PHI) and height (H) to cartesian Z coordinate.
 % 'Input: - _
 %  Latitude (PHI) decimal degrees; _
 %  Ellipsoidal height (H) and ellipsoid axis dimensions (a & b) all in meters.
-% 
+%
 % 'Convert angle measures to radians
 %     Pi = 3.14159265358979
 %     RadPHI = PHI * (Pi / 180)
-% 
+%
 % 'Compute eccentricity squared and nu
 %     e2 = ((a ^ 2) - (b ^ 2)) / (a ^ 2)
 %     V = a / (Sqr(1 - (e2 * ((Sin(RadPHI)) ^ 2))))
-% 
+%
 % 'Compute X
 %     Lat_H_to_Z = ((V * (1 - e2)) + H) * (Sin(RadPHI))
-% 
+%
 % End Function

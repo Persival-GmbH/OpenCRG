@@ -6,7 +6,7 @@ function [url] = crg_wgs84_wgs2url(wgs, opts)
 %   Inputs:
 %   WGS     (np, 2) arrays of latitude/longitude (north/east) WGS-84
 %           coordinate pairs (in degrees)
-%   OPTS    stuct for method options (optional, no default)
+%   OPTS    struct for method options (optional, no default)
 %   .label  sets label comment text (default: 'OpenCRG road mark')
 %
 %   Outputs:
@@ -15,7 +15,7 @@ function [url] = crg_wgs84_wgs2url(wgs, opts)
 %   Examples:
 %   wgs = [51.477811,-0.001475]  % Greenwich Prime Meridian
 %                                % (Airy's Transit Circle)
-%   url = crg_wgs84_wgs2url(wgs) % generate url sting
+%   url = crg_wgs84_wgs2url(wgs) % generate url string
 %   web(url, '-browser')         % show URL in default browser
 %   Generate URL to show WGS-84 info using Google Maps
 %
@@ -23,7 +23,7 @@ function [url] = crg_wgs84_wgs2url(wgs, opts)
 
 % *****************************************************************
 % See the NOTICE file distributed with this work regarding copyright ownership.
-% 
+%
 % Licensed under the Apache License, Version 2.0 (the "License");
 % you may not use this file except in compliance with the License.
 % You may obtain a copy of the License at
@@ -35,7 +35,7 @@ function [url] = crg_wgs84_wgs2url(wgs, opts)
 % WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 % See the License for the specific language governing permissions and
 % limitations under the License.
-% 
+%
 % More Information on ASAM OpenCRG can be found here:
 % https://www.asam.net/standards/detail/opencrg/
 %

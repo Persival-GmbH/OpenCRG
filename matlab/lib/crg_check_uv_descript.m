@@ -1,7 +1,7 @@
 function [v] = crg_check_uv_descript(uv_descript, posmode)
 % CRG_CHECK_UV_DESCRIPT Check uv_descript and create a v-profile.
 %   CRG_CHECK_UV_DESCRIPT(UV_DESCRIPT, POSMODE) checks whether the uv-description (see below)
-%   is in a valid form and returns the associated v-profile. Otherwise an error occures.
+%   is in a valid form and returns the associated v-profile. Otherwise an error occurs.
 %   Each row of UV_DESCRIPT must be of the following style:
 %
 %   { 'Profile' [u_sect ; u_prof] [v_sect ; vr_prof] }
@@ -50,7 +50,7 @@ function [v] = crg_check_uv_descript(uv_descript, posmode)
 
 % *****************************************************************
 % See the NOTICE file distributed with this work regarding copyright ownership.
-% 
+%
 % Licensed under the Apache License, Version 2.0 (the "License");
 % you may not use this file except in compliance with the License.
 % You may obtain a copy of the License at
@@ -62,7 +62,7 @@ function [v] = crg_check_uv_descript(uv_descript, posmode)
 % WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 % See the License for the specific language governing permissions and
 % limitations under the License.
-% 
+%
 % More Information on ASAM OpenCRG can be found here:
 % https://www.asam.net/standards/detail/opencrg/
 %
@@ -130,7 +130,7 @@ for ii = 1:vn
     end
 end
 
-%% errors detectected ?
+%% errors detected ?
 if ~isequal(error_cnt, 0) || isequal(profile_cnt + random_cnt, 0)
     error('CRG:checkError', 'No valid uv_descript is spezified');
 end

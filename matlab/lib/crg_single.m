@@ -10,14 +10,14 @@ function [data] = crg_single(data)
 %   DATA    input DATA with road data converted to type single.
 %
 %   Examples:
-%   data = crg_single(data); 
+%   data = crg_single(data);
 %       Converts CRG road data to type single.
 %
 %   See also CRG_INTRO.
 
 % *****************************************************************
 % See the NOTICE file distributed with this work regarding copyright ownership.
-% 
+%
 % Licensed under the Apache License, Version 2.0 (the "License");
 % you may not use this file except in compliance with the License.
 % You may obtain a copy of the License at
@@ -29,7 +29,7 @@ function [data] = crg_single(data)
 % WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 % See the License for the specific language governing permissions and
 % limitations under the License.
-% 
+%
 % More Information on ASAM OpenCRG can be found here:
 % https://www.asam.net/standards/detail/opencrg/
 %
