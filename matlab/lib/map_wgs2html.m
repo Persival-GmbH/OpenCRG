@@ -46,7 +46,7 @@ function [file] = map_wgs2html(llh, file, opts)
 
 % *****************************************************************
 % See the NOTICE file distributed with this work regarding copyright ownership.
-% 
+%
 % Licensed under the Apache License, Version 2.0 (the "License");
 % you may not use this file except in compliance with the License.
 % You may obtain a copy of the License at
@@ -58,13 +58,13 @@ function [file] = map_wgs2html(llh, file, opts)
 % WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 % See the License for the specific language governing permissions and
 % limitations under the License.
-% 
+%
 % More Information on ASAM OpenCRG can be found here:
 % https://www.asam.net/standards/detail/opencrg/
 %
 % *****************************************************************
 
-%% process required arguments 
+%% process required arguments
 
 lc = iscell(llh);
 if lc
@@ -238,7 +238,7 @@ else
         else
             beg_pu{ic} = '<h4>Start of Track:</h4>'; %#ok<AGROW>
         end
-        
+
         if(~isempty(wgs{ic}))
             beg_pu{ic} = [beg_pu{ic} '<table style=\"text-align:right\"><tbody>' ...
                 '<tr><td>lat =</td><td>' num2str(wgs{ic}(1,1),'%.6f') '</td></tr>' ...
@@ -250,7 +250,7 @@ else
         else
             beg_pu{ic} = []; %#ok<AGROW>
         end
-        
+
     end
 end
 
@@ -379,11 +379,11 @@ fprintf(fid, '      }\n');
 fprintf(fid, '      let vectorSource = new ol.source.Vector({});\n');
 
 for ic = 1:nc
-    
+
     if isempty(wgs{ic})
         continue;
     end
-    
+
 
     fprintf(fid, '      let startPoint%u = new ol.Feature({\n', ic);
     fprintf(fid, '        geometry: new ol.geom.Point(ol.proj.fromLonLat([%.6f, %.6f])),\n', wgs{ic}(1,2), wgs{ic}(1,1));

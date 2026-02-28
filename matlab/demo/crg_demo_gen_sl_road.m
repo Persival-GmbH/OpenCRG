@@ -1,6 +1,6 @@
 function [ier] = crg_demo_gen_sl_road(filename)
 % CRG_DEMO_GEN_SL_ROAD CRG demo to generate a synthetic crg-file.
-%   CRG_DEMO_GEN_SL_ROAD(FILENAME) demonstrates how a road inluding
+%   CRG_DEMO_GEN_SL_ROAD(FILENAME) demonstrates how a road including
 %   walkline etc. can be generated.
 %
 %  Inputs:
@@ -19,7 +19,7 @@ function [ier] = crg_demo_gen_sl_road(filename)
 
 % *****************************************************************
 % See the NOTICE file distributed with this work regarding copyright ownership.
-% 
+%
 % Licensed under the Apache License, Version 2.0 (the "License");
 % you may not use this file except in compliance with the License.
 % You may obtain a copy of the License at
@@ -31,7 +31,7 @@ function [ier] = crg_demo_gen_sl_road(filename)
 % WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 % See the License for the specific language governing permissions and
 % limitations under the License.
-% 
+%
 % More Information on ASAM OpenCRG can be found here:
 % https://www.asam.net/standards/detail/opencrg/
 %

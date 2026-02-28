@@ -3,7 +3,7 @@ function [pro] = map_check_proj(pro)
 %   [PRO] = MAP_CHECK_PROJ(PRO, LOC) checks and updates map projection struct.
 %%
 %   Inputs:
-%   PRO     projection name or PROJ struct 
+%   PRO     projection name or PROJ struct
 %
 %   Outputs:
 %   PRO     PROJ struct
@@ -16,7 +16,7 @@ function [pro] = map_check_proj(pro)
 
 % *****************************************************************
 % See the NOTICE file distributed with this work regarding copyright ownership.
-% 
+%
 % Licensed under the Apache License, Version 2.0 (the "License");
 % you may not use this file except in compliance with the License.
 % You may obtain a copy of the License at
@@ -28,7 +28,7 @@ function [pro] = map_check_proj(pro)
 % WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 % See the License for the specific language governing permissions and
 % limitations under the License.
-% 
+%
 % More Information on ASAM OpenCRG can be found here:
 % https://www.asam.net/standards/detail/opencrg/
 %
@@ -63,9 +63,9 @@ switch nm
         if ~isreal(z) || isnan(z) || (floor(z)~=z) || (z<0) || (z>119)
             error('MAP:checkError', 'illegal GK3 projection zone number %s', zone)
         end
-        
+
         zone = sprintf('%3.3d', z);
-        
+
         f0 = 1;
         p0 = 0;
         l0 = pi/180 * 3*z;
@@ -79,9 +79,9 @@ switch nm
         if ~isreal(z) || isnan(z) || (floor(z)~=z) || (z<0) || (z>59)
             error('MAP:checkError', 'illegal GK6 projection zone number %s', zone)
         end
-        
+
         zone = sprintf('%2.2d', z);
-        
+
         f0 = 1;
         p0 = 0;
         l0 = pi/180 * (6*z - 3);
@@ -104,9 +104,9 @@ switch nm
         if ~isreal(z) || isnan(z) || (floor(z)~=z) || (z<1) || (z>60)
             error('MAP:checkError', 'illegal UTM grid zone number %s', zone(1:end-1))
         end
-        
+
         zone = sprintf('%2.2d%s', z, zone(end:end));
-        
+
         f0 = 0.9996;
         p0 = 0;
         l0 = pi/180 * (6*z - 183);
@@ -122,15 +122,15 @@ switch nm
         l0 = 0; if isfield(pro, 'l0'), l0 = pro.l0; end
         e0 = 0; if isfield(pro, 'e0'), e0 = pro.e0; end
         n0 = 0; if isfield(pro, 'n0'), n0 = pro.n0; end
-        
+
         if ~isempty(zone)
             z = str2double(zone);
             if ~isreal(z) || isnan(z) || (floor(z)~=z) || (z<0) || (z>359)
                 error('MAP:checkError', 'illegal projection center meridian %s', zone)
             end
-            
+
             zone = sprintf('%3.3d', z);
-            
+
             l0 = pi/180 * z;
         end
     otherwise

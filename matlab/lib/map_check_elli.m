@@ -3,7 +3,7 @@ function [ell] = map_check_elli(ell)
 %   [ELL] = MAP_CHECK_ELLI(ELL) checks and updates the ellipsoid struct.
 %
 %   Inputs:
-%   ELL     optional ellipsoid name (default: 'WGS84') or ELLI struct 
+%   ELL     optional ellipsoid name (default: 'WGS84') or ELLI struct
 %
 %   Outputs:
 %   ELL     ELLI struct
@@ -16,7 +16,7 @@ function [ell] = map_check_elli(ell)
 
 % *****************************************************************
 % See the NOTICE file distributed with this work regarding copyright ownership.
-% 
+%
 % Licensed under the Apache License, Version 2.0 (the "License");
 % you may not use this file except in compliance with the License.
 % You may obtain a copy of the License at
@@ -28,7 +28,7 @@ function [ell] = map_check_elli(ell)
 % WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 % See the License for the specific language governing permissions and
 % limitations under the License.
-% 
+%
 % More Information on ASAM OpenCRG can be found here:
 % https://www.asam.net/standards/detail/opencrg/
 %
@@ -101,7 +101,7 @@ switch nm % EPSG data retrieved 2012-11-01 http://www.epsg-registry.org
         b = a*(1 - 1/298.3);
     case 'WGS84' % EPSG::7030
         a = 6378137;
-        b = a*(1 - 1/298.257223563);       
+        b = a*(1 - 1/298.257223563);
     case 'USERDEFINED'
         if isfield(ell, 'a')
             a = ell.a;

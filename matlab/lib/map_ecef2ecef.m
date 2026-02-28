@@ -22,7 +22,7 @@ function [xyzb tran] = map_ecef2ecef(xyza, tran, fwbw)
 
 % *****************************************************************
 % See the NOTICE file distributed with this work regarding copyright ownership.
-% 
+%
 % Licensed under the Apache License, Version 2.0 (the "License");
 % you may not use this file except in compliance with the License.
 % You may obtain a copy of the License at
@@ -34,7 +34,7 @@ function [xyzb tran] = map_ecef2ecef(xyza, tran, fwbw)
 % WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 % See the License for the specific language governing permissions and
 % limitations under the License.
-% 
+%
 % More Information on ASAM OpenCRG can be found here:
 % https://www.asam.net/standards/detail/opencrg/
 %
@@ -43,7 +43,7 @@ function [xyzb tran] = map_ecef2ecef(xyza, tran, fwbw)
 %% check and complement inputs
 
 % FWBW
-if nargin < 3 || isempty(fwbw) 
+if nargin < 3 || isempty(fwbw)
     fwbw = 'F';
 end
 fwbw = upper(fwbw);
@@ -94,7 +94,7 @@ switch nm
         s2 = sin(ry);
         c3 = cos(rz);
         s3 = sin(rz);
-    
+
         s = [c2*c3           -c2*s3           s2; ...
             c1*s3+s1*s2*c3 c1*c3-s1*s2*s3 -s1*c2; ...
             s1*s3-c1*s2*c3 s1*c3+c1*s2*s3  c1*c2]';
@@ -113,7 +113,7 @@ switch nm
             -ry             +rx             1+ds]';
         ds = 0;
 end
-        
+
 %% evaluate transformation
 
 n = size(xyza,1);
@@ -139,49 +139,49 @@ end
 % 'Input: - _
 %  cartesian XYZ coords (X,Y,Z), X translation (DX) all in meters ; _
 %  Y and Z rotations in seconds of arc (Y_Rot, Z_Rot) and scale in ppm (s).
-%  
+%
 % 'Convert rotations to radians and ppm scale to a factor
 %     Pi = 3.14159265358979
 %     sfactor = s * 0.000001
 %     RadY_Rot = (Y_Rot / 3600) * (Pi / 180)
 %     RadZ_Rot = (Z_Rot / 3600) * (Pi / 180)
-%     
+%
 % 'Compute transformed X coord
 %     Helmert_X = X + (X * sfactor) - (Y * RadZ_Rot) + (Z * RadY_Rot) + DX
-%  
+%
 % End Function
-% 
+%
 % Function Helmert_Y(X, Y, Z, DY, X_Rot, Z_Rot, s)
 % 'Computed Helmert transformed Y coordinate.
 % 'Input: - _
 %  cartesian XYZ coords (X,Y,Z), Y translation (DY) all in meters ; _
 %  X and Z rotations in seconds of arc (X_Rot, Z_Rot) and scale in ppm (s).
-%  
+%
 % 'Convert rotations to radians and ppm scale to a factor
 %     Pi = 3.14159265358979
 %     sfactor = s * 0.000001
 %     RadX_Rot = (X_Rot / 3600) * (Pi / 180)
 %     RadZ_Rot = (Z_Rot / 3600) * (Pi / 180)
-%     
+%
 % 'Compute transformed Y coord
 %     Helmert_Y = (X * RadZ_Rot) + Y + (Y * sfactor) - (Z * RadX_Rot) + DY
-%  
+%
 % End Function
-% 
+%
 % Function Helmert_Z(X, Y, Z, DZ, X_Rot, Y_Rot, s)
 % 'Computed Helmert transformed Z coordinate.
 % 'Input: - _
 %  cartesian XYZ coords (X,Y,Z), Z translation (DZ) all in meters ; _
 %  X and Y rotations in seconds of arc (X_Rot, Y_Rot) and scale in ppm (s).
-%  
+%
 % 'Convert rotations to radians and ppm scale to a factor
 %     Pi = 3.14159265358979
 %     sfactor = s * 0.000001
 %     RadX_Rot = (X_Rot / 3600) * (Pi / 180)
 %     RadY_Rot = (Y_Rot / 3600) * (Pi / 180)
-%     
+%
 % 'Compute transformed Z coord
 %     Helmert_Z = (-1 * X * RadY_Rot) + (Y * RadX_Rot) + Z + (Z * sfactor) + DZ
-%  
+%
 % End Function
 

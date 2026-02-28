@@ -9,7 +9,7 @@
 
 % *****************************************************************
 % See the NOTICE file distributed with this work regarding copyright ownership.
-% 
+%
 % Licensed under the Apache License, Version 2.0 (the "License");
 % you may not use this file except in compliance with the License.
 % You may obtain a copy of the License at
@@ -21,7 +21,7 @@
 % WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 % See the License for the specific language governing permissions and
 % limitations under the License.
-% 
+%
 % More Information on ASAM OpenCRG can be found here:
 % https://www.asam.net/standards/detail/opencrg/
 %
@@ -31,11 +31,11 @@
 %
 % * UTM (UTM2BLH, BLH2UTM)
 % * GK (GK2BLH, BLH2GK)
-% * .. 
+% * ..
 %
 
 % DEFAULT SETTINGS
-% clear enviroment
+% clear environment
 clear all;
 close all;
 clc;
@@ -43,7 +43,7 @@ clc;
 % display format
 format long g;
 
-% example position ASAM e.V. 
+% example position ASAM e.V.
 % (Altlaufstraße 40, 85635 Höhenkirchen-Siegertsbrunn)
 org_llh = [	48.02331, 11.71584, 584.0]; % WGS84
 

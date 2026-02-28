@@ -67,7 +67,7 @@ function [data] = crg_gen_csb2crg0(inc, u, v, c, s, b)
 
 % *****************************************************************
 % See the NOTICE file distributed with this work regarding copyright ownership.
-% 
+%
 % Licensed under the Apache License, Version 2.0 (the "License");
 % you may not use this file except in compliance with the License.
 % You may obtain a copy of the License at
@@ -79,7 +79,7 @@ function [data] = crg_gen_csb2crg0(inc, u, v, c, s, b)
 % WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 % See the License for the specific language governing permissions and
 % limitations under the License.
-% 
+%
 % More Information on ASAM OpenCRG can be found here:
 % https://www.asam.net/standards/detail/opencrg/
 %
@@ -192,7 +192,7 @@ for ii = 1:size(c,1);
     end
     if csum + len > uran
         err_cnt = err_cnt + 1;
-        warning('CRG:checkWarning', [ num2str(ii) '. curvature length = ' num2str(len) ' exeeds range of u - coordinate. => fatal']);
+        warning('CRG:checkWarning', [ num2str(ii) '. curvature length = ' num2str(len) ' exceeds range of u - coordinate. => fatal']);
     end
     csum = csum + len;
 end
@@ -213,7 +213,7 @@ for ii = 1:size(s,1)
     end
     if ssum + len > uran
         err_cnt = err_cnt + 1;
-        warning('CRG:checkWarning', [ num2str(ii) '. slope length = ' num2str(len) ' exeeds range of u - coordinate. => fatal']);
+        warning('CRG:checkWarning', [ num2str(ii) '. slope length = ' num2str(len) ' exceeds range of u - coordinate. => fatal']);
     end
     ssum = ssum + len;
 end
@@ -233,7 +233,7 @@ for ii = 1:size(b,1)
     end
     if bsum + len > uran
         err_cnt = err_cnt + 1;
-        warning('CRG:checkWarning', [ num2str(ii) '. banking length = ' num2str(len) ' exeeds range of u - coordinate. => fatal']);
+        warning('CRG:checkWarning', [ num2str(ii) '. banking length = ' num2str(len) ' exceeds range of u - coordinate. => fatal']);
     end
     bsum = bsum + len;
 end

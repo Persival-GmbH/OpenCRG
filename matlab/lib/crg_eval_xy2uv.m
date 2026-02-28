@@ -20,7 +20,7 @@ function [puv, data] = crg_eval_xy2uv(data, pxy)
 
 % *****************************************************************
 % See the NOTICE file distributed with this work regarding copyright ownership.
-% 
+%
 % Licensed under the Apache License, Version 2.0 (the "License");
 % you may not use this file except in compliance with the License.
 % You may obtain a copy of the License at
@@ -32,7 +32,7 @@ function [puv, data] = crg_eval_xy2uv(data, pxy)
 % WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 % See the License for the specific language governing permissions and
 % limitations under the License.
-% 
+%
 % More Information on ASAM OpenCRG can be found here:
 % https://www.asam.net/standards/detail/opencrg/
 %
@@ -122,7 +122,7 @@ end
 iu = 0;
 if ohisto > 0
     if nhisto > 0
-        error('CRG:evalError', 'mixing of history seach and explicit history point no. not allowed')
+        error('CRG:evalError', 'mixing of history search and explicit history point no. not allowed')
     end
     if ohisto > mhisto
         error('CRG:evalError', 'history size of %d insufficient to store history point no.=%d', mhisto, ohisto)
@@ -334,7 +334,7 @@ for ip = 1:np
         continue
     end
 
-    % evaluate v as distance between P and line trough P2-P1
+    % evaluate v as distance between P and line through P2-P1
     % by calculating the normalized cross product
     % (P2-P1)x(P-P1) / |P2-P1|
     x2x1 = x2-x1;

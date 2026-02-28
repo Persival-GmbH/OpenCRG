@@ -1,6 +1,6 @@
 function [phi ell pro] = map_ptm_north2initiallat(north, ell, pro)
 % MAP_PTM_NORTH2INITIALLAT Transverse mercator utility function.
-%   [PHI ELL PRO] = MAP_PTM_NORTH2INITIALLAT(PHI, ELL, PRO) computes the 
+%   [PHI ELL PRO] = MAP_PTM_NORTH2INITIALLAT(PHI, ELL, PRO) computes the
 %   initial latitude values needed for the transverse mercator projections.
 %
 %   Inputs:
@@ -21,7 +21,7 @@ function [phi ell pro] = map_ptm_north2initiallat(north, ell, pro)
 
 % *****************************************************************
 % See the NOTICE file distributed with this work regarding copyright ownership.
-% 
+%
 % Licensed under the Apache License, Version 2.0 (the "License");
 % you may not use this file except in compliance with the License.
 % You may obtain a copy of the License at
@@ -33,7 +33,7 @@ function [phi ell pro] = map_ptm_north2initiallat(north, ell, pro)
 % WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 % See the License for the specific language governing permissions and
 % limitations under the License.
-% 
+%
 % More Information on ASAM OpenCRG can be found here:
 % https://www.asam.net/standards/detail/opencrg/
 %
@@ -75,13 +75,13 @@ m = 10;
 while i < m
     phi = phi + (nn0-marc)/(a*f0);
     marc = map_ptm_phi2marc(phi, ell, pro);
-    
+
     mabs = max(abs(nn0-marc));
-    
+
     if mabs < 2*aeps
         break
     end
-    
+
     i = i+1;
 end
 
@@ -106,27 +106,27 @@ end
 %  latitude of false origin (PHI0) IN RADIANS; _
 %  n (computed from a, b and f0) and _
 %  ellipsoid semi major axis multiplied by central meridian scale factor (bf0) in meters.
-%  
+%
 % 'REQUIRES THE "Marc" FUNCTION
 % 'THIS FUNCTION IS CALLED BY THE "E_N_to_Lat", "E_N_to_Long" and "E_N_to_C" FUNCTIONS
 % 'THIS FUNCTION IS ALSO USED ON IT'S OWN IN THE  "Projection and Transformation Calculations.xls" SPREADSHEET
-% 
+%
 % 'First PHI value (PHI1)
 %     PHI1 = ((North - n0) / afo) + PHI0
-%     
+%
 % 'Calculate M
 %     M = Marc(bfo, n, PHI0, PHI1)
-%     
+%
 % 'Calculate new PHI value (PHI2)
 %     PHI2 = ((North - n0 - M) / afo) + PHI1
-%     
+%
 % 'Iterate to get final value for InitialLat
 %     Do While Abs(North - n0 - M) > 0.00001
 %         PHI2 = ((North - n0 - M) / afo) + PHI1
 %         M = Marc(bfo, n, PHI0, PHI2)
 %         PHI1 = PHI2
 %     Loop
-%     
+%
 %     InitialLat = PHI2
-%     
+%
 % End Function
