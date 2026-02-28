@@ -1436,11 +1436,11 @@ parseFileHeader( CrgDataStruct* crgData, char **dataPtr, size_t* nBytesLeft )
             case dFileSectionFile:
                 cbs = sLoaderCallbacksFile;
                 break;
-                
+
             case dFileSectionRoadCrgMpro:
                 cbs = sLoaderCallbacksMpro;
                 break;
-                
+
             default:
                 cbs = sLoaderCallbacksCommon;
                 break;
