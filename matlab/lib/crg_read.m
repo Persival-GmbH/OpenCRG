@@ -146,6 +146,8 @@ if isfield(data, 'opts')
                 data.opts.wmsg = ovalue;
             case 'warn_curv_local'
                 data.opts.wcvl = ovalue;
+            case 'warn_curv_global'
+                data.opts.wcvg = ovalue;
             case 'log_msgs'
                 data.opts.lmsg = ovalue;
             case 'log_eval'

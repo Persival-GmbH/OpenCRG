@@ -51,43 +51,43 @@ ierr = 0;
 
 %% Test 1
 disp("----- Test 1: global & local curvature check -----");
-% set opts warn_curv_local (if not set)
-if ~isfield(data0.opts, 'wcvl')
-    data0.opts.wcvl = 1;
-end
+% set opts warn_curv_local
+data0.opts.wcvl = 1;
 [data0, ierr, idxArr0] = crg_check_curvature(data0, ierr);
 
 %% Test 2
 disp("----- Test 2: global & local curvature check -----");
-% set opts warn_curv_local (if not set)
-if ~isfield(data1.opts, 'wcvl')
-    data1.opts.wcvl = 1;
-end
+% set opts warn_curv_local
+data1.opts.wcvl = 1;
 [data1, ierr, idxArr1] = crg_check_curvature(data1, ierr);
 
 %% plotting test files and error regions
 % preparing data for plots (set temp ok)
 data0.ok = 1;
+data1.ok = 1;
 
 disp("----- plotting -----");
 figure;
 subplot(2,2,1)
 hold on
 crg_plot_refline_xyz_map(data0);
+legend('ref line','start','end')
 if ~isempty(idxArr0)
     crg_plot_refline_xyz_map(data0, idxArr0);   % error region
+    legend('ref line','start','end','error region','error start','error end')
 end
 hold off
-legend('ref line','start','end','error region','start','end')
+legend('ref line','start','end','error region','error start','error end')
 title('File 1: failing global and local curvature test')
 subplot(2,2,2)
 hold on
 crg_plot_refline_xyz_map(data1);
+legend('ref line','start','end')
 if ~isempty(idxArr1)
     crg_plot_refline_xyz_map(data1, idxArr1);   % error region
+    legend('ref line','start','end','error region','start','end')
 end
 hold off
-legend('ref line','start','end','error region','start','end')
 title('File 2: failing global but succeeding local curvature test')
 subplot(2,2,3)
 crg_plot_road_xyz_map(data0);
