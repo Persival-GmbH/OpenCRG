@@ -99,6 +99,6 @@ pz = crg_eval_uv2z(data, [100 0]);
 
 ==== Related Topics
 
-- <<Reading an OpenCRG file>>
+- <<Reading OpenCRG files>>
 - <<Creating and deleting contact points>>
 - <<Map projection data>>

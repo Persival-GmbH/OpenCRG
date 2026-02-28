@@ -1,11 +1,11 @@
 %% Usage of CRG_TEST_MAP_PRO
 % Introducing the usage of crg_map_uv2uv and crg_map_xy2xy.
 % Examples are included.
-% The file comments are optimized for the matlab publishing makro.
+% The file comments are optimized for the matlab publishing macro.
 
 % *****************************************************************
 % See the NOTICE file distributed with this work regarding copyright ownership.
-% 
+%
 % Licensed under the Apache License, Version 2.0 (the "License");
 % you may not use this file except in compliance with the License.
 % You may obtain a copy of the License at
@@ -17,7 +17,7 @@
 % WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 % See the License for the specific language governing permissions and
 % limitations under the License.
-% 
+%
 % More Information on ASAM OpenCRG can be found here:
 % https://www.asam.net/standards/detail/opencrg/
 %
@@ -38,7 +38,7 @@
 % * plotting deviation
 
 % DEFAULT SETTINGS
-% clear enviroment
+% clear environment
 close all;
 clear all;
 clc;
@@ -66,7 +66,7 @@ web('crg_refline_Hoki_HoeKi_Grafing_approx.html', '-browser');
 %% Test2 ( add map pro entry and check data consistency)
 
 % removing all remaining wgs84 coordinates (for test purposes only)
-crg_orig.head = rmfield(crg_orig.head,'ebeg');   
+crg_orig.head = rmfield(crg_orig.head,'ebeg');
 crg_orig.head = rmfield(crg_orig.head,'nbeg');
 
 % copy data and change file name
@@ -80,7 +80,7 @@ mpro.proj.nm='UTM_32U';
 % perform check to validate and complete mpro entry
 crg_mpro.mpro=map_check(mpro);
 
-% check data consistency (adds new caluclated wgs84 coordinates using mpro)
+% check data consistency (adds new calculated wgs84 coordinates using mpro)
 crg_mpro=crg_check_wgs84(crg_mpro);
 
 % create html

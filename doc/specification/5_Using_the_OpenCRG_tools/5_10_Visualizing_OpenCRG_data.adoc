@@ -130,4 +130,4 @@ crg = crg_show(data);
 
 ==== Related topics
 
-* <<Reading an OpenCRG file>>
+* <<Reading OpenCRG files>>

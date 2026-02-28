@@ -7,7 +7,7 @@ function [y] = smooth_firfilt(x, w, opts)
 %   X       Data to be filtered. If X is a matrix, SMOOTH_FILTER operates
 %           on the columns of X.
 %   W       FIR filter window width on each side of the center value.
-%   OPTS    (optional) stuct array with
+%   OPTS    (optional) struct array with
 %       .reflect    reflection mode to extrapolate input data at begin and
 %                   end to have start-up and ending transients as desired.
 %                   'line' extrapolates by (line) reflection at begin and
@@ -43,7 +43,7 @@ function [y] = smooth_firfilt(x, w, opts)
 
 % *****************************************************************
 % See the NOTICE file distributed with this work regarding copyright ownership.
-% 
+%
 % Licensed under the Apache License, Version 2.0 (the "License");
 % you may not use this file except in compliance with the License.
 % You may obtain a copy of the License at
@@ -55,7 +55,7 @@ function [y] = smooth_firfilt(x, w, opts)
 % WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 % See the License for the specific language governing permissions and
 % limitations under the License.
-% 
+%
 % More Information on ASAM OpenCRG can be found here:
 % https://www.asam.net/standards/detail/opencrg/
 %

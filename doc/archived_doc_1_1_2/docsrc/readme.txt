@@ -1,6 +1,6 @@
 Welcome to the OpenCRG documentation source. This set of
-script files let you visualize the test and dokumention files as well as
-formating your own scripts like openCRG dokumentations.
+script files let you visualize the test and documentation files as well as
+formatting your own scripts like openCRG documentations.
 
 make (Linux):
 

@@ -144,6 +144,6 @@ enh_gk = map_global2plocal(llh, mpro)
 
 ==== Related topics
 
-* <<Reading an OpenCRG file>>
+* <<Reading OpenCRG files>>
 * <<Evaluating OpenCRG data>>
 * <<Map projection data>>

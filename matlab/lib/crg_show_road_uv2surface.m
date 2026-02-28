@@ -1,6 +1,6 @@
 function [data] = crg_show_road_uv2surface(data, u, v)
 % CRG_SHOW_ELGRID_UV2SURFACE Visualize the road surface on a given grid.
-%   DATA = CRG_SHOW_ELGRID_UV2SURFACE(DATA, U, V) visualizes the road surface 
+%   DATA = CRG_SHOW_ELGRID_UV2SURFACE(DATA, U, V) visualizes the road surface
 %   via orthographic images and 3-dimensional surface plots on a given grid.
 %
 %   Inputs:
@@ -17,7 +17,7 @@ function [data] = crg_show_road_uv2surface(data, u, v)
 %
 % *****************************************************************
 % See the NOTICE file distributed with this work regarding copyright ownership.
-% 
+%
 % Licensed under the Apache License, Version 2.0 (the "License");
 % you may not use this file except in compliance with the License.
 % You may obtain a copy of the License at
@@ -29,7 +29,7 @@ function [data] = crg_show_road_uv2surface(data, u, v)
 % WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 % See the License for the specific language governing permissions and
 % limitations under the License.
-% 
+%
 % More Information on ASAM OpenCRG can be found here:
 % https://www.asam.net/standards/detail/opencrg/
 %
@@ -37,7 +37,7 @@ function [data] = crg_show_road_uv2surface(data, u, v)
 
 %% first check, fix and complement DATA
 
-%% check if already succesfully checked
+%% check if already successfully checked
 
 if ~isfield(data, 'ok')
     data = crg_check(data);

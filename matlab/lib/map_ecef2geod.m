@@ -19,7 +19,7 @@ function [llh ell] = map_ecef2geod(xyz, ell)
 
 % *****************************************************************
 % See the NOTICE file distributed with this work regarding copyright ownership.
-% 
+%
 % Licensed under the Apache License, Version 2.0 (the "License");
 % you may not use this file except in compliance with the License.
 % You may obtain a copy of the License at
@@ -31,7 +31,7 @@ function [llh ell] = map_ecef2geod(xyz, ell)
 % WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 % See the License for the specific language governing permissions and
 % limitations under the License.
-% 
+%
 % More Information on ASAM OpenCRG can be found here:
 % https://www.asam.net/standards/detail/opencrg/
 %
@@ -82,12 +82,12 @@ while i < m
     sinphi = sin(phi);
     cosphi = cos(phi);
     b1 = atan2((1-f)*sinphi, cosphi);
-    
+
     mabs = max(abs(b1-b0));
     if mabs < 2*beps
         break
     end
-    
+
     i = i + 1;
 end
 if (i == m) && (mabs > 10*beps)
@@ -118,22 +118,22 @@ end
 % 'Convert XYZ to Latitude (PHI) in Dec Degrees.
 % 'Input: - _
 %  XYZ cartesian coords (X,Y,Z) and ellipsoid axis dimensions (a & b), all in meters.
-% 
+%
 % 'THIS FUNCTION REQUIRES THE "Iterate_XYZ_to_Lat" FUNCTION
 % 'THIS FUNCTION IS CALLED BY THE "XYZ_to_H" FUNCTION
-% 
+%
 %     RootXYSqr = Sqr((X ^ 2) + (Y ^ 2))
 %     e2 = ((a ^ 2) - (b ^ 2)) / (a ^ 2)
 %     PHI1 = Atn(Z / (RootXYSqr * (1 - e2)))
-%     
+%
 %     PHI = Iterate_XYZ_to_Lat(a, e2, PHI1, Z, RootXYSqr)
-%     
+%
 %     Pi = 3.14159265358979
-%     
+%
 %     XYZ_to_Lat = PHI * (180 / Pi)
-% 
+%
 % End Function
-% 
+%
 % Function Iterate_XYZ_to_Lat(a, e2, PHI1, Z, RootXYSqr)
 % 'Iteratively computes Latitude (PHI).
 % 'Input: - _
@@ -142,68 +142,68 @@ end
 %  estimated value for latitude (PHI1) in radians; _
 %  cartesian Z coordinate (Z) in meters; _
 %  RootXYSqr computed from X & Y in meters.
-% 
+%
 % 'THIS FUNCTION IS CALLED BY THE "XYZ_to_PHI" FUNCTION
 % 'THIS FUNCTION IS ALSO USED ON IT'S OWN IN THE _
 %  "Projection and Transformation Calculations.xls" SPREADSHEET
-% 
-% 
+%
+%
 %     V = a / (Sqr(1 - (e2 * ((Sin(PHI1)) ^ 2))))
 %     PHI2 = Atn((Z + (e2 * V * (Sin(PHI1)))) / RootXYSqr)
-%     
+%
 %     Do While Abs(PHI1 - PHI2) > 0.000000001
 %         PHI1 = PHI2
 %         V = a / (Sqr(1 - (e2 * ((Sin(PHI1)) ^ 2))))
 %         PHI2 = Atn((Z + (e2 * V * (Sin(PHI1)))) / RootXYSqr)
 %     Loop
-% 
+%
 %     Iterate_XYZ_to_Lat = PHI2
-% 
+%
 % End Function
-% 
+%
 % Function XYZ_to_Long(X, Y)
 % 'Convert XYZ to Longitude (LAM) in Dec Degrees.
 % 'Input: - _
 %  X and Y cartesian coords in meters.
-% 
+%
 %     Pi = 3.14159265358979
-%     
+%
 % 'tailor the output to fit the equatorial quadrant as determined by the signs of X and Y
 %     If X >= 0 Then 'longitude is in the W90 thru 0 to E90 hemisphere
 %         XYZ_to_Long = (Atn(Y / X)) * (180 / Pi)
 %     End If
-%     
+%
 %     If X < 0 And Y >= 0 Then 'longitude is in the E90 to E180 quadrant
 %         XYZ_to_Long = ((Atn(Y / X)) * (180 / Pi)) + 180
 %     End If
-%     
+%
 %     If X < 0 And Y < 0 Then 'longitude is in the E180 to W90 quadrant
 %         XYZ_to_Long = ((Atn(Y / X)) * (180 / Pi)) - 180
 %     End If
-%     
-% 
+%
+%
 % End Function
-% 
+%
 % Function XYZ_to_H(X, Y, Z, a, b)
 % 'Convert XYZ to Ellipsoidal Height.
 % 'Input: - _
 %  XYZ cartesian coords (X,Y,Z) and ellipsoid axis dimensions (a & b), all in meters.
-% 
+%
 % 'REQUIRES THE "XYZ_to_Lat" FUNCTION
-% 
+%
 % 'Compute PHI (Dec Degrees) first
 %     PHI = XYZ_to_Lat(X, Y, Z, a, b)
-% 
+%
 % 'Convert PHI radians
 %     Pi = 3.14159265358979
 %     RadPHI = PHI * (Pi / 180)
-%     
+%
 % 'Compute H
 %     RootXYSqr = Sqr((X ^ 2) + (Y ^ 2))
 %     e2 = ((a ^ 2) - (b ^ 2)) / (a ^ 2)
 %     V = a / (Sqr(1 - (e2 * ((Sin(RadPHI)) ^ 2))))
 %     H = (RootXYSqr / Cos(RadPHI)) - V
-%     
+%
 %     XYZ_to_H = H
-%     
+%
 % End Function

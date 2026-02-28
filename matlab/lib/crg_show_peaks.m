@@ -1,7 +1,7 @@
 function [data] = crg_show_peaks(data, pindex, su, sv, iu, iv)
 % CRG_SHOW_PEAKS Visualize peaks.
 %   DATA = CRG_SHOW_PEAKS(DATA, PINDEX, SU, SV, IU, IV) visualizes peaks in
-%   OpenCRG data. Peaks are usually identified via CRG_PEAKFINDER. 
+%   OpenCRG data. Peaks are usually identified via CRG_PEAKFINDER.
 %   The plots and the display of peaks in these plots can be
 %   limited to a selected area of the grid.
 %
@@ -29,7 +29,7 @@ function [data] = crg_show_peaks(data, pindex, su, sv, iu, iv)
 
 % *****************************************************************
 % See the NOTICE file distributed with this work regarding copyright ownership.
-% 
+%
 % Licensed under the Apache License, Version 2.0 (the "License");
 % you may not use this file except in compliance with the License.
 % You may obtain a copy of the License at
@@ -41,7 +41,7 @@ function [data] = crg_show_peaks(data, pindex, su, sv, iu, iv)
 % WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 % See the License for the specific language governing permissions and
 % limitations under the License.
-% 
+%
 % More Information on ASAM OpenCRG can be found here:
 % https://www.asam.net/standards/detail/opencrg/
 %
@@ -68,7 +68,7 @@ if sv > iv
     error('CRG:showError', 'index iv less than visualized area of peaks sv');
 end
 
-%% check if already succesfully checked
+%% check if already successfully checked
 
 if ~isfield(data, 'ok')
     data = crg_check(data);

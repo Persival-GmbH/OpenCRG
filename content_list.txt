@@ -1,10 +1,10 @@
 /**********************************************************************************
  ***  ASAM OpenCRG                                                            	***
- ***  Version : 1.2.1                                                           ***
- ***  Date:  October 21, 2025                                                   ***
+ ***  Version : 2.0.0                                                           ***
+ ***  Date:  February 02, 2026                                                   ***
  **********************************************************************************/
 
-the deliverables of ASAM OpenCRG 1.2.1 include:
+the deliverables of ASAM OpenCRG 2.0.0 include:
 
 - c-api
 	 +.gitignore

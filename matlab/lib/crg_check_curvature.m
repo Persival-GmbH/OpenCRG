@@ -14,8 +14,8 @@ function [data, ierr, idxArr] = crg_check_curvature(data, ierr)
 %   DATA    is a checked, purified, and eventually completed version of
 %           the function input argument DATA
 %   IERR    summed up number of errors
-%   IDXARR  array containing start and end index, where local error occured
-%           if no local error occured an empty error is returned
+%   IDXARR  array containing start and end index, where local error occurred
+%           if no local error occurred an empty error is returned
 %
 %   Examples:
 %   data = crg_check_curvature(data)
@@ -25,7 +25,7 @@ function [data, ierr, idxArr] = crg_check_curvature(data, ierr)
 
 % *****************************************************************
 % See the NOTICE file distributed with this work regarding copyright ownership.
-% 
+%
 % Licensed under the Apache License, Version 2.0 (the "License");
 % you may not use this file except in compliance with the License.
 % You may obtain a copy of the License at
@@ -37,7 +37,7 @@ function [data, ierr, idxArr] = crg_check_curvature(data, ierr)
 % WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 % See the License for the specific language governing permissions and
 % limitations under the License.
-% 
+%
 % More Information on ASAM OpenCRG can be found here:
 % https://www.asam.net/standards/detail/opencrg/
 %
@@ -94,11 +94,11 @@ if wcvl > 0 && icerr > 0
         was_not_ok = data.ok;
     end
     data.ok = 0;
-    
+
     % reference line u-values
     uges = data.head.ubeg:data.head.uinc:data.head.uend;
     uinc = data.head.uinc;
-    
+
     % reference line radius of curvature
     % no check for rc equals zero before division because IEEE 754 defines 1.0/0.0 = Inf
     vec_r = 1./[data.rc(1),data.rc,data.rc(end)];
@@ -108,11 +108,11 @@ if wcvl > 0 && icerr > 0
     u_in_limits = uges(r_in_limits)';
     v_in_limits = vec_r(r_in_limits)';
     clear vec_r r_in_limits
-    
+
     % check if any z are non nan where radius of curvature is in limits
     z_in_limits = crg_eval_uv2z(data,[u_in_limits, v_in_limits]);
     z_is_valid  = ~isnan(z_in_limits);
-    
+
     % if all z are nan then check succeeded
     if ~any(z_is_valid)
         warning('local curvature check succeeded - critical curvature areas in NaN regions')
@@ -120,12 +120,12 @@ if wcvl > 0 && icerr > 0
     else
         warning('local curvature check failed - critical curvature areas in z-value regions')
         ierr = ierr + 1;
-        
+
         % find iu where check fails and store first and last
         u_check_fail = u_in_limits(z_is_valid);
         idxArr = 1 + (u_check_fail([1, end])' - data.head.ubeg)./uinc;
     end
-    
+
     if was_not_ok || ierr > 0
         % remove ok
         data = rmfield(data, 'ok');

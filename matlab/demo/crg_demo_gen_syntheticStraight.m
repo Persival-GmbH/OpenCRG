@@ -1,5 +1,5 @@
 function [] = crg_demo_gen_syntheticStraight()
-% CRG_DEMO_GEN_SYNTHETICSTRAIGHTREFLINE CRG demo to generate a synthetic straigth OpenCRG file.
+% CRG_DEMO_GEN_SYNTHETICSTRAIGHTREFLINE CRG demo to generate a synthetic straight OpenCRG file.
 %   CRG_DEMO_GEN_SYNTHETICSTRAIGHT() demonstrates how a simple straight OpenCRG file can be
 %   generated.
 %
@@ -10,7 +10,7 @@ function [] = crg_demo_gen_syntheticStraight()
 
 % *****************************************************************
 % See the NOTICE file distributed with this work regarding copyright ownership.
-% 
+%
 % Licensed under the Apache License, Version 2.0 (the "License");
 % you may not use this file except in compliance with the License.
 % You may obtain a copy of the License at
@@ -22,7 +22,7 @@ function [] = crg_demo_gen_syntheticStraight()
 % WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 % See the License for the specific language governing permissions and
 % limitations under the License.
-% 
+%
 % More Information on ASAM OpenCRG can be found here:
 % https://www.asam.net/standards/detail/opencrg/
 %

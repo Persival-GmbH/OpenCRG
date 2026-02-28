@@ -40,7 +40,7 @@ function [data] = ipl_read(filename, opts)
 
 % *****************************************************************
 % See the NOTICE file distributed with this work regarding copyright ownership.
-% 
+%
 % Licensed under the Apache License, Version 2.0 (the "License");
 % you may not use this file except in compliance with the License.
 % You may obtain a copy of the License at
@@ -52,7 +52,7 @@ function [data] = ipl_read(filename, opts)
 % WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 % See the License for the specific language governing permissions and
 % limitations under the License.
-% 
+%
 % More Information on ASAM OpenCRG can be found here:
 % https://www.asam.net/standards/detail/opencrg/
 %
@@ -243,7 +243,7 @@ switch type
                 ipldtype = 'float64';
                 mcount = 10;
         end
-        % workaround for MATLAB bug in verison 7.5 (R2007b) which occurs if
+        % workaround for MATLAB bug in version 7.5 (R2007b) which occurs if
         % first binary number is NaN, where the last fgetl call eats one
         % byte too much (see MATLAB service request 1-988VA1 of 2009-03-15,
         % resulting in bug report 535858 of 2009-04-01)
@@ -309,7 +309,7 @@ switch type
             data.kd_dat = data.kd_dat(1:nr,:);
         end
     case {'LRFI','LDFI'}
-        % read formated data
+        % read formatted data
         switch type
             case 'LDFI'
                 nchar = 20;     % number of characters

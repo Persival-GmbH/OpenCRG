@@ -19,7 +19,7 @@ function [data] = crg_check_data(data)
 
 % *****************************************************************
 % See the NOTICE file distributed with this work regarding copyright ownership.
-% 
+%
 % Licensed under the Apache License, Version 2.0 (the "License");
 % you may not use this file except in compliance with the License.
 % You may obtain a copy of the License at
@@ -31,7 +31,7 @@ function [data] = crg_check_data(data)
 % WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 % See the License for the specific language governing permissions and
 % limitations under the License.
-% 
+%
 % More Information on ASAM OpenCRG can be found here:
 % https://www.asam.net/standards/detail/opencrg/
 %
@@ -136,7 +136,7 @@ if round((uend-ubeg)/uinc)+1 ~= nu
     warning('CRG:checkWarning', 'DATA.u->ubeg/uend/uinc not consistent with number of rows of DATA.z')
     ierr = 1;
 end
-    
+
 data.head.ubeg = ubeg;
 data.head.uend = uend;
 data.head.uinc = uinc;
@@ -233,7 +233,7 @@ if vinc > 0
     else
         data.v = single([vmin vmax]);
     end
-    
+
     if round((vmax-vmin)/vinc)+1 ~= nv
         warning('CRG:checkWarning', 'DATA.v->vmin/vmax/vinc not consistent with number of columns of DATA.z')
         ierr = 1;
@@ -589,7 +589,7 @@ if isfield(data, 'p') && length(data.p)==nu-1 % variable heading (curved refline
 
     % curvature check (global and local)
     [data, ierr] = crg_check_curvature(data, ierr);
-    
+
 else % constant heading (straight refline)
     if ~isfield(data.head, 'xbeg')
         data.head.xbeg = 0;
@@ -762,7 +762,7 @@ function [data] = crg_check_data_rflc(data)
 
 % *****************************************************************
 % See the NOTICE file distributed with this work regarding copyright ownership.
-% 
+%
 % Licensed under the Apache License, Version 2.0 (the "License");
 % you may not use this file except in compliance with the License.
 % You may obtain a copy of the License at
@@ -774,7 +774,7 @@ function [data] = crg_check_data_rflc(data)
 % WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 % See the License for the specific language governing permissions and
 % limitations under the License.
-% 
+%
 % More Information on ASAM OpenCRG can be found here:
 % https://www.asam.net/standards/detail/opencrg/
 %
