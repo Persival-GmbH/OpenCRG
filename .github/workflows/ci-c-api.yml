@@ -1,0 +1,40 @@
+name: CI C-API
+
+on:
+  push:
+    branches: [ "main"  ]
+    paths:
+      - "c-api/baselib/**"
+  pull_request:
+    branches: [ "main"  ]
+    paths:
+      - "c-api/baselib/**"
+
+jobs:
+  build-linux:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: c-api/baselib
+    steps:
+      - uses: actions/checkout@v4
+      - name: make
+        run: make
+
+#  build-windows:
+#    runs-on: windows-latest
+#    defaults:
+#      run:
+#        shell: msys2 {0}
+#        working-directory: c-api/baselib
+#    steps:
+#      - uses: actions/checkout@v4
+#      - uses: msys2/setup-msys2@v2
+#        with:
+#          msystem: MINGW64
+#          update: true
+#          install: >-
+#            make
+#            gcc
+#      - name: make
+#        run: make
