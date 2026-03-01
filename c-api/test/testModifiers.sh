@@ -1,5 +1,6 @@
 #!/bin/sh
 
+cd bin
 DATA_DIR='../../../crg-txt'
 
 runSingleTest()
