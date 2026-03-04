@@ -697,7 +697,7 @@ end
 
 %% check NaNs in DATA.z
 
-cdata.ir = zeros(1, nu);
+data.ir = zeros(1, nu);
 data.il = zeros(1, nu);
 for i = 1:nu
     valid = ~isnan(data.z(i, :));
