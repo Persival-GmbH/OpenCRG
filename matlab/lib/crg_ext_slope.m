@@ -104,18 +104,7 @@ data.s = single(nxui);
 data.head.sbeg = nxui(1);
 data.head.send = nxui(end);
 
-data = rmfield(data, 'rx');
-data = rmfield(data, 'ry');
-data.head = rmfield(data.head, 'xbeg');
-data.head = rmfield(data.head, 'ybeg');
-data.head = rmfield(data.head, 'xend');
-data.head = rmfield(data.head, 'yend');
-data.head = rmfield(data.head, 'zbeg');
 data.head = rmfield(data.head, 'zend');
-if isfield(data.head, 'eend') && isfield(data.head, 'nend')
-    data.head = rmfield(data.head, 'eend');
-    data.head = rmfield(data.head, 'nend');
-end
 if isfield(data.head, 'aend')
     data.head = rmfield(data.head, 'aend');
 end
@@ -124,7 +113,7 @@ dout = crg_check(data);
 
 [XI, YI] = meshgrid(u, v);
 
-z = crg_eval_uv2z(dout, [XI(:), YI(:)]);    % z-values with negative slope
+z = crg_eval_uv2z(dout, [XI(:), YI(:)]) - data.head.zbeg;    % z-values with negative slope
 z = reshape(z, size(XI,1), size(XI,2));
 
 data.z = single(z');

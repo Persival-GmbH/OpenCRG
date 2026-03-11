@@ -11,9 +11,9 @@ function [data] = crg_gen_csb2crg0(inc, u, v, c, s, b)
 %           length(u) == 1: length of reference line
 %           length(u) == 2: start/end value of reference line
 %   V       vector of v values
-%           length(v) == 1: defines half width of road
-%           length(v) == 2: defines right/left edge of road
-%           length(v) == nv: defines length cut positions
+%           length(v) == 1: defines half width of road (positive value)
+%           length(v) == 2: defines right/left edge of road [vmin, vmax]
+%           length(v) == nv: defines length cut positions [vmin, ..., vmax]
 %   C       (nx2)-matrix of polynomial curvature values
 %           c(i,1): u-length
 %           c(i,2): polynomial
@@ -87,9 +87,9 @@ function [data] = crg_gen_csb2crg0(inc, u, v, c, s, b)
 
 %% check input parameter
 
-if ~exist('c', 'var'), c = {}; end
-if ~exist('b', 'var'), b = {}; end
-if ~exist('s', 'var'), s = {}; end
+if nargin < 4, c = {}; end
+if nargin < 5, s = {}; end
+if nargin < 6, b = {}; end
 
 if isempty(inc)     , inc = [0.01 0.01]; end    % default increment
 if length(inc) == 1 , inc = [inc  0.01]; end    % default v-increment
@@ -132,15 +132,16 @@ end
 
 switch length(v)
     case 1  % half width of road
+        if v < 0, error('CRG:checkError', 'half width of road v must be a positive value'); end
         vmax = double(v(1));
         vmin = -vmax;
         vinc = inc(2);
-        nv = ((2*vmax) / vinc)+1;
+        nv = ((2*vmax) / vinc) + 1;
     case 2 % right and left edge of road
         vmin = double(v(1));
         vmax = double(v(2));
         vinc = inc(2);
-        nv = ((abs(vmax)+abs(vmin)) / vinc) +1;
+        nv = ((vmax-vmin) / vinc) + 1;
     otherwise % length cut positions
         vmin = double(v(1));
         vmax = double(v(end));
@@ -163,7 +164,7 @@ end
 
 data.u = u;
 data.v = v;
-data.z = zeros(fix(nu), fix(nv));
+data.z = zeros(round(nu), round(nv), 'single');
 
 txtnum = 0;
 txtnum = txtnum + 1; data.ct{txtnum} = 'CRG minimal artificial road and flat surface';
@@ -184,7 +185,7 @@ uran = uend - ubeg;
 %% simple check of curvature data
 
 csum = 0;
-for ii = 1:size(c,1);
+for ii = 1:size(c,1)
     len = c{ii,1};
     if len < 0 || rem(len,uinc) >= data.opts.cinc || rem(uinc,data.opts.cinc) >= data.opts.ceps
         err_cnt = err_cnt + 1;

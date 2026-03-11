@@ -9,9 +9,9 @@ function [ data ] = crg_rerender( crg, inc, v )
 %           length(inc) == 1: uinc
 %           length(inc) == 2: vinc
 %   V       vector of v values (single)
-%           length(v) == 1: defines half width of road
-%           length(v) == 2: defines right/left edge of road
-%           length(v) == nv: defines length cut positions
+%           length(v) == 1: defines half width of road (positive value)
+%           length(v) == 2: defines right/left edge of road [vmin, vmax]
+%           length(v) == nv: defines length cut positions [vmin, ..., vmax]
 %
 %   Output:
 %   DATA    struct array as defined in CRG_INTRO
@@ -66,24 +66,25 @@ uinc = inc(1);
 u = ubeg:uinc:uend;
 du = ubeg:crg.head.uinc:uend;
 
-vmin = crg.head.vmin;
-vmax = crg.head.vmax;
-
 if length(inc) == 2
     vinc = inc(2);
-    vi = vmin:vinc:vmax;
-%     v = [vi(1) vi(end)];
 else
     if isfield(crg.head, 'vinc'), vinc = crg.head.vinc;
-    else vinc = dvinc; end
-    switch length(v)
-        case 1
-            vi = -v:vinc:v;
-        case 2
-            vi = v(1):vinc:v(2);
-        otherwise
-            vi = v;
-    end
+    else; vinc = dvinc; end
+end
+
+if ~issorted(v)
+    error('CRG:checkError', 'vector DATA.v must be sorted')
+end
+
+switch length(v)
+    case 1
+        if v < 0, error('CRG:checkError', 'half width of road v must be a positive value'); end
+        vi = -v:vinc:v;
+    case 2
+        vi = v(1):vinc:v(2);
+    otherwise
+        vi = v;
 end
 
 %% interpolate reference line ( set u-grid )

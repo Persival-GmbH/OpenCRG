@@ -39,6 +39,7 @@ function [ier] = crg_write(data, file, type)
 % *****************************************************************
 
 %% set default
+
 if nargin < 3
   type = 'KRBI';
 end
@@ -68,7 +69,7 @@ end
 
 crgdat.struct = sdf_add(crgdat.struct, 'CT', c);
 
-%% generate struct data block $OPTS with option data
+%% generate struct data block $ROAD_CRG_OPTS with option data
 
 opts = data.opts;
 
@@ -76,7 +77,7 @@ opts = data.opts;
 default = struct;
 default = crg_check_opts(default);
 f = fieldnames(opts);
-for i = 1:size(f)
+for i = 1:size(f, 1)
     if isfield(default.opts, f{i}) && (opts.(f{i}) == default.opts.(f{i}))
         opts = rmfield(opts, f{i});
     end
@@ -128,7 +129,7 @@ end
 
 clear c opts
 
-%% generate struct data block $MODS with modifier data
+%% generate struct data block $ROAD_CRG_MODS with modifier data
 
 mods = data.mods;
 
@@ -211,13 +212,12 @@ if isfield(head, 'eend'), c{end+1} = sprintf('%s = %24.16e','reference_line_end_
 if isfield(head, 'nend'), c{end+1} = sprintf('%s = %24.16e','reference_line_end_lat   ', head.nend); end
 if isfield(head, 'abeg'), c{end+1} = sprintf('%s = %24.16e','reference_line_start_alt ', head.abeg); end
 if isfield(head, 'aend'), c{end+1} = sprintf('%s = %24.16e','reference_line_end_alt   ', head.aend); end
-if isfield(head, 'rccl'), c{end+1} = sprintf('%s = %24.16e','reference_line_curv_check', head.rccl); end    % //TODO: flag name
 
 crgdat.struct = sdf_add(crgdat.struct, 'ROAD_CRG', c);
 
 clear c head
 
-%% generate struct data blocks $MPRO_* with map projection data
+%% generate struct data block $ROAD_CRG_MPRO with map projection data
 
 if isfield(data, 'mpro') % mapping projection data is available
 

@@ -1,6 +1,6 @@
 function [data] = crg_cut_iuiv(data, iu, iv)
 % CRG_CUT_IUIV Cut out a part of a OpenCRG road.
-%   DATA = CRG_CUT_IUIV(DOUT, IU, IV) cuts out a part of a OpenCRG road.
+%   DATA = CRG_CUT_IUIV(DATA, IU, IV) cuts out a part of a OpenCRG road.
 %
 %   Inputs:
 %   DATA    struct array as defined in CRG_INTRO
@@ -16,6 +16,7 @@ function [data] = crg_cut_iuiv(data, iu, iv)
 %   Examples:
 %   data = crg_cut_iuiv(data, [1000 2000], [10 30])
 %       Cuts selected elevation grid data part.
+%
 %   See also CRG_INTRO.
 
 % *****************************************************************
@@ -117,6 +118,10 @@ if isfield(data.head, 'yoff')
     dout.head.yoff = data.head.yoff;
 end
 
+if isfield(data.head, 'poff')
+    dout.head.poff = data.head.poff;
+end
+
 %% build refline elevation
 
 if isfield(data, 'rz')
@@ -136,19 +141,36 @@ end
 if isfield(data, 'mpro')
     dout.mpro = data.mpro;
 else
-    if isfield(data.head, 'eend')
-        wgs = crg_wgs84_xy2wgs(data, [dout.head.xbeg dout.head.ybeg]);
-        dout.head.nbeg = wgs(1,1);
-        dout.head.ebeg = wgs(1,2);
-        wgs = crg_wgs84_xy2wgs(data, [dout.head.xend dout.head.yend]);
-        dout.head.nend = wgs(1,1);
-        dout.head.eend = wgs(1,2);
-    elseif isfield(data.head, 'ebeg') && (iu(1) == 1)
-        dout.head.nbeg = data.head.nbeg;
-        dout.head.ebeg = data.head.ebeg;
+    if isfield(data.head, 'ebeg')
+        if (iu(1) == 1) && (iu(2) == nu) % TODO: remove && ... after update of crg_check* and others.
+            dout.head.ebeg = data.head.ebeg;
+            dout.head.nbeg = data.head.nbeg;
+        else
+            % deactivated potentially inaccurate or even impossible re-calculation
+            % wgs = crg_wgs84_xy2wgs(data, [dout.head.xbeg dout.head.ybeg]);
+            % dout.head.nbeg = wgs(1,1);
+            % dout.head.ebeg = wgs(1,2);
+            warning('CRG:cutWarning', 'removed WGS84 lon/lat data at refline start.')
+        end
     end
+
+    if isfield(data.head, 'eend')
+        if (iu(2) == nu) && (iu(1) == 1) % TODO: remove && ... after update of crg_check* and others.
+            dout.head.eend = data.head.eend;
+            dout.head.nend = data.head.nend;
+        else
+            % deactivated potentially inaccurate or even impossible re-calculation
+            % wgs = crg_wgs84_xy2wgs(data, [dout.head.xend dout.head.yend]);
+            % dout.head.nend = wgs(1,1);
+            % dout.head.eend = wgs(1,2);
+            warning('CRG:cutWarning', 'removed WGS84 lon/lat data at refline end.')
+        end
+    end
+
     if isfield(data.head, 'abeg')
         dout.head.abeg = data.head.abeg + (dout.head.zbeg - data.head.zbeg);
+    end
+    if isfield(data.head, 'aend')
         dout.head.aend = data.head.aend + (dout.head.zend - data.head.zend);
     end
 end
@@ -194,6 +216,26 @@ end
 %% build elevation grid
 
 dout.z = data.z(iu(1):iu(2), iv(1):iv(2));
+
+%% copy mods field only if empty or default
+
+if isfield(data, 'mods')
+    default = struct;
+    default = crg_check_mods(default);
+    if isempty(fieldnames(data.mods)) || isequal(data.mods, default.mods)
+        dout.mods = data.mods;
+    else
+        dout.mods = struct;
+        warning('CRG:cutWarning', 'removed non-default modifiers in DATA.mods.')
+    end
+    clear default
+end
+
+%% copy opts field
+
+if isfield(data, 'opts')
+    dout.opts = data.opts;
+end
 
 %% copy struct field
 

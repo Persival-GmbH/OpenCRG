@@ -45,10 +45,10 @@ if ~isfield(data, 'ok')
     end
 end
 
-if nargin == 2
-    if pp < 0 || pp > 1
-        error('CRG:checkError', 'smoothness parameter not in interval [0,1]')
-    end
+if nargin < 2, pp = 0.01; end    % default smoothing parameter
+
+if pp < 0 || pp > 1
+    error('CRG:checkError', 'smoothness parameter must be in intervall [0,1]')
 end
 
 %% banking already exists
@@ -95,7 +95,7 @@ for i = 1:nu
     p(i,:) = polyfit( v(~idx) , tempz(~idx) , 1);    % evaluate partial regression line
 end
 
-if exist('pp', 'var')
+if abs(pp-1.0) > eps
     ppxy = spl_smooth(1:nu, p(:,1)', pp, 1:nu);
 else
     ppxy = p(:,1)';
@@ -113,7 +113,7 @@ dout = crg_check(data);
 
 [XI, YI] = meshgrid(u, v);
 
-z = crg_eval_uv2z(dout, [XI(:), YI(:)]);    % z-values with negative slope
+z = crg_eval_uv2z(dout, [XI(:), YI(:)]) - data.head.zbeg;
 
 z = reshape(z, size(XI,1), size(XI,2));
 
