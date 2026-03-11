@@ -1,10 +1,12 @@
 ==== File reference
 
-The optional _file reference_ section contains references to other OpenCRG files. 
+The optional _file reference_ section of a first OpenCRG file references a second OpenCRG file.
 
-The _file reference_ section of an OpenCRG file may reference multiple files. This can be used to separate options and modifiers in control files from files containing actual road data. By referencing both a control file and a road data file, multiple combinations of options, modifiers, and road data can be created without copying the contents.
+A first (incomplete) OpenCRG file with the _file reference_ section can be used to replace options and modifiers of a second (full) OpenCRG file containing actual road data. 
 
-If resolving references results in conflicting definitions, the last definition takes precedence.
+Any empty or non-empty option or modifier section in the first OpenCRG file replaces the equivalent section in the second OpenCRG file.
+Any missing option or modifier section in the first OpenCRG file enables the use of the equivalent section (or it's defaults) in the second OpenCRG file.
+Any further sections and actual road data in the first OpenCRG file are ignored.
 
 ===== Keyword
 
@@ -30,7 +32,7 @@ File references use the following symbols for describing paths.
 ===== Rules
 
 *   An OpenCRG file may contain a _file reference_ section.
-*   A _file reference_ section may contain multiple file references.
+*   A _file reference_ section may contain a single file reference.
 *   File references may use absolute or relative paths.
 *   File references may use environment variables.
 *   A path may be split into several lines. These lines shall not contain leading or trailing spaces, tabs, asterisks, and exclamation marks.
@@ -58,10 +60,9 @@ made_straight.crg
 $crgpath/handmade_straight.crg
 ----
 
-.File reference section containing two file references.
+.File reference section containing a file reference.
 ----
 $ROAD_CRG_FILE
-/home/name/crg-files/control_file.crg
 /home/name/crg-files/road_data.crg
 $!********
 ----

@@ -48,10 +48,14 @@ $ROAD_CRG_MODS                        ! crg runtime evaluation modifiers
   GRID_NAN_OFFSET = 0       ! z offset to be applied for NaNs (def: 0)
 *
 * CRG re-positioning: refline by offset (default: "by refpoint")
+* first rotate:
+* REFLINE_ROTCENTER_X = ?   ! rotation center (default: xbeg)
+* REFLINE_ROTCENTER_Y = ?   ! rotation center (default: ybeg)
+* REFLINE_OFFSET_PHI = 0    ! rotate by rlop around (rlrx, rlry)
+* then translate:
 * REFLINE_OFFSET_X = 0      ! translate by rlox
 * REFLINE_OFFSET_Y = 0      ! translate by rloy
 * REFLINE_OFFSET_Z = 0      ! translate by rloz
-* REFLINE_OFFSET_PHI = 0    ! rotate by rlop around (xbeg, ybeg)
 *
 * CRG re-positioning: refline by refpoint (overwrites "by offset")
 * position (u,v) on reference line:
@@ -61,7 +65,7 @@ $ROAD_CRG_MODS                        ! crg runtime evaluation modifiers
 *
   REFPOINT_V = 0            ! absolute v (default: 0)
 * REFPOINT_V_FRACTION = ?   !   or: relative v
-* REFPOINT_V_OFFSET = 0     ! offset (default: 0)
+  REFPOINT_V_OFFSET = 0     ! offset (default: 0)
 *
 * position (x,y,z) and orientation (phi) in inertial frame:
   REFPOINT_X = 0            ! target position (default: 0)

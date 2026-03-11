@@ -44,9 +44,12 @@ $ROAD_CRG_OPTS                          ! crg runtime evaluation options
 * BORDER_MODE_V = 3             ! repeat
   BORDER_OFFSET_V = 0.0         ! z offset beyond border (default: 0)
 *
+  BORDER_SMOOTH_UBEG = 0.0      ! smoothing zone length at start (d: 0)
+  BORDER_SMOOTH_UEND = 0.0      ! smoothing zone length at end (d: 0)
+*
 * CRG reference line continuation
   REFLINE_CONTINUATION = 0      ! follow linear extrapolation (default)
-* REFLINE_CONTINUATION = 1      ! cclose track
+* REFLINE_CONTINUATION = 1      ! close track
 *
 * CRG reference line search strategy
   REFLINE_SEARCH_FAR = 1.5      ! far value (default: 1.5)
@@ -63,8 +66,6 @@ $ROAD_CRG_OPTS                          ! crg runtime evaluation options
   LOG_MSGS = -1                 ! log messages (default: -1)
   LOG_EVAL = 20                 ! evaluation inputs and outputs (d: 20)
   LOG_EVAL_FREQ = 1             ! how often (default: 1)
-  LOG_EVAL = 20                 ! evaluation inputs and outputs (d: 20)
-  LOG_EVAL_FREQ = 1             ! how often (default: 1)
   LOG_HIST = -1                 ! refline search history (default: -1)
   LOG_HIST_FREQ = 100000        ! how often (default: 100000)
   LOG_STAT = -1                 ! evaluation statistics (default: -1)
@@ -74,4 +75,6 @@ $ROAD_CRG_OPTS                          ! crg runtime evaluation options
   CHECK_EPS = 0.000001          ! expected min. accuracy (default: 1e-6)
   CHECK_INC = 0.001             ! expected min. increm. (default: 1e-3)
   CHECK_TOL = 0.0001            ! expected abs. tol. (default: 0.1*cinc)
+  CHECK_PRO = 0.005             ! expected pro. tolerance (def: 5e-3)
+  CHECK_WGS = 10                ! expected wgs  tolerance (default: 10)
 $!**********************************************************************
