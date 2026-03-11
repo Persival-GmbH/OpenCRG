@@ -17,7 +17,7 @@ jobs:
       run:
         working-directory: c-api/baselib
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: make
         run: make
 
@@ -28,7 +28,7 @@ jobs:
 #        shell: msys2 {0}
 #        working-directory: c-api/baselib
 #    steps:
-#      - uses: actions/checkout@v4
+#      - uses: actions/checkout@v6
 #      - uses: msys2/setup-msys2@v2
 #        with:
 #          msystem: MINGW64
