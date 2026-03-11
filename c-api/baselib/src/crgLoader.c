@@ -71,6 +71,7 @@
 #define dFileSectionOptions             5
 #define dFileSectionModifiers           6
 #define dFileSectionFile                7
+#define dFileSectionRoadCrgMpro         8
 
 #define dDataFormatUndefined       0x0000
 #define dDataFormatCompact         0x0001
@@ -409,12 +410,13 @@ static CrgReaderCallbackStruct	sLoaderCallbacksCommon[] =
    { "$ROAD_CRG_MODS",             setSection,         dFileSectionModifiers        },
    { "$ROAD_CRG_OPTS",             setSection,         dFileSectionOptions          },
    { "$ROAD_CRG_FILE",             setSection,         dFileSectionFile             },
+   { "$ROAD_CRG_MPRO",             setSection,         dFileSectionRoadCrgMpro      },
    { "$ROAD_CRG",                  setSection,         dFileSectionRoadCrg          },
    { "$CT",                        setSection,         dFileSectionComment          },
    { "$KD_DEFINITION",             setSection,         dFileSectionDataDef          },
    { "$$$$",                       setSection,         dFileSectionDataContent      },
    { "$" ,                         setSection,         dFileSectionNone             },
-   { "",                NULL,                 -1 }
+   { "",                           NULL,               -1                           }
 };
 
 static CrgReaderCallbackStruct	sLoaderCallbacksRoad[] =
@@ -441,8 +443,14 @@ static CrgReaderCallbackStruct	sLoaderCallbacksRoad[] =
    { "reference_line_offset_y",    decodeHdrDouble,    dOpcodeRefLineOffsetY        },
    { "reference_line_offset_z",    decodeHdrDouble,    dOpcodeRefLineOffsetZ        },
    { "reference_line_offset_phi",  decodeHdrDouble,    dOpcodeRefLineOffsetPhi      },
+   { "reference_line_start_lon",   decodeHdrDouble,    dOpcodeNone                  },
+   { "reference_line_start_lat",   decodeHdrDouble,    dOpcodeNone                  },
+   { "reference_line_start_alt",   decodeHdrDouble,    dOpcodeNone                  },
+   { "reference_line_end_lon",     decodeHdrDouble,    dOpcodeNone                  },
+   { "reference_line_end_lat",     decodeHdrDouble,    dOpcodeNone                  },
+   { "reference_line_end_alt",     decodeHdrDouble,    dOpcodeNone                  },
    { "$" ,                         setSection,         dFileSectionNone             },
-   { "",                NULL,                 -1 }
+   { "",                           NULL,               -1                           }
 };
 
 static CrgReaderCallbackStruct	sLoaderCallbacksOpts[] =
@@ -503,6 +511,13 @@ static CrgReaderCallbackStruct	sLoaderCallbacksMods[] =
    { "refpoint_phi",         decodeHdrOpMod, dCrgModRefPointPhi             },
    { "$" ,                   setSection,     dFileSectionNone               },
    { "",                     NULL,           -1                             }
+};
+
+static CrgReaderCallbackStruct	sLoaderCallbacksMpro[] =
+{
+   { "proj_nm", decodeHdrOpMod, dOpcodeNone                  },
+   { "$" ,      setSection,     dFileSectionNone             },
+   { "",        NULL,           -1                           }
 };
 
 static CrgReaderCallbackStruct	sLoaderCallbacksDataDef[] =
@@ -1422,6 +1437,10 @@ parseFileHeader( CrgDataStruct* crgData, char **dataPtr, size_t* nBytesLeft )
 
             case dFileSectionFile:
                 cbs = sLoaderCallbacksFile;
+                break;
+
+            case dFileSectionRoadCrgMpro:
+                cbs = sLoaderCallbacksMpro;
                 break;
 
             default:
