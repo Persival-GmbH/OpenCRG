@@ -2,11 +2,11 @@ name: CI C-API
 
 on:
   push:
-    branches: [ "main"  ]
+    branches: [ "master" ]
     paths:
       - "c-api/baselib/**"
   pull_request:
-    branches: [ "main"  ]
+    branches: [ "master" ]
     paths:
       - "c-api/baselib/**"
 
