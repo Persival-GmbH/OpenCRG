@@ -1,14 +1,14 @@
-name: CMake C-API library multi-platform
+name: CMake C-API multi-platform
 
 on:
   push:
     branches: [ "master" ]
     paths:
-      - "c-api/baselib/**"
+      - "c-api/**"
   pull_request:
     branches: [ "master" ]
     paths:
-      - "c-api/baselib/**"
+      - "c-api/**"
 
 jobs:
   build-c-api:
@@ -47,7 +47,7 @@ jobs:
       id: strings
       shell: bash
       run: |
-        SOURCE_DIR="${{ github.workspace }}/c-api/baselib"
+        SOURCE_DIR="${{ github.workspace }}/c-api"
         echo "source-dir=$SOURCE_DIR" >> "$GITHUB_OUTPUT"
         echo "build-output-dir=$SOURCE_DIR/build" >> "$GITHUB_OUTPUT"
 
@@ -63,6 +63,3 @@ jobs:
     - name: Build
       # Note that --config is needed because the default Windows generator is a multi-config generator (Visual Studio generator).
       run: cmake --build ${{ steps.strings.outputs.build-output-dir }} --config ${{ matrix.build_type }}
-
-    - name: Install
-      run: cmake --install ${{ steps.strings.outputs.build-output-dir }}  --config ${{ matrix.build_type }}
