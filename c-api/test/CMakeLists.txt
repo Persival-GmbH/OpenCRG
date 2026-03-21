@@ -14,7 +14,7 @@ add_subdirectory(MemTest)
 add_subdirectory(Scan)
 add_subdirectory(Verify)
 
-# The following executables use non-portable code
+# The following source files use non-portable code
 if(UNIX)
     add_subdirectory(MultiCp)
     add_subdirectory(MultiRead)
