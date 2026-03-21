@@ -1,8 +1,9 @@
+
+include(${CMAKE_CURRENT_LIST_DIR}/OpenCRGCompilerSettings.cmake)
+include(${CMAKE_CURRENT_LIST_DIR}/OpenCRGCommonIncludes.cmake)
+
 # Convenience function to avoid code duplication when building demo/test executables
 function(opencrg_build_demo_executable target)
-
-    include(${CMAKE_CURRENT_FUNCTION_LIST_DIR}/OpenCRGCompilerSettings.cmake)
-    include(${CMAKE_CURRENT_FUNCTION_LIST_DIR}/OpenCRGCommonIncludes.cmake)
 
     if(CMAKE_SOURCE_DIR STREQUAL PROJECT_SOURCE_DIR)
         if(NOT CMAKE_CONFIGURATION_TYPES AND NOT CMAKE_BUILD_TYPE)
