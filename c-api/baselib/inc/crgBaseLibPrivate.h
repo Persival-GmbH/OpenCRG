@@ -29,6 +29,11 @@
 /* include the public part */
 #include "crgBaseLib.h"
 
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+
 /* ====== DEFINITIONS ====== */
 
 /**
@@ -729,5 +734,8 @@ extern int mCrgBigEndian;             /* endian-ness of machine */
     */
     extern int crgPortMsgIsPrintable( int level );
 
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* _CRG_BASELIB_PRIVATE_H */
