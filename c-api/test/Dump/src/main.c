@@ -27,7 +27,6 @@
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
-#include <sys/time.h>
 #include "crgBaseLibPrivate.h"
 
 
@@ -45,7 +44,7 @@ void usage()
 int main( int argc, char** argv )
 {
     char*          filename  = "";
-	FILE*          fPtr      = NULL;
+    FILE*          fPtr      = NULL;
     CrgDataStruct* crgData   = NULL;
     int            dataSetId = 0;
     int            i;

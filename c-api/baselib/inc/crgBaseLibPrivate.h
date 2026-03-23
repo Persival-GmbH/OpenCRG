@@ -29,6 +29,11 @@
 /* include the public part */
 #include "crgBaseLib.h"
 
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+
 /* ====== DEFINITIONS ====== */
 
 /**
@@ -539,7 +544,7 @@ extern int mCrgBigEndian;             /* endian-ness of machine */
     * @param  optionValue  pointer to memory location for return value
     * @return 1 if option is set, otherwise 0
     */
-    extern int crgOptionGetInt( CrgOptionsStruct* optionList, unsigned int optionId, int* optionValue );
+    extern int crgOptionGetInt( const CrgOptionsStruct* optionList, unsigned int optionId, int* optionValue );
 
     /**
     * get the value of a double option
@@ -549,7 +554,7 @@ extern int mCrgBigEndian;             /* endian-ness of machine */
     * @param  optionValue  pointer to memory location for return value
     * @return 1 if option is set, otherwise 0
     */
-    extern int crgOptionGetDouble( CrgOptionsStruct* optionList, unsigned int optionId, double* optionValue );
+    extern int crgOptionGetDouble( const CrgOptionsStruct* optionList, unsigned int optionId, double* optionValue );
 
     /**
     * remove an option from the respective option list
@@ -580,7 +585,7 @@ extern int mCrgBigEndian;             /* endian-ness of machine */
     * @param  optionId    id of the option which is to be queried
     * @return 1 if option is available and valid, otherwise 0
     */
-    extern int crgOptionIsSet( CrgOptionsStruct* optionList, unsigned int optionId );
+    extern int crgOptionIsSet( const CrgOptionsStruct* optionList, unsigned int optionId );
 
     /**
     * check whether a given integer option is available, valid and set to a given value
@@ -589,7 +594,7 @@ extern int mCrgBigEndian;             /* endian-ness of machine */
     * @param  optionValue  desired value of the indicated option
     * @return 1 if option is available and valid and has the given value, otherwise 0
     */
-    extern int crgOptionHasValueInt( CrgOptionsStruct* optionList, unsigned int optionId, int optionValue );
+    extern int crgOptionHasValueInt( const CrgOptionsStruct* optionList, unsigned int optionId, int optionValue );
 
     /**
     * set the default options to be applied when using a contact point for data
@@ -640,7 +645,7 @@ extern int mCrgBigEndian;             /* endian-ness of machine */
     * @param u          the u value (may be modified)
     * @return 1 if u-value has been modified, otherwise 0; error = -1
     */
-    extern int crgEvalu2uvalid( CrgDataStruct *crgData, CrgOptionsStruct* optionList, double* u );
+    extern int crgEvalu2uvalid( const CrgDataStruct *crgData, const CrgOptionsStruct* optionList, double* u );
 
 /* ====== METHODS in crgEvaluv2xy.c ====== */
     /**
@@ -665,7 +670,7 @@ extern int mCrgBigEndian;             /* endian-ness of machine */
     * @param z          pointer to resulting z co-ordinate
     * @return 1 if successful, otherwise 0
     */
-    extern int crgDataEvaluv2z( CrgDataStruct *crgData, CrgOptionsStruct* optionList, double u, double v, double* z );
+    extern int crgDataEvaluv2z( const CrgDataStruct *crgData, const CrgOptionsStruct* optionList, double u, double v, double* z );
 
     /**
     * compute the z value at a given (u,v) position using bilinear interpolation
@@ -697,7 +702,7 @@ extern int mCrgBigEndian;             /* endian-ness of machine */
     * @param curv       pointer to resulting curvature
     * @return 1 if successful, otherwise 0
     */
-    extern int crgDataEvaluv2pk( CrgDataStruct *crgData, CrgOptionsStruct* optionList, double u, double v, double* phi, double* curv );
+    extern int crgDataEvaluv2pk( const CrgDataStruct *crgData, const CrgOptionsStruct* optionList, double u, double v, double* phi, double* curv );
 
 /* ====== METHODS in crgPortability.c ====== */
     /**
@@ -729,5 +734,8 @@ extern int mCrgBigEndian;             /* endian-ness of machine */
     */
     extern int crgPortMsgIsPrintable( int level );
 
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* _CRG_BASELIB_PRIVATE_H */
