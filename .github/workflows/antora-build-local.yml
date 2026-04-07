@@ -16,7 +16,7 @@ permissions:
   id-token: write
 jobs:
   build:
-    name: Build OpenMATERIAL documentation and deploy it to gh-pages
+    name: Build OpenCRG documentation and deploy it to gh-pages
     runs-on: ubuntu-latest
     services:
       kroki:
@@ -40,6 +40,15 @@ jobs:
          path: repo
          fetch-depth: 0 # test if depth in fetch history is required
          submodules: recursive
+
+    - name: Configure Pages
+      uses: actions/configure-pages@v4
+
+    - name: Generate site
+      uses: docker://ghcr.io/asam-ev/project-guide-docker:4
+      with:
+        entrypoint: sh
+        args: repo/run-build.sh # modified based on OSI
 
     - name: Upload Artifacts
       uses: actions/upload-pages-artifact@v3
