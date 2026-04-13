@@ -25,6 +25,7 @@
 
 /* ====== INCLUSIONS ====== */
 #include <stdlib.h>
+#include <stdbool.h>
 
 /* ====== DEFINITIONS ====== */
 
@@ -352,6 +353,13 @@ extern "C"
     */
     extern int crgLoaderReadFile( const char* filename );
 
+    /**
+    * suppress the fatal message if the file was not found in function
+    * crgLoaderAddFile and crgLoaderReadFile
+    * @param suppress   true to suppress, otherwise false
+    */
+    extern void crgLoaderSuppressFileNotFoundFatalMsg( bool suppress );
+
 /* ====== METHODS in crgContactPoint.c ====== */
     /**
     * create a new contact point working on the indicated data set
@@ -455,6 +463,12 @@ extern "C"
     * @return 1 if successful, otherwise 0
     */
     extern int crgContactPointSetHistory( int cpId, int histSize );
+
+    /**
+    * set the size of the history for all contact points
+    * @param histSize  the desired size of the history
+    */
+    extern void crgContactPointSetHistoryForAllPoints( int histSize );
 
 /* ====== METHODS in crgEvalxy2uv.c ====== */
     /**

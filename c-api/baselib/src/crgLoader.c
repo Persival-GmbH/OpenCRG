@@ -24,6 +24,7 @@
 #include "crgBaseLibPrivate.h"
 #include <stdio.h>
 #include <string.h>
+#include <stdbool.h>
 #include <stddef.h>
 #include <stdlib.h>
 #include <sys/types.h>
@@ -542,6 +543,7 @@ int mCrgBigEndian =  0;             /* internal data format is little endian per
 static int mFileLevel =  0;      /* level at which current file is being read (for include files) */
 static int mOptLevel  = -1;      /* level at which current options have been defined              */
 static int mModLevel  = -1;      /* level at which current modifiers have been defined            */
+static bool mSuppressFileNotFoundFatalMsg = false; /* suppress the fatal message if the file was not found in function crgLoaderAddFile and crgLoaderReadFile */
 
 /* ====== IMPLEMENTATION ====== */
 static void
@@ -1993,7 +1995,7 @@ readData( CrgDataStruct* crgData )
 void
 crgLoaderHandleNaNs( CrgDataStruct* crgData, int mode, double offset )
 {
-    int totalNaN   = 0;
+    size_t totalNaN   = 0;
     size_t minIndexLR = crgData->channelV.info.size;
     size_t maxIndexRL = 0;
     size_t i;
@@ -2098,7 +2100,7 @@ crgLoaderHandleNaNs( CrgDataStruct* crgData, int mode, double offset )
 
     crgMsgPrint( dCrgMsgLevelNotice, "crgLoaderHandleNaNs: Summary of NaN handling information:\n" );
     crgMsgPrint( dCrgMsgLevelNotice, "                     NaNs in crg data replaced by constant extrapolation.\n" );
-    crgMsgPrint( dCrgMsgLevelNotice, "                     total NaNs in data [-]:        %d\n", totalNaN );
+    crgMsgPrint( dCrgMsgLevelNotice, "                     total NaNs in data [-]:        %zu\n", totalNaN );
     crgMsgPrint( dCrgMsgLevelNotice, "                     max. NaN count from left [-]:  %ld\n", crgData->channelV.info.size - minIndexLR );
     crgMsgPrint( dCrgMsgLevelNotice, "                     max. NaN count from right [-]: %ld\n", maxIndexRL );
 }
@@ -3053,7 +3055,10 @@ crgLoaderReadFile( const char* filename )
 
     if ( !crgLoaderAddFile( filename, &crgData ) )
     {
-        crgMsgPrint( dCrgMsgLevelFatal,  "crgLoaderReadFile: error loading <%s>\n", filename );
+        if ( !mSuppressFileNotFoundFatalMsg )
+        {
+            crgMsgPrint( dCrgMsgLevelFatal,  "crgLoaderReadFile: error loading <%s>\n", filename );
+        }
         terminateReader( crgData, 0 );
         return 0;
     }
@@ -3081,6 +3086,12 @@ crgLoaderReadFile( const char* filename )
     return crgData->admin.id;
 }
 
+void
+crgLoaderSuppressFileNotFoundFatalMsg( bool suppress )
+{
+    mSuppressFileNotFoundFatalMsg = suppress;
+}
+
 static int
 crgLoaderAddFile( const char* filename, CrgDataStruct** crgRetData )
 {
@@ -3094,7 +3105,10 @@ crgLoaderAddFile( const char* filename, CrgDataStruct** crgRetData )
     /* --- open the file --- */
     if ( ( fPtr = fopen( filename, "rb" ) ) == NULL )
     {
-        crgMsgPrint( dCrgMsgLevelFatal,  "crgLoaderAddFile: could not open <%s>\n", filename );
+        if ( !mSuppressFileNotFoundFatalMsg )
+        {
+            crgMsgPrint( dCrgMsgLevelFatal,  "crgLoaderAddFile: could not open <%s>\n", filename );
+        }
         return 0;
     }
 
