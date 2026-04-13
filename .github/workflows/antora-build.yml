@@ -5,8 +5,7 @@ name: Publish with Antora to GitHub Pages
 on:
   push:
     branches: [main, master]
-  release:
-    types: [ published ]
+    tags: ['v*']
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 concurrency:
@@ -41,9 +40,7 @@ jobs:
       uses: actions/checkout@v6
       with:
         path: repo
-        ref: master
         fetch-depth: 0
-        fetch-tags: true
         submodules: recursive
 
     - name: Configure Pages
