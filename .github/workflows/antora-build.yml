@@ -47,7 +47,8 @@ jobs:
     - name: Update branch
       working-directory: repo
       run: |
-        git fetch
+        git fetch --tags --force
+        git tag --list
         git checkout origin/master
 
     - name: Configure Pages
