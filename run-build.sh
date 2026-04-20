@@ -5,5 +5,7 @@
 cp -r /usr/src/repo/. /github/workspace/.
 cd repo
 git fetch origin '+refs/tags/*:refs/tags/*' --force
+unset GITHUB_REF
+unset GITHUB_SHA
 export NODE_OPTIONS="--max-old-space-size=8192"
 exec antora --stacktrace --fetch --clean antora-playbook.yml
