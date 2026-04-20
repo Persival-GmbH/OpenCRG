@@ -48,7 +48,7 @@ jobs:
       working-directory: repo
       run: |
         git fetch
-        git checkout origin master
+        git checkout origin/master
 
     - name: Configure Pages
       uses: actions/configure-pages@v5
