@@ -18,7 +18,7 @@ include::1_2_Conventions.adoc[leveloffset=+2]
 
 include::1_3_Normative_and_non_norm_stats.adoc[leveloffset=+2]
 
-include::1_4_Deliverables_of_the_OpenCRG_Spec.adoc[leveloffset=+2]
+// include::1_4_Deliverables_of_the_OpenCRG_Spec.adoc[leveloffset=+2]
 
 // === Overview
 //
@@ -124,16 +124,16 @@ include::1_4_Deliverables_of_the_OpenCRG_Spec.adoc[leveloffset=+2]
 // *   The OpenCRG toolsuite and its use are non-normative.
 // *   Examples and use case descriptions are non-normative.
 //
-// === Deliverables of OpenCRG
-//
-// The following deliverables are provided for OpenCRG:
-//
-// [#tab-deliverables]
-// .Deliverables of ASAM OpenCRG
-// [frame="none]
-// |===
-// |User guide| The User Guides help to get started with the OpenCRG APIs and how OpenCRG can be applied
-// |Sample OpenCRG files| These demo files are explanatory examples
-// |C-API including demo files and test scripts| The C-API is capable of reading and evaluating OpenCRG Files
-// |MATLAB library including demo files and test scripts| The Matlab API can create, manipulate, visualize and validate OpenCRG Files
-// |===
+=== Deliverables of OpenCRG
+
+The following deliverables are provided for OpenCRG:
+
+[#tab-deliverables]
+.Deliverables of ASAM OpenCRG
+[frame="none]
+|===
+|User guide| The User Guides help to get started with the OpenCRG APIs and how OpenCRG can be applied
+|Sample OpenCRG files| These demo files are explanatory examples
+|C-API including demo files and test scripts| The C-API is capable of reading and evaluating OpenCRG Files
+|MATLAB library including demo files and test scripts| The Matlab API can create, manipulate, visualize and validate OpenCRG Files
+|===
