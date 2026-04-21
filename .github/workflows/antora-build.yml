@@ -56,7 +56,6 @@ jobs:
     - name: Upload Artifacts
       uses: actions/upload-pages-artifact@v4
       with:
-        name: specification
         path: ./repo/site
 
   deploy:
@@ -95,7 +94,7 @@ jobs:
       - name: Download specification artifact
         uses: actions/download-artifact@v4
         with:
-          name: specification
+          name: github-pages
           path: ./repo/site
 
       - name: Create zip archive
