@@ -93,11 +93,19 @@ jobs:
     env:
       SPECIFICATION_PATH: ${{ needs.build-spec.outputs.specification-html-filepath }}
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
       - name: Download specification artifact
         uses: actions/download-artifact@v4
         with:
           name: github-pages
-          path: ./repo/site
+          path: ./artifact-download
+
+      - name: Extract specification
+        run: |
+          mkdir -p ./specification
+          tar -xf ./artifact-download/artifact.tar -C ./specification
 
       - name: Create zip archive
         run: |
@@ -109,7 +117,7 @@ jobs:
           
           zip -r "$ZIP_NAME" \
           c-api crg-bin crg-txt matlab \
-          "./repo/site" \
+          specification \
           LICENSE NOTICE README.md RELEASENOTES \
           -x ".git/*" ".github/*" "*.gitignore" "*.gitattributes" "*.gitkeep" "*.o" "*.obj" ".a"
 
