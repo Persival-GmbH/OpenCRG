@@ -1,4 +1,4 @@
-=== Normative and non-normative statements and deliverables
+= Normative and non-normative statements and deliverables
 
 This specification uses a standard information structure. The following rules apply regarding normativity of sections:
 
