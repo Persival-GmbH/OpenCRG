@@ -2,12 +2,23 @@
 
 The following deliverables are provided for OpenCRG:
 
-[#tab-deliverables]
-.Deliverables of ASAM OpenCRG
-[frame="none]
+// [#tab-deliverables]
+// .Deliverables of ASAM OpenCRG
+// [frame="none]
+// |===
+// |User guide| The User Guides help to get started with the OpenCRG APIs and how OpenCRG can be applied
+// |Sample OpenCRG files| These demo files are explanatory examples
+// |C-API including demo files and test scripts| The C-API is capable of reading and evaluating OpenCRG Files
+// |MATLAB library including demo files and test scripts| The Matlab API can create, manipulate, visualize and validate OpenCRG Files
+// |===
+
+[#tab-test]
+.Typographical conventions test
+[%header, cols=2*]
 |===
-|User guide| The User Guides help to get started with the OpenCRG APIs and how OpenCRG can be applied
-|Sample OpenCRG files| These demo files are explanatory examples
-|C-API including demo files and test scripts| The C-API is capable of reading and evaluating OpenCRG Files
-|MATLAB library including demo files and test scripts| The Matlab API can create, manipulate, visualize and validate OpenCRG Files
+|Mark-up					|Definition
+|`Code elements`			|This format is used for code elements, such as technical names of classes and attributes, as well as attribute values.
+|```[blue]#Code snippets#``` 				|This format is used for excerpts of code that serve as an example for implementation.
+|_Terms_						|This format is used to introduce glossary terms, new terms and to emphasize terms.
+|`[green]#Mathematical elements#`	|This format is used for calculations and mathematical elements.
 |===
