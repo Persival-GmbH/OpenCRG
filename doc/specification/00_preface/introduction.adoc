@@ -20,7 +20,39 @@ endif::[]
 //
 // include::1_4_Deliverables_of_the_OpenCRG_Spec.adoc[]
 
-=== Modal verbs
+=== Overview
+
+The ASAM OpenCRG format provides a common format for describing road surfaces. The data in an OpenCRG file usually describes road elevation. OpenCRG file can be used for both synthetic or real road surfaces. The main purpose of OpenCRG is to provide a road surface description that can be fed into simulations and to make these road surface descriptions exchangeable.
+
+=== Motivation
+
+OpenCRG comprises open file formats and open source tools for the detailed description, creation and evaluation of road surfaces.
+As basic functionality OpenCRG describes the geometry of the road surface based on a reference line and a height grid (which can also be used for other scalar data).
+It is intended for vehicle dynamics, tire, vibration and driving simulations.
+For these purposes the OpenCRG project provides the following features: ASCII and binary file formats with clear-text headers,
+an open source C-API for data handling and evaluation and open source MATLAB® API for data manipulation and generation and a library of sample data.
+
+OpenCRG is to be understood as a complementary standard to OpenDRIVE.
+While OpenDRIVE files are describing road networks with respect to all data belonging to the road environment, OpenCRG describes the road surface in detail.
+OpenDRIVE allows the referencing to OpenCRG files.
+
+=== Conventions
+
+==== Naming conventions
+In this document, the following conventions apply:
+
+``data types`` 	are given according to IEEE 754 standard.
+
+==== Units
+
+Unless stated otherwise, all numeric values within this specification are in SI units, for example:
+
+*	position/distance	in [m]
+*	angles	in [rad]
+
+Geographic positions are stated in the unit defined by the spatial coordinate system, for example, in accordance with WGS 84 – EPSG 4326.
+
+==== Modal verbs
 
 To ensure compliance with the OpenCRG standard, users must be able to distinguish between mandatory requirements, recommendations, permissions, as well as possibilities, capabilities, obligations and necessities.
 
@@ -57,7 +89,7 @@ These verbal forms are used to describe legal, organizational, or technical obli
 must not
 |===
 
-=== Typographic conventions
+==== Typographic conventions
 
 This documentation uses the following typographical conventions:
 
@@ -70,4 +102,38 @@ This documentation uses the following typographical conventions:
 |```[blue]#Code snippets#``` 				|This format is used for excerpts of code that serve as an example for implementation.
 |_Terms_						|This format is used to introduce glossary terms, new terms and to emphasize terms.
 |`[green]#Mathematical elements#`	|This format is used for calculations and mathematical elements.
+|===
+
+==== Curvature
+
+For curvature indications, the following convention applies:
+
+*	Positive curvature: left curve (counter-clockwise motion)
+*	Negative curvature: right curve (clockwise motion)
+
+`[green]#Curvature == 1/radius#`
+
+=== Normative and non-normative statements and deliverables
+
+This specification uses a standard information structure. The following rules apply regarding normativity of sections:
+
+*   Statements expressed as requirements, permissions, or prohibitions according to the use of modal verbs, as defined in <<Modal verbs>>, are normative.
+*   Keywords of OpenCRG data structures in "Keyword" sections are normative.
+*   Content descriptions of OpenCRG data structures in "Contents" sections are normative.
+*   Rules for OpenCRG data structures in "Rules" sections are normative.
+*   The OpenCRG toolsuite and its use are non-normative.
+*   Examples and use case descriptions are non-normative.
+
+=== Deliverables of OpenCRG
+
+The following deliverables are provided for OpenCRG:
+
+[#tab-deliverables]
+.Deliverables of ASAM OpenCRG
+[frame="none]
+|===
+|User guide| The User Guides help to get started with the OpenCRG APIs and how OpenCRG can be applied
+|Sample OpenCRG files| These demo files are explanatory examples
+|C-API including demo files and test scripts| The C-API is capable of reading and evaluating OpenCRG Files
+|MATLAB library including demo files and test scripts| The Matlab API can create, manipulate, visualize and validate OpenCRG Files
 |===
