@@ -88,6 +88,8 @@ jobs:
     # Take specification artifact from build job and package into a zip for the release.
     needs: build
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     env:
       SPECIFICATION_PATH: ${{ needs.build-spec.outputs.specification-html-filepath }}
     steps:
