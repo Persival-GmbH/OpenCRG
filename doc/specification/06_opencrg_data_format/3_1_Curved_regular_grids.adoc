@@ -27,14 +27,3 @@ A curved regular grid may be placed in an inertial x/y-coordinate system by prov
 image::banking_slope.png[,900]
 
 The reference line may be complemented by slope or banking (see <<fig-banking_slope>>).
-
-[#tab-test]
-.Typographical conventions
-[%header, cols=2*]
-|===
-|Mark-up					|Definition
-|`Code elements`			|This format is used for code elements, such as technical names of classes and attributes, as well as attribute values.
-|```[blue]#Code snippets#``` 				|This format is used for excerpts of code that serve as an example for implementation.
-|_Terms_						|This format is used to introduce glossary terms, new terms and to emphasize terms.
-|`[green]#Mathematical elements#`	|This format is used for calculations and mathematical elements.
-|===

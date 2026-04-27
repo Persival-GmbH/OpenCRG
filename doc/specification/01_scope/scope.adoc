@@ -18,3 +18,14 @@ The standard has the following scope:
 
 - Provide a standardized C-API for reading and evaluating CRG data within simulation environments.
 - Provide a MATLAB tool suite for the creation, modification, and validation of ASAM OpenCRG data sets.
+
+[#tab-test]
+.Typographical conventions
+[%header, cols=2*]
+|===
+|Mark-up					|Definition
+|`Code elements`			|This format is used for code elements, such as technical names of classes and attributes, as well as attribute values.
+|```[blue]#Code snippets#``` 				|This format is used for excerpts of code that serve as an example for implementation.
+|_Terms_						|This format is used to introduce glossary terms, new terms and to emphasize terms.
+|`[green]#Mathematical elements#`	|This format is used for calculations and mathematical elements.
+|===
