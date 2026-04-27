@@ -5,12 +5,7 @@
 [preface]
 include::00_preface/foreword.adoc[leveloffset=+1]
 [preface]
-== Introduction
-include::00_preface/0_1_Overview.adoc[leveloffset=+2]
-include::00_preface/0_2_Motivation.adoc[leveloffset=+2]
-include::00_preface/1_2_Conventions.adoc[leveloffset=+2]
-include::00_preface/1_3_Normative_and_non_norm_stats.adoc[leveloffset=+2]
-include::00_preface/1_4_Deliverables_of_the_OpenCRG_Spec.adoc[leveloffset=+2]
+include::00_preface/introduction.adoc[leveloffset=+1]
 
 :sectnums:
 include::01_scope/scope.adoc[leveloffset=+1]
@@ -18,25 +13,7 @@ include::02_normative_references/2_0_Relations_to_other_standards.adoc[leveloffs
 include::03_terms_and_definitions/terms-and-definitions.adoc[leveloffset=+1]
 include::04_abbreviations/abbreviations.adoc[leveloffset=+1]
 include::05_backward_compatibility/backward-compatibility.adoc[leveloffset=+1]
-
-== OpenCRG data format
-include::06_opencrg_data_format/3_1_Curved_regular_grids.adoc[leveloffset=+2]
-include::06_opencrg_data_format/3_2_Data_file_structure.adoc[leveloffset=+2]
-include::06_opencrg_data_format/3_3_Comments.adoc[leveloffset=+2]
-
-=== Data sections
-include::06_opencrg_data_format/3_4_1_Header_information.adoc[leveloffset=+3]
-include::06_opencrg_data_format/3_4_2_Road_parameters.adoc[leveloffset=+3]
-include::06_opencrg_data_format/3_4_3_Map_projection_data.adoc[leveloffset=+3]
-include::06_opencrg_data_format/3_4_3_Data_definition.adoc[leveloffset=+3]
-include::06_opencrg_data_format/3_4_4_Options.adoc[leveloffset=+3]
-include::06_opencrg_data_format/3_4_5_Modifiers.adoc[leveloffset=+3]
-include::06_opencrg_data_format/3_4_6_File_reference.adoc[leveloffset=+3]
-include::06_opencrg_data_format/3_4_7_Road_data.adoc[leveloffset=+3]
-
-include::06_opencrg_data_format/3_5_Sample_files.adoc[leveloffset=+2]
-
-
+include::06_opencrg_data_format/3_0_Open_crg_data_format.adoc[leveloffset=+1]
 include::07_setting_up_the_opencrg_tools/4_0_Setting_up_the_OpenCRG_tools.adoc[leveloffset=+1]
 include::08_using_the_opencrg_tools/5_00_Using_the_OpenCRG_tools.adoc[leveloffset=+1]
 

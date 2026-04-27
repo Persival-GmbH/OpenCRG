@@ -10,12 +10,8 @@ endif::[]
 
 :sectnums!:
 
-== Overview
-
-include::0_1_Overview.adoc[]
-
-include::1_2_Conventions.adoc[]
-
-include::1_3_Normative_and_non_norm_stats.adoc[]
-
-include::1_4_Deliverables_of_the_OpenCRG_Spec.adoc[]
+include::0_1_Overview.adoc[leveloffset=+1]
+include::0_2_Motivation.adoc[leveloffset=+1]
+include::1_2_Conventions.adoc[leveloffset=+1]
+include::1_3_Normative_and_non_norm_stats.adoc[leveloffset=+1]
+include::1_4_Deliverables_of_the_OpenCRG_Spec.adoc[leveloffset=+1]
