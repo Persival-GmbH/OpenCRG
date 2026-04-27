@@ -1,13 +1,13 @@
-=== Conventions
+= Conventions
 :imagesdir: ../images/
 :stem: latexmath
 
-==== Naming conventions
+== Naming conventions
 In this document, the following conventions apply:
 
 ``data types`` 	are given according to IEEE 754 standard.
 
-==== Units
+== Units
 
 Unless stated otherwise, all numeric values within this specification are in SI units, for example:
 
@@ -16,7 +16,7 @@ Unless stated otherwise, all numeric values within this specification are in SI 
 
 Geographic positions are stated in the unit defined by the spatial coordinate system, for example, in accordance with WGS 84 – EPSG 4326.
 
-==== Modal verbs
+== Modal verbs
 
 To ensure compliance with the OpenCRG standard, users must be able to distinguish between mandatory requirements, recommendations, permissions, as well as possibilities, capabilities, obligations and necessities.
 
@@ -53,7 +53,7 @@ These verbal forms are used to describe legal, organizational, or technical obli
 must not
 |===
 
-==== Typographic conventions
+== Typographic conventions
 
 This documentation uses the following typographical conventions:
 
@@ -68,7 +68,7 @@ This documentation uses the following typographical conventions:
 |`[green]#Mathematical elements#`	|This format is used for calculations and mathematical elements.
 |===
 
-==== Curvature
+== Curvature
 
 For curvature indications, the following convention applies: 
 

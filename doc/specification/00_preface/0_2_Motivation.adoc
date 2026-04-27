@@ -1,4 +1,4 @@
-=== Motivation
+= Motivation
 
 OpenCRG comprises open file formats and open source tools for the detailed description, creation and evaluation of road surfaces. 
 As basic functionality OpenCRG describes the geometry of the road surface based on a reference line and a height grid (which can also be used for other scalar data). 

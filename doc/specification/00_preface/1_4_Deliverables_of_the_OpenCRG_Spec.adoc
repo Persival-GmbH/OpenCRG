@@ -1,4 +1,4 @@
-=== Deliverables of OpenCRG
+= Deliverables of OpenCRG
 
 The following deliverables are provided for OpenCRG:
 
