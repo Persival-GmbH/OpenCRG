@@ -5,7 +5,12 @@
 [preface]
 include::00_preface/foreword.adoc[leveloffset=+1]
 [preface]
-include::00_preface/introduction.adoc[leveloffset=+1]
+== Introduction
+
+include::00_preface/1_1_Overview.adoc[leveloffset=+2]
+include::00_preface/1_2_Conventions.adoc[leveloffset=+2]
+include::00_preface/1_3_Normative_and_non_norm_stats.adoc[leveloffset=+2]
+include::00_preface/1_4_Deliverables_of_the_OpenCRG_Spec.adoc[leveloffset=+2]
 
 :sectnums:
 include::01_scope/scope.adoc[leveloffset=+1]
