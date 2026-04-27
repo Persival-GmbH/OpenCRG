@@ -1,4 +1,4 @@
-==== Map projection data
+= Map projection data
 
 ifndef::include-only-once[]
 :root-path: ../
@@ -22,13 +22,13 @@ A map projection can involve a datum transformation, for example with Gauss-Krü
 
 The map projection parameters `PROJ_*` are relevant for the generic transverse Mercator projection (`PROJ_NM = TM` or `PROJ_NM = TM_*`). If the generic transverse Mercator projection is used with a zone substring `PROJ_L0` is ignored.
 
-===== Keyword
+== Keyword
 
 ----
 $ROAD_CRG_MPRO
 ----
 
-===== Contents
+== Contents
 
 [#tab-map-projection-parameters]
 .Map projection parameters
@@ -164,13 +164,13 @@ TM:: Transverse Mercator using map projection parameters `PROJ_*` (user-defined 
 
 |===
 
-===== Rules
+== Rules
 
 * Parameters in a _map projection data_ section shall be provided as key-value pairs using the syntax `PARAMETER = value`.
 * The _map projection data_ section shall contain enough information to execute the desired transformation.
 * For UTM, defining the zone number and band letter shall be sufficient.
 
-===== Examples
+== Examples
 
 ----
 $ROAD_CRG_MPRO

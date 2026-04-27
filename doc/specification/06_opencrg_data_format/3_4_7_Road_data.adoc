@@ -1,4 +1,4 @@
-==== Road data
+= Road data
 
 ifndef::include-only-once[]
 :root-path: ../
@@ -15,7 +15,7 @@ Road data is stored as low-precision array as defined in the _data definition_ s
 
 A single record shall contain a maximum of 80 byte. If the defined data channels exceed this limit, the respective data row shall be wrapped to the next record. In plain-text format, each data row shall start in a new record. In binary format, records are successively filled up to 80 byte. The last record is padded with NaNs.
 
-===== Contents
+== Contents
 
 In plain-text formats, numbers are represented as follows:
 
@@ -31,11 +31,11 @@ In binary formats, numbers are represented as follows:
 * Numbers of type double are 8 byte long for a maximum of 10 numbers per record.
 * NaNs are represented according to IEEE 754.
 
-===== Keyword
+== Keyword
 
 None.
 
-===== Rules
+== Rules
 
 * An OpenCRG file may contain a _road data_ section.
 * The _road data_ section shall be the last section of an OpenCRG file.
@@ -44,7 +44,7 @@ None.
 * The _road data_ may contain NaN values, but there must be at least one valid (non-NaN) value per cross section (lateral profile at a given u-position).
 * NaN values must not occur between non-NaN values within a cross section (lateral profile at a given u-position). This means NaN values can only appear from the left and/or the right border of the actual road data.
 
-===== Examples
+== Examples
 
 The example shows road data for a 1 m wide road. The road data is organized in a 4-by-10 matrix. The first column contains heading angles of the reference line, ignoring the first value, starting with the second value to describe the direction from the first to the second reference point. The following three columns contain actual road surface data. One value on the right border of the road is undefined (NaN).
 

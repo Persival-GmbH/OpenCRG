@@ -1,4 +1,4 @@
-==== File reference
+= File reference
 
 The optional _file reference_ section of a first OpenCRG file references a second OpenCRG file.
 
@@ -8,13 +8,13 @@ Any empty or non-empty option or modifier section in the first OpenCRG file repl
 Any missing option or modifier section in the first OpenCRG file enables the use of the equivalent section (or it's defaults) in the second OpenCRG file.
 Any further sections and actual road data in the first OpenCRG file are ignored.
 
-===== Keyword
+== Keyword
 
 ----
 $ROAD_CRG_FILE
 ----
 
-===== Contents
+== Contents
 
 File references use the following symbols for describing paths.
 
@@ -31,7 +31,7 @@ File references use the following symbols for describing paths.
 |===
 
 
-===== Rules
+== Rules
 
 *   An OpenCRG file may contain a _file reference_ section.
 *   A _file reference_ section may contain a single file reference.
@@ -39,7 +39,7 @@ File references use the following symbols for describing paths.
 *   File references may use environment variables.
 *   A path may be split into several lines. These lines shall not contain leading or trailing spaces, tabs, asterisks, and exclamation marks.
 
-===== Examples
+== Examples
 
 .File reference using an absolute path.
 ----

@@ -1,0 +1,5 @@
+= Overview
+:imagesdir: ../images/
+:stem: latexmath
+
+The ASAM OpenCRG format provides a common format for describing road surfaces. The data in an OpenCRG file usually describes road elevation. OpenCRG file can be used for both synthetic or real road surfaces. The main purpose of OpenCRG is to provide a road surface description that can be fed into simulations and to make these road surface descriptions exchangeable.

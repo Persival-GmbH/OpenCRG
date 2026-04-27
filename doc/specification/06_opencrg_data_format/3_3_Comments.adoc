@@ -1,4 +1,4 @@
-=== Comments
+= Comments
 
 An OpenCRG file may contain comments with further information about the file. These comments shall not substitute the introductory _header information_.
 

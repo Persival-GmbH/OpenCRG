@@ -1,4 +1,4 @@
-==== Modifiers
+= Modifiers
 
 The optional _modifiers_ section defines values for modifiers. Modifiers alter OpenCRG data stored in memory.
 
@@ -22,13 +22,13 @@ The curvature of the reference line may be scaled by a factor, resulting in a di
 
 When preparing a data set for evaluation, the borders of the road in v-direction are checked for NaN values. These NaN values may be kept or replaced by defined values. If NaN values are to be kept, the BORDER_MODE_V option shall be set to 0 (none). If NaN values are to be replaced, an additional offset may be applied to them.
 
-===== Keyword
+== Keyword
 
 ----
 $ROAD_CRG_MODS
 ----
 
-===== Contents
+== Contents
 
 The _modifiers_ section contains modifiers provided as key-value pairs.
 
@@ -140,7 +140,7 @@ a| Offset applied to replaced NaN values.
 
 |===
 
-===== Rules
+== Rules
 
 * An OpenCRG file may contain a _modifiers_ section.
 * Modifiers in a _modifiers_ section shall be provided as key-value pairs using the syntax `MODIFIER = value`.
@@ -148,7 +148,7 @@ a| Offset applied to replaced NaN values.
 * If the data in an OpenCRG file is intended to be used with specific modifiers applied, these modifiers should be defined in the OpenCRG file.
 * If an OpenCRG file contains a _modifiers_ section, an application must ignore its own default modifier values and must apply only the modifiers specified in the OpenCRG file.
 
-===== Examples
+== Examples
 
 In the following example, the reference line is first rotated by 1.57 rad (90°) around the origin of the x/y-coordinate system and then shifted by 100 m in x-direction, y-direction and z-direction.
 

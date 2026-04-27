@@ -1,4 +1,4 @@
-==== Options
+= Options
 
 The optional _options_ section defines values for options. Options influence the evaluation of OpenCRG data. They do not modify the road data itself.
 
@@ -13,13 +13,13 @@ Border-smoothing options provide a linear ascend or descend of z-values along a 
 
 When the u-coordinate exceeds the defined range, the corresponding x/y-coordinates are calculated by either extrapolating the reference line or evaluating the reference line as closed track. The reference-line-continuation option defines whether the reference line is extrapolated or treated as closed track. A track can be closed, if the extrapolated tracks intersect at an angle of less than 60 degree.
 
-===== Keyword
+== Keyword
 
 ----
 $ROAD_CRG_OPTS
 ----
 
-===== Contents
+== Contents
 
 The _options_ section contains options provided as key-value pairs.
 
@@ -114,7 +114,7 @@ a|Expected projection tolerance, used for numerical consistency checks.
 a|Expected WGS 84 tolerance, used for numerical consistency checks.
 |===
 
-===== Rules
+== Rules
 
 * An OpenCRG file may contain an _options_ section.
 * Options in an _options_ section shall be provided as key-value pairs using the syntax `OPTION = value`.
@@ -122,7 +122,7 @@ a|Expected WGS 84 tolerance, used for numerical consistency checks.
 * If the data in an OpenCRG file is intended to be evaluated with options set to specific values, these values should be specified in the OpenCRG file.
 * Applications shall define default values for options. Options defined in an OpenCRG file may override these default values.
 
-===== Examples
+== Examples
 
 The following example illustrates how to create an endless road using a border mode option. The border smoothing prevents unnecessary steep changes at the beginning and the end of the road.
 

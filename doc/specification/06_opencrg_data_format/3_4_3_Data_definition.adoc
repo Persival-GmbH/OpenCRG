@@ -1,4 +1,4 @@
-==== Data definition
+= Data definition
 
 ifndef::include-only-once[]
 :root-path: ../
@@ -28,13 +28,13 @@ image::OpenCRG_coord_sys.png[,900]
 
 Lines starting with `U:` define a virtual channel. A virtual channel does not contain original data. Instead, data in a virtual channel is derived from data and definitions provided elsewhere in the file. Virtual channels may safely be ignored.
 
-===== Keyword
+== Keyword
 
 ----
 $KD_Definition
 ----
 
-===== Contents
+== Contents
 
 [#tab-data-definition-parameters]
 .Data definition parameters
@@ -70,7 +70,7 @@ $KD_Definition
 
 |===
 
-===== Rules
+== Rules
 
 * If an OpenCRG file contains a _road data_ section, the file shall also contain a _data definition_ section.
 * The _data definition_ section should define the data format used.
@@ -78,7 +78,7 @@ $KD_Definition
 * Channel definitions shall appear in the same sequence as the corresponding columns in the _road data_ section.
 * The _data definition_ section may define a virtual channel.
 
-===== Examples
+== Examples
 
 The following _data definition_ section defines ten channels. Each channel corresponds to a column in the _road data_ section. The first three columns contain reference line data. The other seven columns contain road surface data. The v-positions of the longitudinal cuts are defined explicitly.
 
