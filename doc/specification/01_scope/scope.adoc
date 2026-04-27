@@ -1,5 +1,5 @@
 [#top-scope-scope]
-= Scope
+== Scope
 
 ifndef::include-only-once[]
 :root-path: ../
