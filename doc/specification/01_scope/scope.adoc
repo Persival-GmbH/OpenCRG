@@ -20,7 +20,7 @@ The standard has the following scope:
 - Provide a MATLAB tool suite for the creation, modification, and validation of ASAM OpenCRG data sets.
 
 [#tab-test]
-.Typographical conventions
+.Test table
 [%header, cols=2*]
 |===
 |Mark-up					|Definition
