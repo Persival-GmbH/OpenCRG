@@ -29,12 +29,12 @@ ASAM OpenCRG is a registered trademark of ASAM e.V.
 // DO NOT CHANGE!!!
 
 
-// ifndef::use-antora-rules[]
+ifndef::use-antora-rules[]
 
 [preface]
 include::00_preface/foreword.adoc[leveloffset=+1]
 [preface]
-include::00_preface/introduction.adoc[leveloffset=+1]
+include::00_preface/introduction.adoc[]
 
 :sectnums:
 :tableoffset: 5
@@ -57,4 +57,4 @@ include::loft/list-of-figures.adoc[leveloffset=+1]
 
 :sectnums!:
 include::loft/list-of-tables.adoc[leveloffset=+1]
-// endif::[]
+endif::[]

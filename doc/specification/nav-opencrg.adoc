@@ -5,7 +5,7 @@
 [preface]
 include::00_preface/foreword.adoc[leveloffset=+1]
 [preface]
-include::00_preface/introduction.adoc[leveloffset=+1]
+include::00_preface/introduction.adoc[]
 
 :sectnums:
 :tableoffset: 5
