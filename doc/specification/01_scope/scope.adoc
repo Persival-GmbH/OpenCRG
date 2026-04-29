@@ -22,8 +22,8 @@ The standard has the following scope:
 - Provide a MATLAB tool suite for the creation, modification, and validation of ASAM OpenCRG data sets.
 
 [#tab-test]
-.Test table
-[frame="none]
+.Test table check
+[frame="none"]
 |===
 |User guide| The User Guides help to get started with the OpenCRG APIs and how OpenCRG can be applied
 |Sample OpenCRG files| These demo files are explanatory examples
