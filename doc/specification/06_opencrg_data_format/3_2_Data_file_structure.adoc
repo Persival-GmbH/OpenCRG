@@ -20,7 +20,7 @@ The plain text header shall be terminated by a new line with double or multiple 
 The data payload shall consist of clear text records with a maximum length of 80 ASCII characters, terminated by LF or CRLF, or it shall consist of binary records of 80 bytes length without any extra terminators.
 
 [#tab-recommended_data_section_sequence]
-.Overview of data sections in recommended sequence.
+.Overview of data sections in recommended sequence
 |====
 |Data section |Keyword | Content |Remark
 
